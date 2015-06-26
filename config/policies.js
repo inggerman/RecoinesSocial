@@ -26,7 +26,14 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': "isAuthenticated",
+    UserController: {
+        "create": true,
+    },
+    AuthController: {
+        '*': true,
+    }
+  // 'users':'sessionAuth',
 
   /***************************************************************************
   *                                                                          *

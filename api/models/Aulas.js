@@ -8,7 +8,10 @@
 module.exports = {
 
   attributes: {
-
+  	nombre_aula:{
+  		type:'string',
+  		required:true
+  	}
   }
 };
 

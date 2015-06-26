@@ -8,7 +8,14 @@
 module.exports = {
 
   attributes: {
+  	calificacion:{
+  		type:'string',
+  		require:true
 
+  	},
+  	id_Alumno:{
+  		model:'Alumnos'
+  	}
   }
 };
 

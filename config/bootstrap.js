@@ -43,19 +43,19 @@ RubricaPosts.create({excelente:1,idpost:7}).exec(console.log);
 RubricaPosts.create({excelente:1,idpost:8}).exec(console.log);
 
 
-ComentariosPosts.create({comentario:'esta',idpost:'1',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'est ',idpost:'1',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas bien ',idpost:'1',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas bie',idpost:'1',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas bien',idpost:'1',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas ',idpost:'2',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'est',idpost:'2',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas ',idpost:'2',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas',idpost:'3',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas ',idpost:'3',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'',idpost:'2',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'',idpost:'3',iduser:'10370710'}).exec(console.log);
-ComentariosPosts.create({comentario:'estas',idpost:'4',iduser:'10370711'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba1',idpost:'1',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba2 ',idpost:'1',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba2 ',idpost:'1',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba3',idpost:'1',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba4',idpost:'1',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba5 ',idpost:'2',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba6',idpost:'2',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prubas7 ',idpost:'2',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'pruebas8',idpost:'3',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'pruebas9 ',idpost:'3',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba30',idpost:'2',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba50',idpost:'3',iduser:'10370710'}).exec(console.log);
+ComentariosPosts.create({comentario:'prueba35',idpost:'4',iduser:'10370711'}).exec(console.log);
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();

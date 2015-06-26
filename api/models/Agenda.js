@@ -1,5 +1,5 @@
 /**
-* PersonalDataUser.js
+* Agenda.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
@@ -8,18 +8,20 @@
 module.exports = {
 
   attributes: {
-  	  	edad:{
-  		type:'numeric',
-  		required:true,
+  	nombre_actividad:{
+  		type:'string'
   	},
-  	fecha_nacimiento:{
-  		type:'date',
-  		require:true
+  	descripcion:{
+  		type:'text',
+  		required:true
   	},
-  
-	user:{
-      model:'Users'
-    }
+  	fecha_recordatorio:{
+  		type:'datatime'
+  	},
+  	iduser:{
+  		model:'Users'
+  	}
+
   }
-};;
+};
 

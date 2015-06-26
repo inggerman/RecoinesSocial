@@ -50,7 +50,10 @@ autoPK: false,
       collection:'ComentariosPosts',
       via:'iduser'
     },
-
+    idAgenda:{
+      collection:'Agenda',
+      via:'iduser'
+    },
   	pd:{
   		model:'PersonaldataUsers'
   	},
