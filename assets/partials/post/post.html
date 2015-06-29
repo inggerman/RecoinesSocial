@@ -1,0 +1,38 @@
+<div class="container" ng-controller="PostCtrl">
+	<div class="row">
+		<div class="col-md-4">listado de</div>
+		<div class="col-md-4" ng-model="posts">
+		<form>
+			<textarea name="textPost">hola</textarea>
+			<br>
+			<button type="button" ng-click="publicar()">Publicar</button>
+		</form>
+			<ul>
+				<li ng-repeat="post in posts">
+					<div ng-if="post.iduser2!=null">
+					
+						<span>{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</span>por
+						<spam>{{post.iduser2.nombre}}</spam>
+						<br>
+						<span>{{post.createdAt |date:'dd/MM/yyyy -- h:mma'}}</span>
+						<div>{{post.post}}</div>
+
+					</div>
+					<div ng-if="post.iduser2==null">
+					
+						<span>{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</span>
+						
+						<br>
+						<span>{{post.createdAt |date:'dd/MM/yyyy -- h:mma'}}</span>
+						<div>{{post.post}}</div>
+
+					</div>
+
+					<!-- <div>{{post.iduser.nombre}}</div> -->
+				</li>
+			</ul>
+		</div>
+	<div class="col-md-4"></div>
+		
+	</div>
+</div>

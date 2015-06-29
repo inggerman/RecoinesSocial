@@ -10,7 +10,7 @@ module.exports = {
           console.log(user);
             if( (err)||(!user) ) {
                 return res.send({
-                    message: 'login failed'
+                    message: 'Fallo la identificacion del user'
                 });
                 res.send(err);
             }

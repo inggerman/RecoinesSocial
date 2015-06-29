@@ -46,6 +46,10 @@ autoPK: false,
       collection:'Posts',
       via:'iduser'
     },
+    posts:{
+      collection:'Posts',
+      via:'iduser2'
+    },
     idcomentariopost:{
       collection:'ComentariosPosts',
       via:'iduser'

@@ -17,9 +17,13 @@ passport.use(new LocalStrategy({
         passwordField: 'password'
     },
     function(ncontrol, password, done) {
+        console.log(ncontrol);
+        console.log(password);
+        console.log(done);
+
         Users.findOne({ ncontrol: ncontrol }).exec(function(err, user) {
             if(err) { return done(err); }
-            if(!user) { return done(null, false, { message: 'Unknown user ' + ncontrol }); }
+            if(!user) { return done(null, false, { message: 'Unknown user ' + ncontrol });  }
             bcrypt.compare(password, user.password, function(err, res) {
                 if(!res) return done(null, false, {message: 'Invalid Password'});
                 return done(null, user);

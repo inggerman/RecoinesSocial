@@ -19,6 +19,9 @@ module.exports = {
 	iduser:{
   		model:'Users'
   	},
+  iduser2:{
+      model:'Users'
+    },
   	rubricapost:{
   		model:'Rubricaposts'
   	},

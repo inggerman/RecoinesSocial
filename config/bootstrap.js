@@ -22,14 +22,14 @@ PersonalDataUsers.create({edad:23,user:'10370711'}).exec(console.log);
 PersonalDataUsers.create({edad:23,user:'10370712'}).exec(console.log);
 PersonalDataUsers.create({edad:23,user:'10370713'}).exec(console.log);
 
-Posts.create({post:'holaperrosdelmal1',user:'10370710'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal2',user:'10370710'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal3',user:'10370710'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal4',user:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal5',user:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal6',user:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal7',user:'10370712'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal8',user:'10370712'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal1',iduser:'10370710',iduser2:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal2',iduser:'10370710'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal3',iduser:'10370710'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal4',iduser:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal5',iduser:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal6',iduser:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal7',iduser:'10370712'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal8',iduser:'10370712'}).exec(console.log);
 
 
 
@@ -56,6 +56,10 @@ ComentariosPosts.create({comentario:'pruebas9 ',idpost:'3',iduser:'10370710'}).e
 ComentariosPosts.create({comentario:'prueba30',idpost:'2',iduser:'10370710'}).exec(console.log);
 ComentariosPosts.create({comentario:'prueba50',idpost:'3',iduser:'10370710'}).exec(console.log);
 ComentariosPosts.create({comentario:'prueba35',idpost:'4',iduser:'10370711'}).exec(console.log);
+
+
+
+console.log('------------------------------------------------------------------------');
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();

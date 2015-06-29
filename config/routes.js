@@ -46,6 +46,16 @@ module.exports.routes = {
   'GET /logout': {
       controller: 'AuthController',
       action: 'logout'
+  },
+
+  'GET /post':{
+    controller:'PostsController',
+    action: 'findPost'
+  },
+
+  'POST /postadd':{
+    controller:'PostsController',
+    action:'postadd'
   }
   /***************************************************************************
   *                                                                          *
