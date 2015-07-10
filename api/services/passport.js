@@ -22,10 +22,15 @@ passport.use(new LocalStrategy({
         console.log(done);
 
         Users.findOne({ ncontrol: ncontrol }).exec(function(err, user) {
-            if(err) { return done(err); }
-            if(!user) { return done(null, false, { message: 'Unknown user ' + ncontrol });  }
+            if(err) { 
+                return done(err); 
+            }
+            if(!user) { 
+                return done(null, false, { message: 'Usuario Desconocido ' + ncontrol });  
+            }
+
             bcrypt.compare(password, user.password, function(err, res) {
-                if(!res) return done(null, false, {message: 'Invalid Password'});
+                if(!res) return done(null, false, {message: 'Contraseña Invalida'});
                 return done(null, user);
             });
         });

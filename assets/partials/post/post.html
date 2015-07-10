@@ -2,13 +2,13 @@
 	<div class="row">
 		<div class="col-md-4">listado de</div>
 		<div class="col-md-4" ng-model="posts">
-		<form>
-			<textarea name="textPost">hola</textarea>
+		<form ng-submit="publicar()">
+			<textarea name="post" ng-model="pt.post" required>hola</textarea>
 			<br>
-			<button type="button" ng-click="publicar()">Publicar</button>
+			<button type="submit">Publicar</button>
 		</form>
 			<ul>
-				<li ng-repeat="post in posts">
+				<li ng-repeat="post in posts |orderBy:'-createdAt'">
 					<div ng-if="post.iduser2!=null">
 					
 						<span>{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</span>por

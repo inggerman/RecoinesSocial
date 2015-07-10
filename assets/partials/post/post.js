@@ -3,15 +3,44 @@
 angular.module('myApp.post', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
+
   $routeProvider.when('/post', {
     templateUrl: '/partials/post/post.html',
     controller: 'PostCtrl'
   });
 }])
 
-.controller('PostCtrl', ['$scope',function($scope) {
+.controller('PostCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
 
-	io.socket.get('/post',function(data){
+$scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
+
+var ncontrol= $scope.name=Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
+	
+  // var s={
+
+  //   ncontrol:ncontrol
+  // }
+
+
+  // console.log(s);
+        
+  //        $http({
+  //           method  : 'POST',
+  //           url     : '/post',
+  //           data    : $.param(s),  // pass in data as strings
+  //           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+  //          })
+  //           .success(function(data) {
+  //             console.log(data);
+  //         });
+
+
+     
+
+    
+
+  io.socket.get('/post',{ncontrol:ncontrol},function(data){
+    console.log(data);
          $scope.posts=data;
          $scope.$apply();
       });
@@ -25,4 +54,26 @@ angular.module('myApp.post', ['ngRoute'])
             break;
          }
    });
+
+
+    $scope.pt={};
+
+      $scope.publicar=function(){
+        $scope.pt.iduser=ncontrol;
+         $http({
+            method  : 'POST',
+            url     : '/postadd',
+            data    : $.param($scope.pt),  // pass in data as strings
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+           })
+            .success(function(data) {
+              console.log(data);
+          });
+
+
+      console.log($scope.pt.post);
+      $scope.pt.post="";
+
+    }
+
 }]);

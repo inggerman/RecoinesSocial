@@ -25,9 +25,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RecoinesSocial</a>
+      <a class="navbar-brand" href="/">RecoinesSocial</a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!-- <ul class="nav navbar-nav">
@@ -54,11 +53,29 @@
       </form> -->
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/view1">vista1</a></li>
-        <li><a href="#/view2">vista2</a></li>
-        <li><a href="#/post">post</a></li>
-        <li><a href="#">Iniciar sessión</a></li>
-        <li><a href="#">Registrarse</a></li>
+        
+        <%if(!req.user){%>
+          <li><a href="login">Iniciar sessión</a></li>
+          <li><a href="singup">Registrarse</a></li>
+        <%}else{%>
+          <li><a href="#/post">post</a></li>
+          <li><a href="#/view2">Bienvuti <%=req.user[0].nombre%></a></li>
+          
+          <li class="dropdown">
+            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuración <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Editar Perfil</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="logout">Cerrar Sesión</a></li>
+            </ul>
+          </li>
+        </ul>
+        <%}%>
+
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -69,7 +86,7 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </li> -->
-      </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

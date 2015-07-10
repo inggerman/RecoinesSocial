@@ -32,8 +32,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
+  'GET /': {
+      controller: 'IndexController',
+      action: 'inicio'
+    // view: 'inicio'
   },
   'GET /login': {
       controller: 'AuthController',
@@ -56,6 +58,14 @@ module.exports.routes = {
   'POST /postadd':{
     controller:'PostsController',
     action:'postadd'
+  },
+  'POST /singup':{
+    controller: 'AuthController',
+    action: 'registrationuser'
+  },
+  'GET /singup':{
+    controller: 'AuthController',
+    action: 'singup'
   }
   /***************************************************************************
   *                                                                          *

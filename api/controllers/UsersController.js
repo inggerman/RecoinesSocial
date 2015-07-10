@@ -56,7 +56,51 @@ var passport = require('passport');
 module.exports = {
     login: function (req,res)
     {
-        res.view();
+        if(!req.user){
+            res.view({
+                message:'Usuario No conectado'
+            });
+        }else{
+            res.redirect('/');
+        }
+        
+    },
+
+    singup:function(req,res){
+        return res.view('auth/singup'); 
+    },
+
+    registrationuser:function(req,res){
+
+        if(!req.user){
+        var ncontrol=req.param('ncontrol');
+        var nombre=req.param('nombre');
+        var password=req.param('password');
+        var apellidop=req.param('apellido_p');
+        var apellidom=req.param('apellido_m');
+        var correoi=req.param('correo_inst');
+        var correop=req.param('correo_pers');
+
+        Users.create({ncontrol:ncontrol,password:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop}).exec(function(err,user){
+
+            if(err){
+                return res.redirect('/śingup');
+            } 
+
+            req.login(user,function(err){
+            if(err) return negotiate(err);
+
+            return res.redirect('/');
+        });
+            
+        });
+
+        }else{
+           return res.view(); 
+        }
+
+        
+        
     },
 
     passport_local: function(req, res)
