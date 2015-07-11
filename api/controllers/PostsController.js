@@ -60,21 +60,30 @@ module.exports = {
 
 
 	postadd: function(req,res){
-		var post1={};
-		Posts.create({post:req.param('post'),iduser:req.param('iduser'),}).exec(function(err,post){
-			
-			Posts.find({iduser:req.param('iduser')}).populate('iduser').populate('iduser2').exec(function(err,post){
-			if(err) return res.negotiate(err);
 
-			 post1=post;
-			  //Posts.watch (req.socket);
-             // res.json (post);
-			return res.send(post);
+		var post=req.param('post');
+		var iduser=req.param('iduser');
+
+		console.log('este es lo que se recibe del cliente'+post,iduser);
+
+		if(iduser && req.isSocket){
+			Posts.create({post:post,iduser:iduser}).exec(function(err,post){
+				
+				if(err) return res.negotiate(err);
+				console.log('entro al primer if');
+
+				Posts.publishCreate (post);
+				return res.send(post);
+
 			});
-			Posts.publishCreate (post);
-
-		});
-	}
+		}else if(res.isSocket){
+			Posts.watch(req);
+			console.log('el post ha sido creado '+sails.sockets.id(req)+'es ahora subscrito al modello post')
+			console.log('entro al segundo if');
+		}else{
+			console.log('no fue por un socket lastima');
+		}
 	
+}
 };
 

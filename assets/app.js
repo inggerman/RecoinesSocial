@@ -10,6 +10,6 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   $routeProvider.otherwise({redirectTo: '/'});
-  $locationProvider.hashPrefix('!');// esta funcion se ocupa para que se pueda indexar nuestra pagina en los navegadores
+  // $locationProvider.hashPrefix('!');// esta funcion se ocupa para que se pueda indexar nuestra pagina en los navegadores
 
 }]);

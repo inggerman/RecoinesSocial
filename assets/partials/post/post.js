@@ -60,16 +60,17 @@ var ncontrol= $scope.name=Authentication.user ? Authentication.user.ncontrol : '
 
       $scope.publicar=function(){
         $scope.pt.iduser=ncontrol;
-         $http({
-            method  : 'POST',
-            url     : '/postadd',
-            data    : $.param($scope.pt),  // pass in data as strings
-            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-           })
-            .success(function(data) {
-              console.log(data);
-          });
+         // $http({
+         //    method  : 'POST',
+         //    url     : '/postadd',
+         //    data    : $.param($scope.pt),  // convierte los datos en parametros para que el servidor los pueda recibir
+         //    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+         //   })
+         //    .success(function(data) {
+         //      console.log(data);
+         //  });
 
+      io.socket.post('/postadd',$scope.pt);
 
       console.log($scope.pt.post);
       $scope.pt.post="";
