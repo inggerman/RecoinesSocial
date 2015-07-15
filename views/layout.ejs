@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="es" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Recoines Social</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css"> -->
   <!--STYLES-->
+  <link rel="stylesheet" href="/styles/appstyle.css">
   <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/font-awesome.min.css">
   <link rel="stylesheet" href="/styles/importer.css">
   <!--STYLES END-->
-  <link rel="stylesheet" href="app.css">
+  <!-- <link rel="stylesheet" href="app.css"> -->
+
 
 </head>
 <body>
-<nav class="navbar navbar-default">
+
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -58,12 +64,12 @@
           <li><a href="login">Iniciar sessión</a></li>
           <li><a href="singup">Registrarse</a></li>
         <%}else{%>
-          <li><a href="#/view2">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
-          <li><a href="#/post">Inicio</a></li>
+          <li><a href="#/post/<%=req.user[0].nombre.replace(' ', '')%>">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
+          <li><a href="#/view2">Inicio</a></li>
           
           
           <li class="dropdown">
-            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuración <span class="caret"></span></a>
+            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i> Configuración <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Editar Perfil</a></li>
               <li><a href="#">Another action</a></li>
@@ -91,6 +97,18 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<br>
+<br>
+<br>
+<br>
+<!-- <div id="navleft">
+  <ul class="nav nav-pills nav-stacked">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+</div> -->
+
 <%- body %>
   
 
@@ -105,6 +123,9 @@
   -->
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/angular-moment/angular-moment.js"></script>
+<script src="/bower_components/moment/locale/es.js"></script>
   
   
   <script src="app.js"></script>
@@ -122,6 +143,7 @@
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/dependencies/jquery.js"></script>
   <script src="/js/dependencies/bootstrap.min.js"></script>
+  
   
 </body>
 </html>

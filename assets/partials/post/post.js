@@ -3,19 +3,27 @@
 angular.module('myApp.post', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
+  
+ 
 
-  $routeProvider.when('/post', {
-    templateUrl: '/partials/post/post.html',
+ 
+  $routeProvider
+  .when("/post/:message", {
+    templateUrl:'/partials/post/post.html',
     controller: 'PostCtrl'
   });
 }])
 
-.controller('PostCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
+.controller('PostCtrl', ['$scope','$http','Authentication','$routeParams',function($scope,$http,Authentication,$routeParams) {
 
 $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
 
-var ncontrol= $scope.name=Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
-	
+ var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
+ var nombre= Authentication.user ? Authentication.user.nombre : 'hola mundo';
+ var self = this;
+  self.message = $routeParams.message;
+
+  console.log(self);
   // var s={
 
   //   ncontrol:ncontrol
@@ -42,6 +50,8 @@ var ncontrol= $scope.name=Authentication.user ? Authentication.user.ncontrol : '
   io.socket.get('/post',{ncontrol:ncontrol},function(data){
     console.log(data);
          $scope.posts=data;
+         $scope.npost=$scope.posts.length;
+         console.log($scope.npost);
          $scope.$apply();
       });
 

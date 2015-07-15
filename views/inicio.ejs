@@ -1,14 +1,89 @@
 <div ng-controller="PostCtrl">
-<%if(user){%>
-	<div class="alert alert-warning alert-dismissible" role="alert">
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  <%=req.flash('msj') %>
+
+
+<div class="container-fluid">	
+	<div class="row">
+
+	<%if(user){%>
+		<div class="col-md-3">
+		
+			<div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" ><span class="glyphicon glyphicon-user">
+                    </span>Perfíl</a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Información Personal</a></li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-picture text-info"></span><a href="">Fotos</a></li>
+
+                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="">Mensajes</a><span class="badge">42</span></li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" ><span class="fa fa-users margen-10">
+                    </span>Grupos</a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Matemáticas</a></li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="">Programación</a></li>
+	
+                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="">ChismesTics</a><span class="badge">42</span></li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTres" ><span class="fa fa-users margen-10">
+                    </span>Tutorias</a>
+                </h4>
+              </div>
+              <div id="collapseTres" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Matemáticas</a></li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="">Programación</a></li>
+	
+                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="">ChismesTics</a><span class="badge">42</span></li>
+
+                </ul>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        
+		<div class="col-md-9">
+			<div ng-view></div>
+
+		</div>
+		<%}%>
+		
 	</div>
-<%}%>
+</div>
 
 
-
-<div ng-view></div>
 </div>
 <script type="text/javascript">
 	window.user=<%-user || 'null'%>;

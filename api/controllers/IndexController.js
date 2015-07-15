@@ -13,7 +13,7 @@ module.exports = {
 
 		if(!req.user){
 			console.log('no hay user registrado');
-				res.view('inicio',{
+				res.view('index',{
 			title:'hola',
 			user:JSON.stringify(req.user)
 		});
