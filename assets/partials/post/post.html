@@ -8,11 +8,11 @@
     				<div class="widget-area no-padding blank">
 						<div class="status-upload">
 							<form>
-								<textarea placeholder="What are you doing right now?" ></textarea>
+								<textarea placeholder="Iluminanos con tu conocimiento?" ng-model="pt.post" required></textarea>
 								<ul>
 									<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
 								</ul>
-								<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+								<button type="button" class="btn btn-success green" ng-click="publicar()"><i class="fa fa-share"></i> Publicar</button>
 							</form>
 						</div><!-- Status Upload  -->
 					</div><!-- Widget Area -->
@@ -22,22 +22,30 @@
 		</div>
 			<div ng-repeat="post in posts |orderBy:'-createdAt'" class="margin-10 margin-b-10">
 				
-				<div class="panel panel-default sizepanel" ng-if="post.iduser2!=null">
-  				<div class="panel-heading">
-	  				<span>{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</span>por <spam>{{post.iduser2.nombre}}
-					</spam>
-				</div>
-	  			<div class="panel-body">
-	   				 {{post.post}}
-	  			</div>
-			</div>
-			<div ng-if="post.iduser2==null">
-				<div class="foto-p">
-					<img src="/images/b.png" class="fp izquierda">
-				</div>
+			<!-- ---------------------------------------------- -->
+			<div ng-if="post.iduser2!=null">
 
 				<div class="panel panel-default sizepanel derecha" >
 	  			<div class="panel-heading alt80 ">
+	  		
+					
+					<img src="/images/b.png" class="fp izquierda"> <h4>{{post.iduser.nombre +" "+ post.iduser.apellido_p}}  por <spam>{{post.iduser2.nombre}}
+					</spam></h4>
+					<h6>Creado <span am-time-ago="post.createdAt"></span></h6>
+  				</div>
+  				
+	  			<div class="panel-body">
+	   				 {{post.post}}
+	  			</div>
+				</div>
+
+			</div>
+			<!-- ---------------------------------------------- -->
+			<div ng-if="post.iduser2==null">
+
+				<div class="panel panel-default sizepanel derecha" >
+	  			<div class="panel-heading alt80 ">
+	  				<img src="/images/b.png" class="fp izquierda img-circle"> 
 	  				<h4>{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</h4>
 					<h6>Creado <span am-time-ago="post.createdAt"></span></h6>
   				</div>
@@ -45,12 +53,12 @@
 	  			<div class="panel-body">
 	   				 {{post.post}}
 	  			</div>
-			</div>
+				</div>
 
 			</div>
 			
 			
-				
+			
 			</div>
 			
 		</div>

@@ -14,8 +14,8 @@ module.exports.bootstrap = function(cb) {
 
 Users.create({ncontrol:'10370710',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com'}).exec(console.log);
 Users.create({ncontrol:'10370711',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com'}).exec(console.log);
-Users.create({ncontrol:'10370712',password:'perro',nombre:'Maria Luisa',apellido_p:'hdz',apellido_m:'lpz',correo_inst:'pato3@cc.com'}).exec(console.log);
-Users.create({ncontrol:'10370713',password:'perro',nombre:'pato',apellido_p:'hdz',apellido_m:'lpz',correo_inst:'pato14@cc.com'}).exec(console.log);
+Users.create({ncontrol:'10370712',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com'}).exec(console.log);
+Users.create({ncontrol:'10370713',password:'perro',nombre:'Pascual',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato14@cc.com'}).exec(console.log);
 
 PersonalDataUsers.create({edad:23,user:'10370710'}).exec(console.log);
 PersonalDataUsers.create({edad:23,user:'10370711'}).exec(console.log);
