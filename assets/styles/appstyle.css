@@ -64,6 +64,27 @@ height: 67px;
 	margin: 5%;
 }
 
+
+.box-post .panel-footer ul{
+	 float: right;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0 0 0 15px;
+	width: auto;
+
+}
+
+
+
+.box-post .panel-footer ul > li {
+ float: left;
+ margin-right: 10px;
+}
+
+
+
+/**/
+
 .widget-area.blank {
 background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 -webkit-box-shadow: none;

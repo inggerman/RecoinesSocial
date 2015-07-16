@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'angularMoment',
+  'ngAnimate',
   'myApp.view1',
   'myApp.view2',
   'myApp.post',

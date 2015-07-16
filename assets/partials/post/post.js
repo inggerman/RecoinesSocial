@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.post', ['ngRoute'])
+angular.module('myApp.post', ['ngRoute','ngAnimate'])
 
 .config(['$routeProvider', function($routeProvider) {
   
@@ -24,8 +24,22 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
   self.message = $routeParams.message;
 
   console.log(self);
-  // var s={
 
+  $scope.valor=function(indice){
+
+    alert(indice);
+  }
+
+
+
+  $scope.ncontrolSubs=ncontrol.substr(0,4);
+
+  $scope.urlImg="/images/fot/al/"+ncontrol.substr(0,4)+"/"+ncontrol+".jpg";
+
+  console.log("hola como estas "+$scope.urlImg);
+
+
+  // var s={
   //   ncontrol:ncontrol
   // }
 
