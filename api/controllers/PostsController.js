@@ -67,15 +67,25 @@ module.exports = {
 		console.log('este es lo que se recibe del cliente'+post,iduser);
 
 		if(iduser && req.isSocket){
-			Posts.create({post:post,iduser:iduser}).exec(function(err,post){
-				
-				if(err) return res.negotiate(err);
+
+				Posts.create({post:post,iduser:iduser}).exec(function(err,post){
+				Posts.find({iduser:iduser}).exec(function(err,post1){
+						if(err) return res.negotiate(err);
 				console.log('entro al primer if');
 
+				console.log("este es el user"+post1);
+				console.log("este es el post"+post);
 				Posts.publishCreate (post);
-				return res.send(post);
+				return res.send({
+					post:post,
+					post1:post1
+				});
+
+				});
+				
 
 			});
+			
 		}else if(res.isSocket){
 			Posts.watch(req);
 			console.log('el post ha sido creado '+sails.sockets.id(req)+'es ahora subscrito al modello post')

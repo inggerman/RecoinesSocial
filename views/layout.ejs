@@ -2,6 +2,7 @@
 <html lang="es" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <base href="/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Recoines Social</title>
   <meta name="description" content="">
@@ -65,7 +66,7 @@
           <li><a href="login">Iniciar sessión</a></li>
           <li><a href="singup">Registrarse</a></li>
         <%}else{%>
-          <li><a href="#/post/<%=req.user[0].nombre.replace(' ', '')%>">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
+          <li><a href="#/post/<%=req.user[0].username.replace(' ', '')%>">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
           <li><a href="#/view2">Inicio</a></li>
           
           
@@ -101,7 +102,7 @@
 <br>
 <br>
 <br>
-<br>
+
 <!-- <div id="navleft">
   <ul class="nav nav-pills nav-stacked">
   <li role="presentation" class="active"><a href="#">Home</a></li>
@@ -134,6 +135,8 @@
    <script src="/partials/view1/view1.js"></script>
   <script src="/partials/view2/view2.js"></script>
   <script src="/partials/post/post.js"></script>
+  <script src="/partials/inicio/inicio.js"></script>
+  <script src="/partials/perfil/perfil.js"></script>
 
   <script src="/js/controllers.js"></script>
   <script src="/js/directives.js"></script>

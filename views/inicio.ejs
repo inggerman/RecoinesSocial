@@ -1,4 +1,4 @@
-<div ng-controller="PostCtrl">
+<div ng-controller="InicioCtrl">
 
 
 <div class="container-fluid">	
@@ -12,14 +12,13 @@
               <div class="panel-heading">
                 <h4 class="panel-title">
           
-                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" ><span class="glyphicon glyphicon-user">
-                    </span>Perfíl</a>
-                </h4>
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" ><span class="glyphicon glyphicon-user" ng-model="nombre" ng-model="apellido_p">
+                    </span>Perfíl de {{nombre}}  </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse">
                 <ul class="list-group">
      
-                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Información Personal</a></li>
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="#/perfil/{{username}}">Perfil Personal</a></li>
 
                   <li class="list-group-item"><span class="glyphicon glyphicon-picture text-info"></span><a href="">Fotos</a></li>
 
@@ -38,13 +37,19 @@
                 </h4>
               </div>
               <div id="collapseTwo" class="panel-collapse collapse">
-                <ul class="list-group">
-     
-                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Matemáticas</a></li>
+                <ul class="list-group" >
 
-                  <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="">Programación</a></li>
-	
-                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="">ChismesTics</a><span class="badge">42</span></li>
+                  <li class="list-group-item" ng-repeat="grupo in grupos.idGroupMiembro" ng-if="grupo.usercreador==ncontrol"><span class="glyphicon glyphicon-flash text-success"></span><a href="/grupos/{{grupo.usercreador}}"> {{grupo.nameGroup}} creado por ti
+                  </a></li>
+
+                  <li class="list-group-item" ng-repeat="grupo in grupos.idGroupMiembro" ng-if="grupo.usercreador!=ncontrol"><span class="glyphicon glyphicon-flash text-success"></span><a href="/grupos/{{grupo.usercreador}}"> {{grupo.nameGroup}} eres miembro
+                  </a></li>
+
+                  <li class="list-group-item" ng-repeat="grupo in grupos.idGroupMiembro" ng-if="grupo.usercreador!=ncontrol"><span class="glyphicon glyphicon-flash text-success"></span><a href=""> ver mas</a></li>
+
+
+
+                  <!-- <li class="list-group-item"  ><span class="glyphicon glyphicon-flash text-success"></span><a href="">Ver mas</a></li> -->
 
                 </ul>
               </div>
@@ -54,18 +59,31 @@
               <div class="panel-heading">
                 <h4 class="panel-title">
           
-                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTres" ><span class="fa fa-users margen-10">
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" ><span class="fa fa-users margen-10">
                     </span>Tutorias</a>
                 </h4>
               </div>
-              <div id="collapseTres" class="panel-collapse collapse">
+              <div id="collapseThree" class="panel-collapse collapse">
                 <ul class="list-group">
      
-                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Matemáticas</a></li>
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Alta alumnos</a></li>
 
-                  <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="">Programación</a></li>
-	
-                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="">ChismesTics</a><span class="badge">42</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseFour" ><span class="fa fa-users margen-10">
+                    </span>Agenda</a>
+                </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Recordatorios</a></li>
 
                 </ul>
               </div>

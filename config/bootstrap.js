@@ -12,10 +12,10 @@
 module.exports.bootstrap = function(cb) {
 
 
-Users.create({ncontrol:'10370710',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com'}).exec(console.log);
-Users.create({ncontrol:'10370711',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com'}).exec(console.log);
-Users.create({ncontrol:'10370712',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com'}).exec(console.log);
-Users.create({ncontrol:'10370713',password:'perro',nombre:'Pascual',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato14@cc.com'}).exec(console.log);
+Users.create({ncontrol:'10370710',username:'gerhl92',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com'}).exec(console.log);
+Users.create({ncontrol:'10370711',username:'hlg',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com'}).exec(console.log);
+Users.create({ncontrol:'10370712',username:'marlux',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com'}).exec(console.log);
+Users.create({ncontrol:'10370713',username:'pascuis',password:'perro',nombre:'Pascual',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato14@cc.com'}).exec(console.log);
 
 PersonalDataUsers.create({edad:23,user:'10370710'}).exec(console.log);
 PersonalDataUsers.create({edad:23,user:'10370711'}).exec(console.log);
@@ -58,6 +58,58 @@ ComentariosPosts.create({comentario:'prueba50',idpost:'3',iduser:'10370710'}).ex
 ComentariosPosts.create({comentario:'prueba35',idpost:'4',iduser:'10370711'}).exec(console.log);
 
 
+Grupos.create({nameGroup:'Mate',description:'es un grupo de 2+2',usercreador:'10370710'}).exec(function(){
+
+	console.log
+
+});
+
+
+Grupos.create({nameGroup:'español',description:'es un grupo de 2+2',usercreador:'10370710'}).exec(function(){
+
+	console.log
+
+});
+
+Grupos.create({nameGroup:'programacion',description:'es un grupo de 2+2',usercreador:'10370711'}).exec(function(){
+
+	console.log
+
+});
+
+
+Grupos.create({nameGroup:'fut',description:'es un grupo de 2+2',usercreador:'10370711'}).exec(function(){
+
+	console.log
+
+});
+
+
+
+Grupos.findOne(1).exec(function (err, grupo) {
+  grupo.iduser.add(10370710);
+  grupo.save();
+});
+
+Grupos.findOne(1).exec(function (err, grupo) {
+  grupo.iduser.add(10370711);
+  grupo.save();
+});
+
+Grupos.findOne(2).exec(function (err, grupo) {
+  grupo.iduser.add(10370710);
+  grupo.save();
+});
+
+Grupos.findOne(3).exec(function (err, grupo) {
+  grupo.iduser.add(10370711);
+  grupo.save();
+});
+
+Grupos.findOne(4).exec(function (err, grupo) {
+  grupo.iduser.add(10370711);
+  grupo.save();
+});
 
 console.log('------------------------------------------------------------------------');
   // It's very important to trigger this callback method when you are finished

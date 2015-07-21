@@ -15,6 +15,9 @@ autoPK: false,
   		
   		unique:true
   	},
+    username:{
+      type:'string'
+    },
   	password:{
   		type:'string',
   		
@@ -66,7 +69,17 @@ autoPK: false,
   	},
   	ncontrolDocente:{
   		model:'Docentes'
-  	}
+  	},
+    idGroupMiembro:{
+      collection:'Grupos',
+      via:'iduser'
+    }
+    // ,
+    // idGroupCreador:{
+    //   collection:'Grupos',
+    //     via:'usercreador'
+    
+    // }
     
 	
   },

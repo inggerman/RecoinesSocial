@@ -72,6 +72,14 @@ module.exports.routes = {
   'GET /singup':{
     controller: 'AuthController',
     action: 'singup'
+  },
+  'GET /grupos1':{
+    controller: 'GruposController',
+    action: 'findGrupo'
+  },
+  'GET /finduser':{
+    controller: 'UsersController',
+    action: 'findUser'
   }
   /***************************************************************************
   *                                                                          *

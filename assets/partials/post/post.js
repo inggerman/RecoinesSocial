@@ -1,17 +1,15 @@
 'use strict';
 
-angular.module('myApp.post', ['ngRoute','ngAnimate'])
+angular.module('myApp.post', [])
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   
- 
-
- 
   $routeProvider
-  .when("/post/:message", {
+  .when("/post/:username", {
     templateUrl:'/partials/post/post.html',
     controller: 'PostCtrl'
   });
+  // $locationProvider.html5Mode(true);
 }])
 
 .controller('PostCtrl', ['$scope','$http','Authentication','$routeParams',function($scope,$http,Authentication,$routeParams) {
@@ -19,19 +17,21 @@ angular.module('myApp.post', ['ngRoute','ngAnimate'])
 $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
 
  var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
- var nombre= Authentication.user ? Authentication.user.nombre : 'hola mundo';
+  
  var self = this;
-  self.message = $routeParams.message;
+  self.username = $routeParams.username;
 
-  console.log(self);
+  console.log(self.username);
 
   $scope.valor=function(indice){
 
     alert(indice);
   }
 
+  $scope.nombre= Authentication.user ? Authentication.user.nombre:'no nombre';
 
-
+  $scope.apellido_p= Authentication.user ? Authentication.user.apellido_p:'no apellido';
+  
   $scope.ncontrolSubs=ncontrol.substr(0,4);
 
   $scope.urlImg="/images/fot/al/"+ncontrol.substr(0,4)+"/"+ncontrol+".jpg";
@@ -72,8 +72,8 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
    io.socket.on('posts',function(event){
       switch(event.verb){
          case 'created':
+            console.log(event);
             $scope.posts.push(event.data);
-            
             $scope.$apply();
             break;
          }

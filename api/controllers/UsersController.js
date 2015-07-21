@@ -1,3 +1,4 @@
+
 /**
  * UserController
  *
@@ -54,6 +55,25 @@
 // 
 var passport = require('passport');
 module.exports = {
+    findUser:function(req,res){
+
+        var username=req.param('username');
+        if(username){
+            Users.findOne({username:username}).exec(function(err,user){
+
+                if(err) return res.negotiate(err);
+
+                if(!user){
+                    return res.notFound();
+                }
+                 console.log(user.ncontrol);
+
+                return res.send(user);
+            
+            });
+        }
+    },
+
     login: function (req,res)
     {
         if(!req.user){
@@ -75,13 +95,14 @@ module.exports = {
         if(!req.user){
         var ncontrol=req.param('ncontrol');
         var nombre=req.param('nombre');
+        var username=req.param('username');
         var password=req.param('password');
         var apellidop=req.param('apellido_p');
         var apellidom=req.param('apellido_m');
         var correoi=req.param('correo_inst');
         var correop=req.param('correo_pers');
 
-        Users.create({ncontrol:ncontrol,password:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop}).exec(function(err,user){
+        Users.create({ncontrol:ncontrol,username:username,usernamepassword:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop}).exec(function(err,user){
 
             if(err){
                 return res.redirect('/śingup');
