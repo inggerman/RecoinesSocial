@@ -7,6 +7,24 @@
 var passport = require('passport');
 module.exports = {
 
+	post: function(req,res){
+
+		var username=req.param('username');
+
+
+		if(req.user&&req.user[0].username==username){
+			
+			res.view('post',{
+				username:username
+			})
+		}else
+		if(req.user&&req.user[0].username!=username){
+			res.view('postf',{
+				username:username
+			})
+		}	
+		
+	},
 
 	findPost: function(req,res){
 		if(req.user){
@@ -33,29 +51,54 @@ module.exports = {
 		}else{
 
 
-				var nc=req.param('ncontrol')
-				console.log('sdfsdfsdfsdfsdfdfsfddf'+req.param('ncontrol'));
-				console.log('numero de control'+nc);
-			Posts.find({iduser:nc}).populate('iduser').populate('iduser2').exec(function(err,post){
+				var username=req.param('username')
+				console.log('sdfsdfsdfsdfsdfdfsfddf'+req.param('username'));
+				console.log('numero de control'+username);
+				Users.count().where({username:username}).exec(function(err,num){
+						console.log("este usuario esta "+num+" veces");
 
-				if(err) return res.negotiate(err);
+					if(num>0){	
 
-				if(!post){
-					return res.notFound();
-				}
-				console.log('------------------______________________-----------------------')
-				 console.log(post);
-				  Posts.subscribe (req.socket, post);
-	        	  Posts.watch (req.socket);
+						Posts.find({username:username}).populate('iduser').populate('iduser2').exec(function(err,post){
+							
+							if(err) return res.negotiate(err);
 
-				return res.send(post);
+							if(!post){
+								return res.notFound();
+							}
+							console.log('------------------______________________-----------------------')
+							 console.log(post);
+							  Posts.subscribe (req.socket, post);
+				        	  Posts.watch (req.socket);
+
+							return res.send(post);
 
 
-			});
+						});
+					}else{
+
+						 return res.send({
+						 	num:1,
+						 	username:username
+						 });
+					}
+				});
+				
 			console.log('no hay user logeado');
 		}
 
 
+	},
+
+	deletePost:function(req,res){
+
+		var id=req.param('id');
+		Posts.destroy({id:id}).exec(function(err,post){
+
+			if(err) return res.negotiate(err);
+
+			return res.send(post);
+		});
 	},
 
 

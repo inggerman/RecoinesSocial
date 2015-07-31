@@ -21,7 +21,7 @@ module.exports = {
   	},
   	iduser:{
   		collection:'Users',
-      	via:'idGroupMiembro'
+      	via:'idGroupMember'
   	}
 
   }

@@ -22,15 +22,15 @@ PersonalDataUsers.create({edad:23,user:'10370711'}).exec(console.log);
 PersonalDataUsers.create({edad:23,user:'10370712'}).exec(console.log);
 PersonalDataUsers.create({edad:23,user:'10370713'}).exec(console.log);
 
-Posts.create({post:'holaperrosdelmal1',iduser:'10370710',iduser2:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal2',iduser:'10370710'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal3',iduser:'10370710'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal4',iduser:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal5',iduser:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal6',iduser:'10370711'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal7',iduser:'10370712'}).exec(console.log);
-Posts.create({post:'holaperrosdelmal8',iduser:'10370712'}).exec(console.log);
-
+Posts.create({post:'holaperrosdelmal1',username:'gerhl92',iduser:'10370710',iduser2:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal2',username:'gerhl92',iduser:'10370710'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal3',username:'gerhl92',iduser:'10370710'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal4',username:'hlg',iduser:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal5',username:'hlg',iduser:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal6',username:'hlg',iduser:'10370711'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal7',username:'marlux',iduser:'10370712'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal8',username:'marlux',iduser:'10370712'}).exec(console.log);
+Posts.create({post:'holaperrosdelmal78',username:'gerhl92',iduser:'10370710'}).exec(console.log);
 
 
 RubricaPosts.create({excelente:1,idpost:1}).exec(console.log);

@@ -66,7 +66,7 @@
           <li><a href="login">Iniciar sessión</a></li>
           <li><a href="singup">Registrarse</a></li>
         <%}else{%>
-          <li><a href="#/post/<%=req.user[0].username.replace(' ', '')%>">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
+          <li><a href="/post/<%=req.user[0].username.replace(' ', '')%>">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
           <li><a href="#/view2">Inicio</a></li>
           
           
@@ -111,9 +111,122 @@
 </ul>
 </div> -->
 
-<%- body %>
-  
 
+
+<div ng-controller="InicioCtrl">
+
+
+<div class="container-fluid"> 
+  <div class="row">
+
+  <%if(req.user){%>
+    <div class="col-md-3">
+      <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" ><span class="glyphicon glyphicon-user" ng-model="nombre" ng-model="apellido_p">
+                    </span>Tu Perfíl <small>(<%=req.user[0].username.toUpperCase()%>) </small>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="/perfil/{{username}}">Perfil Personal</a></li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-picture text-info"></span><a href="">Fotos</a></li>
+
+                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="">Mensajes</a><span class="badge">42</span></li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" ><span class="fa fa-users margen-10">
+                    </span>Grupos</a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <ul class="list-group" >
+
+                  <li class="list-group-item" ng-repeat="grupo in grupos.idGroupMember" ng-if="grupo.usercreador==ncontrol"><span class="glyphicon glyphicon-flash text-success"></span><a href="/grupos/{{grupo.usercreador}}"> {{grupo.nameGroup}} creado por ti
+                  </a></li>
+
+                  <li class="list-group-item" ng-repeat="grupo in grupos.idGroupMiembro" ng-if="grupo.usercreador!=ncontrol"><span class="glyphicon glyphicon-flash text-success"></span><a href="#/grupos/{{grupo.usercreador}}"> {{grupo.nameGroup}} eres miembro
+                  </a></li>
+
+                  <li class="list-group-item" ><span class="glyphicon glyphicon-flash text-success"></span><a href="/grupos"> ver mas</a></li>
+
+
+
+                  <!-- <li class="list-group-item"  ><span class="glyphicon glyphicon-flash text-success"></span><a href="">Ver mas</a></li> -->
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" ><span class="fa fa-users margen-10">
+                    </span>Tutorias</a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Alta alumnos</a></li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+          
+                  <a href="" data-toggle="collapse" data-parent="#accordion" data-target="#collapseFour" ><span class="fa fa-users margen-10">
+                    </span>Agenda</a>
+                </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse">
+                <ul class="list-group">
+     
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="">Recordatorios</a></li>
+
+                </ul>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        
+    <div class="col-md-9">
+      <%- body %>
+
+    </div>
+    <script type="text/javascript">
+  window.user=<%-JSON.stringify(req.user[0] || 'null')%>;
+</script>
+    <%}else{%>
+    <div class="col-md-12">
+      <%- body %>
+
+    </div>
+    <%}%>
+    
+  </div>
+</div>
+
+
+</div>
+
+   
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -123,7 +236,7 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="/bower_components/angular/angular.js"></script>
+  <!-- <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
   <script src="/bower_components/moment/moment.js"></script>
@@ -137,17 +250,29 @@
   <script src="/partials/post/post.js"></script>
   <script src="/partials/inicio/inicio.js"></script>
   <script src="/partials/perfil/perfil.js"></script>
+  <script src="/partials/grupos/grupos.js"></script>
 
   <script src="/js/controllers.js"></script>
   <script src="/js/directives.js"></script>
   <script src="/js/filters.js"></script>
-  <script src="/js/services.js"></script>
- 
+  <script src="/js/services.js"></script> -->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/angular-moment/angular-moment.js"></script>
+  <script src="/bower_components/moment/locale/es.js"></script>
+  <!-- // <script src="/bower_components/angular-route/angular-route.js"></script> -->
+    <script src="app.js"></script>
+   <script src="/partials/inicio/inicio.js"></script>
+   <script src="/partials/post/post.js"></script>
+   <script src="/js/services.js"></script>
 
  
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/dependencies/jquery.js"></script>
   <script src="/js/dependencies/bootstrap.min.js"></script>
+  
+
+
   
   
 </body>

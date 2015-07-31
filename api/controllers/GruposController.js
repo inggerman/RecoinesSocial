@@ -11,7 +11,7 @@ module.exports = {
 
 		var ncontrol=req.param('ncontrol');
 		if(ncontrol){
-			Users.findOne({ncontrol:ncontrol}).populate('idGroupMiembro').exec(function(err,grupo){
+			Users.findOne({ncontrol:ncontrol}).populate('idGroupMember').exec(function(err,grupo){
 
 				if(err) return res.negotiate(err);
 

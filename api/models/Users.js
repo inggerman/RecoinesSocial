@@ -70,7 +70,7 @@ autoPK: false,
   	ncontrolDocente:{
   		model:'Docentes'
   	},
-    idGroupMiembro:{
+    idGroupMember:{
       collection:'Grupos',
       via:'iduser'
     }

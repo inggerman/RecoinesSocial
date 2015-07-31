@@ -16,13 +16,16 @@ module.exports = {
   	urlImage:{
   		type:'string'
   	},
-	iduser:{
+    username:{
+      type:'string'
+    },
+	 iduser:{
   		model:'Users'
   	},
   iduser2:{
       model:'Users'
     },
-  	rubricapost:{
+  rubricapost:{
   		model:'Rubricaposts'
   	},
   	idcomentario:{

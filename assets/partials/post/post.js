@@ -1,42 +1,28 @@
 'use strict';
 
 angular.module('myApp.post', [])
-
-.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
-  
-  $routeProvider
-  .when("/post/:username", {
-    templateUrl:'/partials/post/post.html',
-    controller: 'PostCtrl'
-  });
-  // $locationProvider.html5Mode(true);
-}])
-
-.controller('PostCtrl', ['$scope','$http','Authentication','$routeParams',function($scope,$http,Authentication,$routeParams) {
+.controller('PostCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
 
 $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
 
- var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
+ //var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
   
- var self = this;
-  self.username = $routeParams.username;
-
-  console.log(self.username);
 
   $scope.valor=function(indice){
 
     alert(indice);
+  
   }
 
-  $scope.nombre= Authentication.user ? Authentication.user.nombre:'no nombre';
+  // $scope.nombre= Authentication.user ? Authentication.user.nombre:'no nombre';
 
-  $scope.apellido_p= Authentication.user ? Authentication.user.apellido_p:'no apellido';
+  // $scope.apellido_p= Authentication.user ? Authentication.user.apellido_p:'no apellido';
   
-  $scope.ncontrolSubs=ncontrol.substr(0,4);
+  // $scope.ncontrolSubs=ncontrol.substr(0,4);
 
-  $scope.urlImg="/images/fot/al/"+ncontrol.substr(0,4)+"/"+ncontrol+".jpg";
+  // $scope.urlImg="/images/fot/al/"+ncontrol.substr(0,4)+"/"+ncontrol+".jpg";
 
-  console.log("hola como estas "+$scope.urlImg);
+  // console.log("hola como estas "+$scope.urlImg);
 
 
   // var s={
@@ -57,16 +43,24 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
   //         });
 
 
+  var username=document.getElementById('username').value;
      
 
+alert(username);
     
 
-  io.socket.get('/post',{ncontrol:ncontrol},function(data){
+  io.socket.get('/post',{username:username},function(data){
     console.log(data);
+
+      if(data.num==1){
+
+        window.location.replace("/erruser");
+      }else{
          $scope.posts=data;
          $scope.npost=$scope.posts.length;
          console.log($scope.npost);
          $scope.$apply();
+       }
       });
 
    io.socket.on('posts',function(event){
@@ -76,9 +70,21 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
             $scope.posts.push(event.data);
             $scope.$apply();
             break;
+          case 'deleted':
+            console.log(event);
+            $scope.posts.splice(event.data,1);
+            $scope.$apply();
+            break;  
          }
    });
 
+      $scope.eliminar=function(){
+        
+        io.socket.delete('/deletepost', function (idpost) {
+
+        });
+      
+      }
 
     $scope.pt={};
 

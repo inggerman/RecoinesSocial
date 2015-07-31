@@ -18,14 +18,24 @@ module.exports = {
 			user:JSON.stringify(req.user)
 		});
 		}else{
+			var username=req.user[0].username;
+			console.log(username);
+			Users.findOne({username:username}).populate('idGroupMember').exec(function(err,group){
+				if(err) return res.negotiate(err);
 
-			res.view('inicio',{
-			title:'hola',
-			user:JSON.stringify(req.user[0])
-		});
+				res.view('inicio',{
+				title:'hola',
+				user:JSON.stringify(req.user[0]),
+				group:group
+				});
 		console.log('************************************');
 		console.log(req.user[0]);
+		console.log(group);
 		console.log('************************************');
+
+			});
+
+			
 
 		}
 		

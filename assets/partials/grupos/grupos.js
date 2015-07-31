@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.perfil', ['ngRoute'])
+angular.module('myApp.grupos', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   
@@ -8,8 +8,8 @@ angular.module('myApp.perfil', ['ngRoute'])
 
  
   $routeProvider
-  .when("/perfil/:username", {
-    templateUrl:'/partials/perfil/perfil.html',
+  .when("/grupos", {
+    templateUrl:'/partials/grupos/grupos.html',
     controller: 'GruposCtrl'
   });
 }])
@@ -32,12 +32,12 @@ angular.module('myApp.perfil', ['ngRoute'])
   self.username = $routeParams.username;
 
 
-  io.socket.get('/findUser',{username:self.username},function(data){
-    console.log(data.ncontrol);
-         $scope.users=data;
-         console.log($scope.users.ncontrol);
-         //console.log("omg "+$scope.users.idGroupMiembro[0].usercreador);
-         $scope.$apply();
-      });
+  // io.socket.get('/findUser',{username:self.username},function(data){
+  //   console.log(data.ncontrol);
+  //        $scope.users=data;
+  //        console.log($scope.users.ncontrol);
+  //        //console.log("omg "+$scope.users.idGroupMiembro[0].usercreador);
+  //        $scope.$apply();
+  //     });
 
 }]);

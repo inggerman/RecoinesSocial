@@ -50,14 +50,18 @@ module.exports.routes = {
       action: 'logout'
   },
 
-  'GET /post/*':{
+  'GET /post/:username':{
     controller:'PostsController',
-    action: 'findPost'
+    action: 'post'
   },
 
   'GET /post':{
     controller:'PostsController',
     action: 'findPost'
+  },
+  'DELETE /deletepost':{
+    controller:'PostsController',
+    action: 'deletePost'
   },
 
 
