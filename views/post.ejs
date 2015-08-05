@@ -3,6 +3,7 @@
 		
 		<div class="col-md-9" ng-model="posts" style="background-color: gray;">
 		<input type="hidden" value="<%=username%>" id="username">
+		<input type="text" value="<%=req.user[0].username%>" id="username">
 		<div class="post animated rotateIn">
 			<div class="row">
     			<div class="col-md-12">
@@ -13,7 +14,7 @@
 								<ul>
 									<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
 								</ul>
-								<button type="button" class="btn btn-success green" ng-click="publicar()"><i class="fa fa-share"></i> Publicar</button>
+								<button type="button" class="btn btn-success green" ng-click="publicar(<%=req.user[0].ncontrol%>,'<%=req.user[0].username%>')"><i class="fa fa-share"></i> Publicar</button>
 							</form>
 						</div><!-- Status Upload  -->
 					</div><!-- Widget Area -->
@@ -35,7 +36,7 @@
 			            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
 			            <ul class="dropdown-menu">
 			              <li><a href="#">Editar</a></li>
-			              <li >Eliminar {{post.id}}</li>
+			              <li><a ng-click="eliminarpost(post.id)">Eliminar{{post.id}}</a></li>
 			            </ul>
          			</div>
 					<h4><spam><a href="/post/{{post.iduser2.username}}">{{post.iduser2.nombre}}</a>>
@@ -68,7 +69,7 @@
 			            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
 			            <ul class="dropdown-menu">
 			              <li><a href="#">Editar</a></li>
-			              <li>Eliminar{{post.id}}</li>
+			              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
 			            </ul>
          			</div>
 	  				<h4><a href="#/post/{{post.iduser.nombre}}">{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</a></h4>

@@ -59,7 +59,7 @@ module.exports.routes = {
     controller:'PostsController',
     action: 'findPost'
   },
-  'DELETE /deletepost':{
+  'DELETE /deletepost/:id':{
     controller:'PostsController',
     action: 'deletePost'
   },

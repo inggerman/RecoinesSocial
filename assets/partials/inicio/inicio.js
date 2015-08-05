@@ -13,18 +13,18 @@ angular.module('myApp.inicio', [])
   // console.log("hola como estas "+$scope.urlImg);
   
 
-  io.socket.get('/grupos1',{ncontrol:$scope.ncontrol},function(data){
-    if(data){
-      console.log(data.ncontrol);
-         $scope.grupos=data;
-         console.log($scope.grupos.ncontrol);
-         console.log("omg "+$scope.grupos.idGroupMember[0].usercreador);
-         $scope.$apply();
+ //  io.socket.get('/grupos1',{ncontrol:$scope.ncontrol},function(data){
+ //    if(data){
+ //      console.log(data.ncontrol);
+ //         $scope.grupos=data;
+ //         console.log($scope.grupos.ncontrol);
+ //         console.log("omg "+$scope.grupos.idGroupMember[0].usercreador);
+ //         $scope.$apply();
      
-    }else{
+ //    }else{
 
-      $scope.grupos="Ha habido un error"
-    }
- });
+ //      $scope.grupos="Ha habido un error"
+ //    }
+ // });
 
 }]);

@@ -27,33 +27,9 @@ module.exports = {
 	},
 
 	findPost: function(req,res){
-		if(req.user){
-			console.log('++++++++++++++++++++++++++++++++++++++');
-			console.log(req.user[0].ncontrol);
-			console.log('++++++++++++++++++++++++++++++++++++++');
-			 var nc=req.user[0].ncontrol;
-			Posts.find({iduser:nc}).populate('iduser').populate('iduser2').exec(function(err,post){
-
-				if(err) return res.negotiate(err);
-
-				if(!post){
-					return res.notFound();
-				}
-				console.log('------------------______________________-----------------------')
-				 console.log(post);
-				  Posts.subscribe (req.socket, post);
-	        	  Posts.watch (req.socket);
-
-				return res.send(post);
-
-
-			});
-		}else{
-
-
-				var username=req.param('username')
-				console.log('sdfsdfsdfsdfsdfdfsfddf'+req.param('username'));
-				console.log('numero de control'+username);
+		
+		var username=req.param('username')
+				
 				Users.count().where({username:username}).exec(function(err,num){
 						console.log("este usuario esta "+num+" veces");
 
@@ -67,9 +43,9 @@ module.exports = {
 								return res.notFound();
 							}
 							console.log('------------------______________________-----------------------')
-							 console.log(post);
-							  Posts.subscribe (req.socket, post);
-				        	  Posts.watch (req.socket);
+							console.log(post);
+							Posts.subscribe (req.socket, post.id);
+				        	Posts.watch (req.socket);
 
 							return res.send(post);
 
@@ -85,49 +61,59 @@ module.exports = {
 				});
 				
 			console.log('no hay user logeado');
-		}
-
-
 	},
 
 	deletePost:function(req,res){
 
 		var id=req.param('id');
-		Posts.destroy({id:id}).exec(function(err,post){
+		console.log(id);
+		
 
-			if(err) return res.negotiate(err);
+		if(req.isSocket && id){
+			Posts.findOne({id:id}).exec(function(err,post){
+				if(err) return res.negotiate(err);
 
-			return res.send(post);
-		});
+				Posts.destroy({id:id}).exec(function(err){
+
+					if(err) return res.negotiate(err);
+					console.log("se elimino"+post.id);
+					Posts.publishDestroy(post.id);
+				});
+			});
+			
+		}
 	},
 
 
 	postadd: function(req,res){
 
 		var post=req.param('post');
+		
 		var iduser=req.param('iduser');
+		var username=req.param('username');
 
-		console.log('este es lo que se recibe del cliente'+post,iduser);
+		console.log('este es lo que se recibe del cliente'+post,iduser,username);
 
 		if(iduser && req.isSocket){
 
-				Posts.create({post:post,iduser:iduser}).exec(function(err,post){
-				Posts.find({iduser:iduser}).exec(function(err,post1){
-						if(err) return res.negotiate(err);
-				console.log('entro al primer if');
+			Posts.create({post:post,iduser:iduser,username:username}).exec(function(err,post1){
+				Posts.findOne({id:post1.id}).populate("iduser").exec(function(err,post){
+					console.log(iduser+"es socket");
 
-				console.log("este es el user"+post1);
-				console.log("este es el post"+post);
-				Posts.publishCreate (post);
-				return res.send({
-					post:post,
-					post1:post1
-				});
+					if(err) return res.negotiate(err);
+		
+					console.log(post.id);
+
+					Posts.publishCreate ({id:post.id,post:post.post,
+						iduser:{ncontrol:post.iduser.ncontrol,nombre:post.iduser.nombre,
+							apellido_p:post.iduser.apellido_p},createdAt:post.createdAt});
 
 				});
 				
 
-			});
+			});	
+
+			
 			
 		}else if(res.isSocket){
 			Posts.watch(req);

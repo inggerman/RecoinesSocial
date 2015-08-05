@@ -86,30 +86,6 @@ Grupos.create({nameGroup:'fut',description:'es un grupo de 2+2',usercreador:'103
 
 
 
-Grupos.findOne(1).exec(function (err, grupo) {
-  grupo.iduser.add(10370710);
-  grupo.save();
-});
-
-Grupos.findOne(1).exec(function (err, grupo) {
-  grupo.iduser.add(10370711);
-  grupo.save();
-});
-
-Grupos.findOne(2).exec(function (err, grupo) {
-  grupo.iduser.add(10370710);
-  grupo.save();
-});
-
-Grupos.findOne(3).exec(function (err, grupo) {
-  grupo.iduser.add(10370711);
-  grupo.save();
-});
-
-Grupos.findOne(4).exec(function (err, grupo) {
-  grupo.iduser.add(10370711);
-  grupo.save();
-});
 
 console.log('------------------------------------------------------------------------');
   // It's very important to trigger this callback method when you are finished

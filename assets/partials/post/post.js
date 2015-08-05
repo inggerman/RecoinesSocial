@@ -14,6 +14,9 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
   
   }
 
+  BootstrapDialog.DEFAULT_TEXTS['OK'] = 'Sí';
+  BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'No';
+
   // $scope.nombre= Authentication.user ? Authentication.user.nombre:'no nombre';
 
   // $scope.apellido_p= Authentication.user ? Authentication.user.apellido_p:'no apellido';
@@ -46,7 +49,7 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
   var username=document.getElementById('username').value;
      
 
-alert(username);
+//alert(username);
     
 
   io.socket.get('/post',{username:username},function(data){
@@ -63,6 +66,8 @@ alert(username);
        }
       });
 
+    console.log("gggg"+$scope.npost);
+
    io.socket.on('posts',function(event){
       switch(event.verb){
          case 'created':
@@ -70,26 +75,49 @@ alert(username);
             $scope.posts.push(event.data);
             $scope.$apply();
             break;
-          case 'deleted':
-            console.log(event);
-            $scope.posts.splice(event.data,1);
-            $scope.$apply();
+          case 'destroyed':
+            console.log("son los posts qeu hay"+$scope.posts.length);
+            for(var i=0;i<$scope.posts.length;i++){
+                
+                console.log($scope.posts[i].id);
+                if($scope.posts[i].id==event.id){
+                    $scope.posts.splice(i,1);
+                    $scope.$apply();
+                }
+              
+
+            }
+            
             break;  
          }
    });
 
-      $scope.eliminar=function(){
-        
-        io.socket.delete('/deletepost', function (idpost) {
 
+      $scope.eliminarpost=function(idpost){
+           BootstrapDialog.confirm('¿Estas Seguro que deseas eliminar esta publicacion?', function(result){
+            if(result) {
+                io.socket.delete('/deletepost/'+idpost,function(resdata){
+                  console.log(resdata)
+                });
+            }else {
+                console.log("No se ha Eliminado Nada");
+            }
         });
+        
+         
+        
+
+        
       
       }
 
     $scope.pt={};
 
-      $scope.publicar=function(){
+      $scope.publicar=function(ncontrol,username){
+
+        console.log(ncontrol+""+username);
         $scope.pt.iduser=ncontrol;
+        $scope.pt.username=username;
          // $http({
          //    method  : 'POST',
          //    url     : '/postadd',
@@ -106,5 +134,6 @@ alert(username);
       $scope.pt.post="";
 
     }
+
 
 }]);
