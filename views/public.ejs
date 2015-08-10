@@ -1,0 +1,48 @@
+<div class="container" ng-controller="PublicCtrl">
+	<div class="row">
+		<div class="col-md-4">
+			
+		</div>
+		<div class="col-md-4">
+			<p><%=bienvenida%></p>
+			<label>iduser</label>
+			<input type="text" ng-model="datos.iduser">
+			<label>idroom</label>
+			<input type="text" ng-model="datos.idroom">
+			<label>username</label>
+			<input type="text" ng-model="datos.username">
+
+			<button ng-click="accion()">accion</button>
+			<button ng-click="llenar()">llenar</button>
+			
+			<p>Posteos</p>
+			<textarea ng-model="datos.post"></textarea>
+			<br>
+			<button ng-click="postear()">Publicar</button>
+			<br>
+			<br>
+			<ul ng-model="posts">
+				<li ng-repeat="postd in posts">
+					{{postd.username}}
+					{{postd.publicacion}}
+					
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+
+		<p>Posteos</p>
+			<textarea ng-model="datos.post"></textarea>
+			<br>
+			<button ng-click="postear()">Publicar</button>
+		posts que estaran en mi perfil osea los que me hagan a mi y los que yo haga 
+			<ul ng-model="postmio">
+				<li ng-repeat="postm in postmio">
+					{{postm.username}}
+					{{postm.publicacion}}
+					
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+
+<div class="container" ng-controller="SocketCtr">
+	<div class="row">
+		<div class="col-md-4" style="background-color: cyan" >
+		<label>iduser</label>
+		{{resul}}
+		<input type="text" ng-model="iduser" ng-keypress="tecla()">
+		<br>
+		<h2><small>{{evento}}</small></h2>
+		
+			<textarea ng-model="textpost"></textarea>
+			<button ng-click="postear()"></button>
+			<br>
+			<br>
+			<ul>
+				<li ng-repeat="post in posts"></li>
+			</ul>
+				
+		</div>
+		<div class="col-md-4" style="background-color:orange">
+			
+					<button ng-click="sub()"></button>
+		</div>
+		<div class="col-md-4" style="background-color:yellow">
+			
+
+		</div>
+	</div>
+</div>
+
+
+

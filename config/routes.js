@@ -32,58 +32,84 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /': {
-      controller: 'IndexController',
-      action: 'inicio'
-    // view: 'inicio'
-  },
-  'GET /login': {
-      controller: 'AuthController',
-      action: 'login'
-  },
-  'POST /login': {
-      controller: 'AuthController',
-      action: 'process'
-  },
-  'GET /logout': {
-      controller: 'AuthController',
-      action: 'logout'
-  },
+  // 'GET /': {
+  //     controller: 'IndexController',
+  //     action: 'inicio'
+  //   // view: 'inicio'
+  // },
+  // 'GET /login': {
+  //     controller: 'AuthController',
+  //     action: 'login'
+  // },
+  // 'POST /login': {
+  //     controller: 'AuthController',
+  //     action: 'process'
+  // },
+  // 'GET /logout': {
+  //     controller: 'AuthController',
+  //     action: 'logout'
+  // },
 
-  'GET /post/:username':{
-    controller:'PostsController',
-    action: 'post'
-  },
+  // 'GET /post/:username':{
+  //   controller:'PostsController',
+  //   action: 'post'
+  // },
 
-  'GET /post':{
-    controller:'PostsController',
-    action: 'findPost'
-  },
-  'DELETE /deletepost/:id':{
-    controller:'PostsController',
-    action: 'deletePost'
-  },
+  // 'GET /post':{
+  //   controller:'PostsController',
+  //   action: 'findPost'
+  // },
+  // 'DELETE /deletepost/:id':{
+  //   controller:'PostsController',
+  //   action: 'deletePost'
+  // },
 
 
-  'POST /postadd':{
-    controller:'PostsController',
-    action:'postadd'
+  // 'POST /postadd':{
+  //   controller:'PostsController',
+  //   action:'postadd'
+  // },
+  // 'POST /singup':{
+  //   controller: 'AuthController',
+  //   action: 'registrationuser'
+  // },
+  // 'GET /singup':{
+  //   controller: 'AuthController',
+  //   action: 'singup'
+  // },
+  // 'GET /grupos1':{
+  //   controller: 'GruposController',
+  //   action: 'findGrupo'
+  // },
+  // 'GET /finduser':{
+  //   controller: 'UsersController',
+  //   action: 'findUser'
+  // },
+  // 'GET /usersocket':{
+  //   controller:'UsuariosController',
+  //   action:'usersocket'
+  // },
+  // 'GET /subamigo':{
+  //     controller:'PublicacionesController',
+  //     action:'subamigo'
+  // }
+  'GET /public':{
+    controller:'PublicController',
+    action:'public'
   },
-  'POST /singup':{
-    controller: 'AuthController',
-    action: 'registrationuser'
+  'GET /subfriend':{
+
+    controller:'PublicController',
+    action:'subfriend'
+
   },
-  'GET /singup':{
-    controller: 'AuthController',
-    action: 'singup'
+  'GET /crearpost':{
+    controller:'PublicController',
+    action:'crearpost'
   },
-  'GET /grupos1':{
-    controller: 'GruposController',
-    action: 'findGrupo'
-  },
-  'GET /finduser':{
-    controller: 'UsersController',
-    action: 'findUser'
+  'GET /getpost':{
+    controller:'PublicController',
+    action:'getpost'
   }
   /***************************************************************************
   *                                                                          *

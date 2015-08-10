@@ -62,6 +62,7 @@ $scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
          $scope.posts=data;
          $scope.npost=$scope.posts.length;
          console.log($scope.npost);
+         console.log($scope.posts);
          $scope.$apply();
        }
       });

@@ -44,7 +44,7 @@ module.exports = {
 							}
 							console.log('------------------______________________-----------------------')
 							console.log(post);
-							Posts.subscribe (req.socket, post.id);
+							Posts.subscribe (req.socket, post);
 				        	Posts.watch (req.socket);
 
 							return res.send(post);

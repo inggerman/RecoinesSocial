@@ -4,6 +4,8 @@
 angular.module('myApp', [
   'angularMoment',
   'myApp.inicio',
+  'myApp.public',
   'myApp.post',
+  'myApp.socket',
   'myApp.services'
 ]);
