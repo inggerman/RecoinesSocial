@@ -20,6 +20,9 @@
     "angular-moment": "~0.10.1",
     "angular-animate": "~1.4.3",
     "angular-lodash": "~0.1.2",
-    "ng-lodash": "~0.2.3"
+    "ng-lodash": "~0.2.3",
+    "angular-input-date": "~1.0.4",
+    "ngDialog": "~0.4.0",
+    "angular-audio": "~1.7.0"
   }
 }

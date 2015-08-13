@@ -8,17 +8,21 @@
 module.exports = {
 
   attributes: {
-  	nombre_actividad:{
+  	titulo:{
   		type:'string'
   	},
   	descripcion:{
   		type:'text',
   		required:true
   	},
-  	fecha_recordatorio:{
-  		type:'datatime'
+  	recordatorio:{
+  		type:'datetime'
   	},
-  	iduser:{
+    
+      username:{
+        type:'string'
+      },
+  	ncontrol:{
   		model:'Users'
   	}
 

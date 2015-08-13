@@ -1,0 +1,42 @@
+<div class="container" ng-controller="AgendaCtrl" can>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<form name="agendaform"  ng-submit="agendar()">
+			<label for="">Agregar Agenda</label>
+
+			<input type="text" placeholder="Nombre" ng-model="agenda.titulo" name="titulo" required>
+			
+			<br>
+			<label>fecha recordatorioy hora</label>
+			<input type="date" placeholder="Fecha recordatorio" ng-model="fecha">
+			<input type="time" placeholder="Fecha recordatorio" ng-model="hora">
+			<br>
+			
+			<label>descripcion</label>
+			<textarea placeholder="describciom" ng-model="agenda.descripcion" required></textarea>
+			<input type="submit" value="Agendar">
+			</form>
+
+			<br>
+			<br>
+			<ul>
+				<li ng-repeat="nota in notas">
+					<p ng-model="ban" ng-if="nota.recordatorio==reloj">OMG si funciona ya me moje</p>
+					{{nota.titulo}}---{{nota.descripcion}}----{{nota.recordatorio | date:'medium'}}<button ng-click="eliminaragenda(nota.id)">Eliminar Agenda</button>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-4"></div>
+		<script type="text/ng-template" id="agenda.html">
+				<p>Tienes recordatorio agendado</p>
+				<div><p>{{date | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</p></div>
+				
+				<div><p>{{tit}}</p></div>
+
+				<div><p>{{des}}</p></div>
+
+
+		</script>
+	</div>
+</div>

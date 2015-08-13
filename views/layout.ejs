@@ -18,10 +18,13 @@
   <link rel="stylesheet" href="/styles/importer.css">
   <!--STYLES END-->
   <!-- <link rel="stylesheet" href="app.css"> -->
-
+<link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog.min.css">
+<link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog-theme-plain.css">
+<link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog-custom-width.css">
+<link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog-theme-default.min.css">
 
 </head>
-<body>
+<body >
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -206,15 +209,21 @@
           </div>
         </div>
         
-    <div class="col-md-9">
+    <div class="col-md-9" ng-controller="relojCtrl">
+    {{clock | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}
       <%- body %>
+    }
 
     </div>
     <script type="text/javascript">
   window.user=<%-JSON.stringify(req.user[0] || 'null')%>;
 </script>
     <%}else{%>
-    <div class="col-md-12">
+    <div class="col-md-12" ng-controller="relojCtrl">
+     {{clock | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}
+      
+    
+
       <%- body %>
 
     </div>
@@ -257,14 +266,20 @@
   <script src="/js/filters.js"></script>
   <script src="/js/services.js"></script> -->
   <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular/ngLocale/angular-locale_es-mx.js"></script>
   <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/angular-input-date/src/angular-input-date.js"></script>
   <script src="/bower_components/angular-moment/angular-moment.js"></script>
   <script src="/bower_components/moment/locale/es.js"></script>
+  <script src="/bower_components/ngDialog/js/ngDialog.min.js"></script>
+  <script src="/bower_components/angular-audio/app/angular.audio.js"></script>
   <!-- // <script src="/bower_components/angular-route/angular-route.js"></script> -->
     <script src="app.js"></script>
    <script src="/partials/inicio/inicio.js"></script>
    <script src="/partials/post/post.js"></script>
    <script src="/partials/socket/socket.js"></script>
+   <script src="/partials/agenda/agenda.js"></script>
+   <script src="/partials/reloj/reloj.js"></script>
    <script src="/partials/public.js"></script>
    <script src="/js/services.js"></script>
 

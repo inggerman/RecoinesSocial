@@ -43,6 +43,10 @@ module.exports = {
 	},
 	hola:function(){
 
+	},
+	getreloj:function(req,res){
+
+		return res.send({reloj:Date.now()});
 	}
 	
 

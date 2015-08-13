@@ -55,7 +55,7 @@ autoPK: false,
     },
     idAgenda:{
       collection:'Agenda',
-      via:'iduser'
+      via:'ncontrol'
     },
   	pd:{
   		model:'PersonaldataUsers'

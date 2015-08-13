@@ -32,67 +32,67 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  // 'GET /': {
-  //     controller: 'IndexController',
-  //     action: 'inicio'
-  //   // view: 'inicio'
-  // },
-  // 'GET /login': {
-  //     controller: 'AuthController',
-  //     action: 'login'
-  // },
-  // 'POST /login': {
-  //     controller: 'AuthController',
-  //     action: 'process'
-  // },
-  // 'GET /logout': {
-  //     controller: 'AuthController',
-  //     action: 'logout'
-  // },
+  'GET /': {
+      controller: 'IndexController',
+      action: 'inicio'
+    // view: 'inicio'
+  },
+  'GET /login': {
+      controller: 'AuthController',
+      action: 'login'
+  },
+  'POST /login': {
+      controller: 'AuthController',
+      action: 'process'
+  },
+  'GET /logout': {
+      controller: 'AuthController',
+      action: 'logout'
+  },
 
-  // 'GET /post/:username':{
-  //   controller:'PostsController',
-  //   action: 'post'
-  // },
+  'GET /post/:username':{
+    controller:'PostsController',
+    action: 'post'
+  },
 
-  // 'GET /post':{
-  //   controller:'PostsController',
-  //   action: 'findPost'
-  // },
-  // 'DELETE /deletepost/:id':{
-  //   controller:'PostsController',
-  //   action: 'deletePost'
-  // },
+  'GET /post':{
+    controller:'PostsController',
+    action: 'findPost'
+  },
+  'DELETE /deletepost/:id':{
+    controller:'PostsController',
+    action: 'deletePost'
+  },
 
 
-  // 'POST /postadd':{
-  //   controller:'PostsController',
-  //   action:'postadd'
-  // },
-  // 'POST /singup':{
-  //   controller: 'AuthController',
-  //   action: 'registrationuser'
-  // },
-  // 'GET /singup':{
-  //   controller: 'AuthController',
-  //   action: 'singup'
-  // },
-  // 'GET /grupos1':{
-  //   controller: 'GruposController',
-  //   action: 'findGrupo'
-  // },
-  // 'GET /finduser':{
-  //   controller: 'UsersController',
-  //   action: 'findUser'
-  // },
-  // 'GET /usersocket':{
-  //   controller:'UsuariosController',
-  //   action:'usersocket'
-  // },
-  // 'GET /subamigo':{
-  //     controller:'PublicacionesController',
-  //     action:'subamigo'
-  // }
+  'POST /postadd':{
+    controller:'PostsController',
+    action:'postadd'
+  },
+  'POST /singup':{
+    controller: 'AuthController',
+    action: 'registrationuser'
+  },
+  'GET /singup':{
+    controller: 'AuthController',
+    action: 'singup'
+  },
+  'GET /grupos1':{
+    controller: 'GruposController',
+    action: 'findGrupo'
+  },
+  'GET /finduser':{
+    controller: 'UsersController',
+    action: 'findUser'
+  },
+  'GET /usersocket':{
+    controller:'UsuariosController',
+    action:'usersocket'
+  },
+  'GET /subamigo':{
+      controller:'PublicacionesController',
+      action:'subamigo'
+  },
   'GET /public':{
     controller:'PublicController',
     action:'public'
@@ -110,6 +110,30 @@ module.exports.routes = {
   'GET /getpost':{
     controller:'PublicController',
     action:'getpost'
+  },
+  'GET /agenda':{
+    controller:'AgendaController',
+    action:'agenda'
+  },
+  'GET /getaviso':{
+    controller:'AgendaController',
+    action:'getaviso'
+  },
+  'POST /getagenda':{
+    controller:'AgendaController',
+    action:'getagenda'
+  },
+  'POST /putagenda':{
+    controller:'AgendaController',
+    action:'putagenda'
+  },
+  'GET /getreloj':{
+      controller: 'IndexController',
+      action: 'getreloj'
+  },
+  'DELETE /deleteagenda':{
+    controller:'AgendaController',
+    action:'deleteagenda'
   }
   /***************************************************************************
   *                                                                          *

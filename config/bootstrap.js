@@ -69,6 +69,17 @@ Roompost.create({nombre:'lbp'}).exec(console.log);
 Roompost.create({nombre:'asl'}).exec(console.log);
 Roompost.create({nombre:'acl'}).exec(console.log);
 
+
+Agenda.create({titulo:"omg",descripcion:"soy un recordatorio agendado",recordatorio:'2015-12-08T05:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg2",descripcion:"soy un recordatorio agendado2",recordatorio:'2015-12-08T07:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg3",descripcion:"soy un recordatorio agendado3",recordatorio:'2015-11-08T08:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg4",descripcion:"soy un recordatorio agendado4",recordatorio:'2015-12-08T06:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg5",descripcion:"soy un recordatorio agendado5",recordatorio:'2015-12-08T06:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg6",descripcion:"soy un recordatorio agendado6",recordatorio:'2015-12-08T06:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg4",descripcion:"soy un recordatorio agendado4",recordatorio:'2015-12-08T06:00:00.000Z',username:'ghl',ncontrol:'10370710'}).exec(console.log);
+Agenda.create({titulo:"omg5",descripcion:"soy un recordatorio agendado5",recordatorio:'2015-12-08T06:00:00.000Z',username:'ghl13',ncontrol:'10370712'}).exec(console.log);
+Agenda.create({titulo:"omg6",descripcion:"soy un recordatorio agendado6",recordatorio:'2015-12-08T06:00:00.000Z',username:'ghl13',ncontrol:'10370712'}).exec(console.log);
+
 // Users.create({ncontrol:'10370710',username:'gerhl92',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com'}).exec(console.log);
 // Users.create({ncontrol:'10370711',username:'hlg',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com'}).exec(console.log);
 // Users.create({ncontrol:'10370712',username:'marlux',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com'}).exec(console.log);
