@@ -16,9 +16,9 @@ agenda:function(req,res){
 getaviso:function(req,res){
 
 		var time=new Date();
-		var username
+		var username=req.param('username');
 
-		Agenda.find().exec(function(err,agenda){
+		Agenda.find({username:username}).exec(function(err,agenda){
 
 			res.send({
 			datos:agenda,	
@@ -59,7 +59,7 @@ putagenda:function(req,res){
 	var data=req.param.all;
 	 console.log(username);
 
-	Agenda.create({titulo:titulo,descripcion:descripcion,recordatorio:recordatorio}).exec(function(err,agenda){
+	Agenda.create({titulo:titulo,descripcion:descripcion,recordatorio:recordatorio,username:username}).exec(function(err,agenda){
 
 		if(err){ return res.negotiate(err);}
 

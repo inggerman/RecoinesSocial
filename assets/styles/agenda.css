@@ -1,0 +1,27 @@
+.divgde{
+  
+  background-color:  #2980b9;
+  margin-top:10px;
+}
+.edo{
+   margin: 50 auto;
+  position:relative !important;
+}
+.gris{
+background-color: #ecf0f1;
+position: relative !important;
+}
+.letag{
+  font-family: Comic  !important;
+  color: #2c3e50;
+  font-size: 20;
+}
+.publicar{
+  position: center !important;
+}
+h3{
+	color: red;
+}
+.tab{
+	background-color: white;
+}

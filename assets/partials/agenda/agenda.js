@@ -31,9 +31,9 @@ angular.module('myApp.agenda', [])
 
               /*console.log(Date.parse(data.agenda.recordatorio));
               data.agenda.recordatorio=Date.parse(data.agenda.recordatorio);*/
-              
+              console.log(data.agenda);
               $scope.notas=data.agenda;
-              // console.log($scope.notas);
+              
               
           });
 
@@ -52,7 +52,7 @@ angular.module('myApp.agenda', [])
 		$scope.agenda.recordatorio=$scope.fech;
 		// console.log($scope.agenda.recordatorio);
 		// console.log($.param($scope.agenda));
-		// console.log($scope.agenda);
+		 console.log($scope.agenda);
 
          $http({
             method  : 'POST',
@@ -65,7 +65,11 @@ angular.module('myApp.agenda', [])
               /*console.log(Date.parse(data.agenda.recordatorio));
               data.agenda.recordatorio=Date.parse(data.agenda.recordatorio);*/
               //console.log(data.agenda);
-              $scope.notas.push(data.agenda);
+              if($scope.notas.push(data.agenda)){
+
+              		$scope.agenda.titulo="";
+              		
+              }
               
           });
     }

@@ -1,0 +1,137 @@
+
+<div class="container-fluid">
+  <div class="row " row="3">
+    <div class="col-md-9 divgde" >
+          <nav id="menu" class="navbar navbar-fixed" role="navigation">
+
+
+  <!-- ---------------------------------------------- -->
+
+
+<div class="col-md-1"></div>
+<div class="col-md-10 gris edo">
+  <form class="form-horizontal" role="form" name="agendaform"  ng-submit="agendar()">
+    <div class="form-group edo">
+      <label class="label col-sm-3 letag" for="usr">Agregar Agenda:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="usr" placeholder="Título de la Agenda" ng-model="agenda.titulo" name="titulo" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3 letag" >Fecha:</label>
+      <div class="col-sm-3">          
+        <input type="date" placeholder="Fecha recordatorio" ng-model="fecha" >
+      </div>
+      <label class="control-label col-sm-3 letag" >Hora:</label>
+      <div class="col-sm-3">          
+        <input type="time" placeholder="Fecha recordatorio" ng-model="hora" >
+      </div>
+    </div>
+    <div class="form-group edo">
+      <label class="label col-sm-3 letag" for="usr">Descripción:</label>
+      <div class="col-sm-9">
+       <textarea placeholder="describciom" ng-model="agenda.descripcion" required></textarea>
+      </div>
+    </div>
+      <div class="col-md-8"></div>
+    <div class="form-group col-md-2 publicar">
+      <input type="submit" class="btn publicar btn-success btn-lg btn3d btn-group-sm btn-info btmodal" data-toggle="modal"  data-target="#myModal" value="Agendar" ><span class="glyphicon glyphicon-pencil"></span>Agendar                         
+    </div>
+    <div class="col-md-2"></div>
+  </form>
+</div>
+<div class="col-md-1"></div>
+
+
+
+  <!-- ---------------------MODAL-AGENDA------------------------- -->
+
+<div class="container"> 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Tienes un recordatorio Agendado!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Fecha y Hora: </p>
+          <input type="date">
+          <input type="time">
+        </div>
+        <div class="element-separator">
+            <hr><h3 class="section-break-title"></h3>
+          </div>
+        <div  class="modal-body">
+          <h3>Nombre de Actividad!</h3>
+        </div>
+        <div class="element-separator">
+            <hr><h3 class="section-break-title"></h3>
+          </div>
+         <div  class="modal-body">
+          <p>Descripción!</p>
+        </div>
+       
+        <div class="modal-footer">          
+            <button type="button" class="btn btn-info btn-default" data-dismiss="modal">
+            <span class="glyphicon glyphicon-star"></span>Aceptar
+          </button>          
+        </div>
+      </div>      
+    </div>
+  </div>  
+</div>
+
+<div class="element-separator">
+  <hr><h3 class="section-break-title"></h3>
+</div>
+<!-- --------------------TABLA------------------------- -->
+
+<table  id= "myTable" class="table table-hover table-responsive" border="1">
+
+
+<thead>
+      <tr class="tab">
+        <th class=" text-center"># Agenda</th>
+        <th class=" text-center">Titulo de Agenda</th>
+        <th class=" text-center">Día</th>
+        <th class=" text-center">Hora</th>
+        <th class=" text-center">Descripción</th>
+        <th class=" text-center">Eliminar</th>
+      
+      </tr>
+    </thead>
+  
+      <tr ng-repeat="nota in notas">
+        <td>1</td>
+        <td>{{nota.titulo}}</td>
+        <td>{{nota.recordatorio | date:'medium'}}</td>
+        <td>{{nota.descripcion}} </td>
+        <td><input type="button" value="Eliminar" onclick="Eliminar(this.parentNode.parentNode.rowIndex)"/></td>
+      </tr>
+    
+
+     
+
+
+</table>
+
+<script type="text/javascript">
+function Eliminar (i) {
+    document.getElementsByTagName("table")[0].setAttribute("id","tableid");
+    document.getElementById("tableid").deleteRow(i);
+}
+</script>
+
+<!-- ---------------------------------------------- -->
+
+
+    <div class="col-md-3">
+    </div>  
+    </div>
+  </div>
+</div>
