@@ -25,7 +25,7 @@ module.exports = {
       type:'string'
     },
     iduser:{
-    	model:'Usuarios'
+    	model:'Users'
     }
 
   }

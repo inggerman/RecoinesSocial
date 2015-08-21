@@ -15,8 +15,8 @@ angular.module('myApp.agenda', [])
 	var t=new Date();
 	$scope.fecha=new Date(t.getFullYear(),t.getMonth(),t.getDate());
 	$scope.hora=new Date(0,0,0,t.getHours(),t.getMinutes());
-	$scope.username="ghl";
-	$scope.agenda.username="ghl";
+	$scope.username= Authentication.user ? Authentication.user.username : 'hola mundo';
+	$scope.agenda.username=Authentication.user ? Authentication.user.username : 'hola mundo';
 	/*$scope.agenda.ncontrol=$scope.ncontrol;
 	$scope.agenda.username=$scope.username;*/
 	
@@ -101,43 +101,6 @@ angular.module('myApp.agenda', [])
 
 
 	console.log($scope.reloj);
-	// Esta funcion compara cada minuto con la fecha del servidor
-	// los horarios de los registros agendados para mandar un mensaje de que
-	// se ha llegado la hora y fecha del recordatorio
-	var tick=function(){
-		 io.socket.get('/getaviso',{username:$scope.username},function(data){
-		 	//optiene la fecha del servidor
-		 	var fs=new Date(data.fechafull);
-		 	$scope.datatime=new Date(fs.getFullYear(),
-		 		fs.getMonth(),fs.getDate(),+fs.getHours(),fs.getMinutes()).toISOString();
-		 	//Itera los datos recibidos del modelo 
-			for(var i=0;i<data.datos.length;i++){
-				console.log($scope.datatime+"--"+data.datos[i].recordatorio+".-----"+data.datos[i].titulo);
-
-				if($scope.datatime==data.datos[i].recordatorio){
-					console.log("ahuevo se pudo"+" "+$scope.datatime+"---"+data.datos[i].recordatorio);
-					$scope.tit=data.datos[i].titulo;
-					$scope.date=data.datos[i].recordatorio;
-
-					$scope.des=data.datos[i].descripcion;
-					 $scope.sound = ngAudio.load("../../sonidos/alarma.mp3");
-					 $scope.sound.loop=3;
-					 $scope.sound.play();
-
-					  // returns NgAudioObject
-					ngDialog.open({
-					    template: 'agenda.html',
-					    className: 'ngdialog-theme-plain',
-					    scope: $scope
-					});
-									}
-			}
-			
-		});
-		
-		$timeout(tick,60000);
-	}
-
-	tick();
+	
 
 }]);

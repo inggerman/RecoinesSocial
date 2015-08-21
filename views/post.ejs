@@ -1,103 +1,208 @@
 <div class="container-fluid" ng-controller="PostCtrl">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <div class="container-fluid">
+               <div class="cover-container">
+                  <div class="social-cover"></div>
+                  <div class="social-desc">
+                     <div class="">
+                        <p><h3 class="fg-white">Un ordenador es para mí la herramienta más sorprendente que hayamos ideado. Es el equivalente a una bicicleta para nuestras mentes.</h3></p>
+                        <h5 class="fg-white">- Steve Jobs</h5>
+                        <div style="margin-top:50px;">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="social-avatar" >
+                     <img class="img-avatar" src="http://bootdey.com/img/Content/user-453533-fdadfd.png" height="100" width="100">
+                     <h4 class="fg-white text-center">German Hernandez Lopez</h4>
+                     <h5 class="fg-white text-center" style="opacity:0.8;">Ing. Tics</h5>
+                     <h5 class="fg-white text-center" style="opacity:0.8;">10 Semestre</h5>
+                     <h5 class="fg-white text-center" style="opacity:0.8;">Huamantla,Tlax</h5>
+                     <hr class="border-black75" style="border-width:2px;" >
+                     <div class="text-center">
+                        <!-- <button role="button" class="btn btn-inverse btn-outlined btn-retainBg btn-brightblue" type="button">
+                            <span>follow me</span>
+                        </button> -->
+                     </div>
+                  </div>
+               </div>
+            </div>   
+        </div> 
+    </div>
 	<div class="row">
-		
-		<div class="col-md-9" ng-model="posts" style="background-color: gray;">
-		<input type="hidden" value="<%=username%>" id="username">
-		<input type="text" value="<%=req.user[0].username%>" id="username">
-		<div class="post animated rotateIn">
-			<div class="row">
-    			<div class="col-md-12">
-    				<div class="widget-area no-padding blank">
-						<div class="status-upload">
-							<form>
-								<textarea placeholder="Iluminanos con tu conocimiento?" ng-model="pt.post" required>{{nombre}}</textarea>
-								<ul>
-									<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-								</ul>
-								<button type="button" class="btn btn-success green" ng-click="publicar(<%=req.user[0].ncontrol%>,'<%=req.user[0].username%>')"><i class="fa fa-share"></i> Publicar</button>
-							</form>
-						</div><!-- Status Upload  -->
-					</div><!-- Widget Area -->
-				</div>
+    	<div class="col-md-3">
+        </div>
+        <div class="col-md-9">
+        <div class="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget-area no-padding blank">
+                        <div class="status-upload">
+                            <form>
+                                <textarea placeholder="Iluminanos con tu conocimiento?" ng-model="datos.post" required>{{nombre}}</textarea>
+                                <ul>
+                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                </ul>
+                                <button type="button" class="btn btn-success green" ng-click="postear()"><i class="fa fa-share"></i> Publicar</button>
+                            </form>
+                        </div><!-- Status Upload  -->
+                    </div><!-- Widget Area -->
+                </div>
         
-    		</div>
-		</div>
-			<div ng-repeat="post in posts |orderBy:'-createdAt'" class="margin-10 margin-b-10 ">
-				
-			<!-- ---------------------------------------------- -->
-			<div ng-if="post.iduser2!=null" class="box-post">
-				<input type="hidden" value="{{post.id}}">
-				<div class="panel panel-default sizepanel derecha" >
-	  			<div class="panel-heading alt80 " ng-model="urlImg" ng-model="ncontrolSubs">
-	  		
-					
-					<img  class="fp izquierda img-circle" ng-src="/images/fot/al/{{ncontrolSubs}}/{{post.iduser2.ncontrol}}.jpg">
-					<div class="dropdown derecha">
-			            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
-			            <ul class="dropdown-menu">
-			              <li><a href="#">Editar</a></li>
-			              <li><a ng-click="eliminarpost(post.id)">Eliminar{{post.id}}</a></li>
-			            </ul>
-         			</div>
-					<h4><spam><a href="/post/{{post.iduser2.username}}">{{post.iduser2.nombre}}</a>>
-					<a href="/post/{{post.iduser.username}}">{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</a>
-					</spam></h4>
-					<h6>Creado <span am-time-ago="post.createdAt"></span></h6>
-  				</div>
-  				
-	  			<div class="panel-body">
-	   				 {{post.post}}
-	  			</div>
-	  			<div class="panel-footer">
-	  				<ul>
-	  					<li><i class="fa fa-graduation-cap"></i>Excelente</li>
-	  					<li><i class="fa fa-university"></i>Bueno</li>
-	  					<li><i class="fa fa-thumbs-up"></i>Regular</li>
-	  					<li><i class="fa fa-thumbs-down"></i>Malo</li>
-	  				</ul>
-	  			</div>
-				</div>
+            </div>
+        </div>
+        <div ng-repeat="post in postmio |orderBy:'-createdAt'">
+        <div ng-if="post.iduser2!=null">
+            <div class="panel panel-white post panel-shadow" >
+                <div class="post-heading">
+                    <div class="dropdown pull-right">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Editar</a></li>
+                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                            </ul>
+                        </div>
+                    <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
 
-			</div>
-			<!-- ---------------------------------------------- -->
-			<div ng-if="post.iduser2==null" class="box-post animated fadeInUp" ng-click="valor(post.id)">
-				<input type="hidden" value="{{post.id}}">
-				<div class="panel panel-default sizepanel derecha" >
-	  			<div class="panel-heading alt80 ">
-	  				<img  class="fp izquierda img-circle" ng-src="{{urlImg}}">
-	  				<div class="dropdown derecha">
-			            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
-			            <ul class="dropdown-menu">
-			              <li><a href="#">Editar</a></li>
-			              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
-			            </ul>
-         			</div>
-	  				<h4><a href="#/post/{{post.iduser.nombre}}">{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</a></h4>
-					<h6>Creado <span am-time-ago="post.createdAt"></span></h6>
+                        <div class="title h5">
+                            <a href="#"><b>{{post.iduser2.nombre +" "+post.iduser2.apellido_p}} </b></a>
+                            Posteo a <a href="#"><b>{{post.iduser.nombre +" "+post.iduser.apellido_p}} </b></a>
+                        </div>
+                        <h6 class="<text-mu></text-mu>ted time"><span am-time-ago="post.createdAt"></span></h6>
+                    </div>
+                </div> 
+                <div class="post-description"> 
+                    <p>{{post.post}}</p>
+                    <div class="stats">
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>Excelente 2
+                        </a>
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>Bueno   2
+                        </a>
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <!-- <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-share icon"></i>12
+                        </a> -->
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <div class="input-group"> 
+                        <input class="form-control" placeholder="Agregar Comentario" type="text">
+                        <span class="input-group-addon">
+                            <a href="#"><i class="fa fa-edit"></i></a>  
+                        </span>
+                    </div>
+                    <ul class="comments-list" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
+                        <li class="comment">
+                        <div class="dropdown pull-right">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Editar</a></li>
+                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                            </ul>
+                        </div>
+                                <a class="pull-left" href="#">
+                                        <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user"><a href="/post/{{comentario.username}}">{{comentario.nombre +" "+comentario.apellido}}</a></h4>
+                                            <h5 class="time"><h6 class="time"><span am-time-ago="comentario.createdAt"></span></h6></h5>
+                                        </div>
+                                        <p>{{comentario.comentario}}</p>
+                                    </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
 
-					
-  				</div>
-  				
-	  			<div class="panel-body">
-	   				 {{post.post}}
-	  			</div>
-	  			<div class="panel-footer">
-	  				<ul>
-	  					<li><i class="fa fa-graduation-cap"></i>Excelente</li>
-	  					<li><i class="fa fa-university"></i>Bueno</li>
-	  					<li><i class="fa fa-thumbs-up"></i>Regular</li>
-	  					<li><i class="fa fa-thumbs-down"></i>Malo</li>
-	  				</ul>
-	  			</div>
-				</div>
+        <div ng-if="post.iduser2==null">
+            <div class="panel panel-white post panel-shadow" >
+                <div class="post-heading">
+                <div class="dropdown pull-right">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Editar</a></li>
+                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                            </ul>
+                        </div>
+                    <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <a href="#"><b>{{post.iduser.nombre +" "+post.iduser.apellido_p}} </b></a>
+                            Creo un post
+                        </div>
+                        <h6 class="<text-mu></text-mu>ted time"><span am-time-ago="post.createdAt"></span></h6>
+                    </div>
+                </div> 
+                <div class="post-description"> 
+                    <p>{{post.post}}</p>
+                    <div class="stats">
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <!-- <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-share icon"></i>12
+                        </a> -->
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <div class="input-group"> 
+                        <input class="form-control" placeholder="Agregar Comentario" type="text">
+                        <span class="input-group-addon">
+                            <a href="#"><i class="fa fa-edit"></i></a>  
+                        </span>
+                    </div>
+                    <ul class="comments-list" >
+                        <li class="comment" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
+                            
+                            <div class="dropdown pull-right">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Editar</a></li>
+                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                            </ul>
+                        </div>
+                                    <a class="pull-left" href="#">
+                                        <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user"><a href="/post/{{comentario.username}}">{{comentario.nombre +" "+comentario.apellido}}</a></h4>
+                                            <h5 class="time"><h6 class="time"><span am-time-ago="comentario.createdAt"></span></h6></h5>
+                                        </div>
+                                        <p>{{comentario.comentario}}</p>
+                                    </div>
+                             
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>  
+        </div>
+        </div>
+    </div>
 
-			</div>
-			
-			
-			
-			</div>
-			
-		</div>
-		<div class="col-md-3">te quiero putaaaqa</div>
-	</div>
 </div>
+		
+<script type="text/javascript">
+      window.room=<%-JSON.stringify(room || 'null')%>;
+</script>

@@ -99,18 +99,23 @@ module.exports.routes = {
   },
   'GET /subfriend':{
 
-    controller:'PublicController',
+    controller:'PostsController',
     action:'subfriend'
 
   },
   'GET /crearpost':{
-    controller:'PublicController',
+    controller:'PostsController',
     action:'crearpost'
   },
   'GET /getpost':{
-    controller:'PublicController',
+    controller:'PostsController',
     action:'getpost'
   },
+  'GET /getpostme':{
+    controller:'PostsController',
+    action:'getpostme'
+  },
+
   'GET /agenda':{
     controller:'AgendaController',
     action:'agenda'

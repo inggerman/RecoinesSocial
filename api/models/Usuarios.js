@@ -5,32 +5,32 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
+// module.exports = {
 
-  attributes: {
+//   attributes: {
 
-    name:{
-      type:'string'
+//     name:{
+//       type:'string'
       
-    },
-    apellidoPaterno:{
-      type:'string'
-    },
-    apellidoMaterno:{
-      type:'string'
-    },
-    username:{
-      type:'string'
-    },
-    idamigo:{
-      collection:'Amigos',
-      via:'iduser'
-    },
+//     },
+//     apellidoPaterno:{
+//       type:'string'
+//     },
+//     apellidoMaterno:{
+//       type:'string'
+//     },
+//     username:{
+//       type:'string'
+//     },
+//     idamigo:{
+//       collection:'Amigos',
+//       via:'iduser'
+//     },
 
-    fullname:function(){
-      return this.name+' '+this.apellidoPaterno+' '+this.apellidoMaterno;
-    }
+//     fullname:function(){
+//       return this.name+' '+this.apellidoPaterno+' '+this.apellidoMaterno;
+//     }
     
-    }
+//     }
 	
-  }
+//   }

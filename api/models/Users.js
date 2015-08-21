@@ -69,6 +69,10 @@ autoPK: false,
     idGroupMember:{
       collection:'Grupos',
       via:'iduser'
+    },
+    idamigo:{
+      collection:'Amigos',
+      via:'iduser'
     }
     // ,
     // idGroupCreador:{

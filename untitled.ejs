@@ -1,0 +1,104 @@
+<div class="container-fluid" ng-controller="PostCtrl">
+    <div class="row">
+        
+        <div class="col-md-9" ng-model="posts" style="background-color: gray;">
+        <input type="hidden" value="<%=username%>" id="username">
+        <input type="text" value="<%=req.user[0].username%>" id="username">
+        <div class="post animated rotateIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget-area no-padding blank">
+                        <div class="status-upload">
+                            <form>
+                                <textarea placeholder="Iluminanos con tu conocimiento?" ng-model="pt.post" required>{{nombre}}</textarea>
+                                <ul>
+                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                </ul>
+                                <button type="button" class="btn btn-success green" ng-click="publicar(<%=req.user[0].ncontrol%>,'<%=req.user[0].username%>')"><i class="fa fa-share"></i> Publicar</button>
+                            </form>
+                        </div><!-- Status Upload  -->
+                    </div><!-- Widget Area -->
+                </div>
+        
+            </div>
+        </div>
+            <div ng-repeat="post in posts |orderBy:'-createdAt'" class="margin-10 margin-b-10 ">
+                
+            <!-- ---------------------------------------------- -->
+            <div ng-if="post.iduser2!=null" class="box-post">
+                <input type="hidden" value="{{post.id}}">
+                <div class="panel panel-default sizepanel derecha" >
+                <div class="panel-heading alt80 " ng-model="urlImg" ng-model="ncontrolSubs">
+            
+                    
+                    <img  class="fp izquierda img-circle" ng-src="/images/fot/al/{{ncontrolSubs}}/{{post.iduser2.ncontrol}}.jpg">
+                    <div class="dropdown derecha">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Editar</a></li>
+                          <li><a ng-click="eliminarpost(post.id)">Eliminar{{post.id}}</a></li>
+                        </ul>
+                    </div>
+                    <h4><spam><a href="/post/{{post.iduser2.username}}">{{post.iduser2.nombre}}</a>>
+                    <a href="/post/{{post.iduser.username}}">{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</a>
+                    </spam></h4>
+                    <h6>Creado <span am-time-ago="post.createdAt"></span></h6>
+                </div>
+                
+                <div class="panel-body">
+                     {{post.post}}
+                </div>
+                <div class="panel-footer">
+                    <ul>
+                        <li><i class="fa fa-graduation-cap"></i>Excelente</li>
+                        <li><i class="fa fa-university"></i>Bueno</li>
+                        <li><i class="fa fa-thumbs-up"></i>Regular</li>
+                        <li><i class="fa fa-thumbs-down"></i>Malo</li>
+                    </ul>
+                </div>
+                </div>
+
+            </div>
+            <!-- ---------------------------------------------- -->
+            <div ng-if="post.iduser2==null" class="box-post animated fadeInUp" ng-click="valor(post.id)">
+                <input type="hidden" value="{{post.id}}">
+                <div class="panel panel-default sizepanel derecha" >
+                <div class="panel-heading alt80 ">
+                    <img  class="fp izquierda img-circle" ng-src="{{urlImg}}">
+                    <div class="dropdown derecha">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Editar</a></li>
+                          <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                        </ul>
+                    </div>
+                    <h4><a href="#/post/{{post.iduser.nombre}}">{{post.iduser.nombre +" "+ post.iduser.apellido_p}}</a></h4>
+                    <h6>Creado <span am-time-ago="post.createdAt"></span></h6>
+
+                    
+                </div>
+                
+                <div class="panel-body">
+                     {{post.post}}
+                </div>
+                <div class="panel-footer">
+                    <ul>
+                        <li><i class="fa fa-graduation-cap"></i>Excellent</li>
+                        <li><i class="fa fa-university"></i>Bueno</li>
+                        <li><i class="fa fa-thumbs-up"></i>Regular</li>
+                        <li><i class="fa fa-thumbs-down"></i>Malo</li>
+                    </ul>
+                </div>
+                </div>
+
+            </div>
+            
+            
+            
+            </div>
+            
+        </div>
+        <div class="col-md-3">te quiero putaaaqa</div>
+    </div>
+</div>
+

@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/appstyle.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="post.css">
+<link rel="stylesheet" href="post.js">
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<meta charset="utf-8">
+  
+<body data-spy="scroll" data-target="#menu">
+<div class="container-fluid responsive">
+	<div class="row ">
+		<div class="col-md-9 divgde" >
+       <nav id="menu" class="navbar navbar-fixed" role="navigation">
+
+
+			<!-- ---------------Publicar------------ -->
+			<form role="form">
+    			<div class="form-group edo">
+          			<textarea class="form-control" rows="3" id="comment" placeholder="Iluminanos con tu conocimiento!..."></textarea>
+          				<div class="status-upload">
+                  <form> 
+                  	<div class="container">
+                  	<div class=" row col-md-7" >          
+                    <ul class="edo">                    
+                      <li><a  href="#" data-toggle="tooltip" data-placement="top" title="Subir una Imagen" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture" ><i class="fa sub fa-picture-o"></i></a></li>
+                      <li><a  href="#" data-toggle="tooltip" data-placement="top" title="Subir un Archivo" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture" ><i class="fa sub fa-file-o"></i></a></li>
+                    </ul>                      
+                      </div> 
+                      <div class="col-md-2">
+                      	 <button type="button" class="btn publicar btn-success btn-lg btn3d btn-group-sm btn-info btn-lg" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-ok"></span> Publicar</button>                      	 
+                      </div>
+                      <div class="col-md-3">
+                      </div>
+                      </div>
+                  </form>
+                		</div>
+    			</div>
+  			</form>
+
+
+			<!-- ----------------    MODAL  ------------------ -->
+
+<div class="container"> 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title text-center">¿Está seguro de que quiere publicar ésto?</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p>Recuerde que esto es un blog Educativo!</p>
+        </div>
+        <div class="modal-footer">          
+          	<button type="button" class="btn btn-info btn-default" data-dismiss="modal">
+      			<span class="glyphicon glyphicon-search"></span>Publicar
+    	  	</button>          
+        </div>
+      </div>      
+    </div>
+  </div>  
+</div>
+
+
+
+
+
+			<!-- ----------------    POST  ------------------ -->
+ 
+	<div ng-repeat="post in posts |orderBy:'-createdAt'" class="margin-10 margin-b-10 ">			
+		<div ng-if="post.iduser2!=null" class="box-post">
+			<input type="hidden" value="{{post.id}}">
+				<div class="panel  sizepanel derecha" >
+	  				<div class="panel-heading alt80 " ng-model="urlImg" ng-model="ncontrolSubs">					
+						<img  class="fp izquierda img-circle" src="mar.jpg">
+						<div class="dropdown derecha">
+    					  <ul class="nav nav-pills nav-stacked">
+       						  <li class="dropdown">
+         						 <a class="dropdown-toggle" data-toggle="dropdown"role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+         				 <ul class="dropdown-menu">
+           					 <li><a href="#">Editar</a></li>
+            				 <li><a href="#">Eliminar</a></li>                  
+          				</ul>
+         					 </li>
+      					</ul>
+   					 </div>
+					<h4><spam><a class="usuario" href="/post/{{post.iduser2.username}}">Juanito</a> publico a
+					<a class="usuario" href="/post/{{post.iduser.username}}">Pablo </a>
+					</spam></h4>
+					<h6>Creado hace 2 h <span am-time-ago="post.createdAt"></span></h6>
+  				</div>
+  					<div class="col-md-12"> 				
+	  					<textarea class="form-control derecha" rows="2" placeholder="¿Que estás pensando?"> xzczxc
+	  					</textarea>
+	  					<br>
+	  				<div class="element-separator">
+						<hr><h3 class="section-break-title"></h3>
+					</div>
+	  				</div> 	  		
+	  			<div class="panel-footer" "botrub">	  				
+	  				<div class="row">
+	  					<ul>  											
+							<a class="btn icon-btn btn-success" href="#"><span class="glyphicon rubrica  btn-glyphicon glyphicon glyphicon glyphicon-king img-circle text-success"  class="badge">22</span>Excelente</a>
+							<a class="btn icon-btn btn-success" href="#"><span class="glyphicon rubrica  btn-glyphicon glyphicon glyphicon glyphicon-king img-circle text-success"  class="badge">22</span>Excelente</a>
+							<a class="btn icon-btn btn-warning" href="#"><span class="glyphicon rubrica btn-glyphicon glyphicon glyphicon-thumbs-up img-circle text-warning"  class="badge"></span>Regular</a>
+							<a class="btn icon-btn btn-danger" href="#"><span class="glyphicon rubrica btn-glyphicon glyphicon glyphicon-thumbs-down img-circle text-danger"  class="badge"></span>Malo</a>						
+	  					</ul>	  				
+	  				</div>
+	  				<br>
+	  			<div class="row responsive" >
+                   <div class="col-md-1">
+                      <img src="azul.jpg" class="fp izquierda img-circle image-responsive" alt="Cinque Terre" > 
+                   </div>
+                     <div class="col-md-11">
+                      <textarea class="form-control derecha" rows="2" placeholder="Escribe un comentario..."></textarea>                          
+                     </div>
+                 </div>
+                </div>
+              </div>
+ 		</div>
+	</div>
+ 
+
+      <!-- ---------------------------------------------- -->
+
+
+
+ 
+
+
+			<!-- ---------------------------------------------- -->
+
+
+
+
+		<br>
+		<br>
+		<br>
+		</div>			
+		<div class="col-md-3">
+			<p>Aqui a la segunda parte de col-md-3</p>
+		</div>
+	</div>
+</div>
+
+</body>
+

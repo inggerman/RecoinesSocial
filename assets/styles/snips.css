@@ -26,3 +26,396 @@
 @media (max-width: 767px) {
     
 }
+
+/*snippet de post y comentarios*/
+
+
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+/*-----------------------------------*/
+
+/*Snippet de la portada y info*/
+
+.social-cover{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0
+    ;background-color:rgba(0, 0, 0, 0.1);    
+}
+
+.cover-container {
+    height:350px;
+    margin-top:-25px;
+    background-image:url(http://www.portadastimeline.com/wp-content/uploads/2013/03/galaxias-lejanas-portada-para-facebook.jpg);
+    background-size:cover;
+    position:relative;
+    margin-bottom:25px;
+    background-position:center    
+}
+
+.btn-brightblue.btn-inverse.btn-outlined {
+    color: #fff;
+    border-color: #fff;
+}
+
+.border-black75 {
+    border-color: #3F3F3B!important;
+}
+
+.btn-brightblue.btn-outlined {
+    color: #003BFF;
+    background: 0 0;
+}
+
+.social-avatar {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    position: absolute;
+    background: -webkit-linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.8) 100%);
+    background: linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.8) 100%);
+}
+
+.img-avatar{
+    display:block;
+    border-radius:100px;
+    border:2px solid #fff;   
+    margin:auto;
+    margin-top:50px;    
+}
+
+.social-desc {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 310px;
+    position: absolute;
+}
+
+.social-desc div {
+    margin-left: 10%;
+    margin-top: 100px;
+}
+
+.fg-focus-white:focus, 
+.fg-hover-white:hover, 
+.fg-white, 
+.fg-white .tab-container.plain .nav-tabs .b-tab.active a, 
+.fg-white .fg-tab-active .tab-container .nav-tabs .b-tab.active a, 
+.fg-white .tab-container .nav-tabs .b-tab a {
+    color: #fff;
+}
+.fg-white{
+    opacity:0.8;
+}
+
+
+.btn-orange75.btn-inverse.btn-outlined {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-orange75.btn-outlined {
+    color: #EE682F;
+    background: 0 0;
+}
+
+.btn.btn-rounded {
+    line-height: 1;
+    border-radius: 100px;
+    height: auto!important;
+    padding: 15px!important;
+}
+
+.btn>.rubix-icon {
+    line-height: 1;
+    font-size: 18px;
+}
+
+.social-like-count {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.social-like-count>span {
+    margin-left: 25px;
+}     
+
+/*Snippet 2 de portada*/ 
+
+.content{
+    background-image: url(http://lorempixel.com/600/600/technics/7/);
+}
+.list-inline .option{
+  width: 80px; height: 30px;  
+}
+.major {
+    font-weight: 600;
+}
+.base-header {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: inherit;
+}
+.em-background-box .em-background-box-actions {
+    margin-top: 15px;
+    min-height: 50px;
+}
+.semi-well-dk {
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+}
+.semi-well-dk, .semi-well-lt {
+    border-radius: 6px;
+    padding: 20px;
+}
+.img-em-border {
+    border: 8px solid rgba(255,255,255,0.3);
+}
+.img-circle {
+    border-radius: 50%;
+}
+img {
+    vertical-align: middle;
+}
+.line-icon-circle {
+    border: 1px solid rgba(242,244,248,0.7);
+    border-radius: 50%;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    -webkit-transition: border-color 0.3s;
+    -moz-transition: border-color 0.3s;
+    -o-transition: border-color 0.3s;
+    transition: border-color 0.3s;
+}
+
+.thin {
+    font-weight: 300;
+}
+h1, .h1 {
+    font-size: 33px;
+}
+.list-inline {
+    margin-left: -5px;
+}
+.list-unstyled, .list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.em-background-box .em-background-box-content {
+    position: relative;
+    z-index: 2;
+}
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.navbar+.em-background-box {
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+.em-background-box {
+    border-bottom: 4px solid #5bc0de;
+}
+.em-background-box {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.text-white {
+    color: white;
+}                
+
+/*Snippet de posteart*/
+
+body{margin-top:20px; background-color: #eeeeee;}
+
+.well-social-post {
+    border-radius: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding:0;
+}
+
+.well-social-post .glyphicon,
+.well-social-post .fa,
+.well-social-post [class^='icon-'],
+.well-social-post [class*='icon-'] {
+    font-weight: bold;
+    color: #999999;
+}
+
+.well-social-post a,
+.well-social-post a:hover,
+.well-social-post a:active,
+.well-social-post a:focus {
+    text-decoration: none;
+}
+
+.well-social-post .list-inline {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.well-social-post .list-inline li {
+    position: relative;
+}
+
+.well-social-post .list-inline li.active::after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    content: "";
+    top: 30px;
+    left: 50%;
+    left: -webkit-calc(50% - 5px);
+    left: -moz-calc(50%-5px);
+    left: calc(50% - 5px);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #dddddd;
+}
+
+.well-social-post .list-inline li.active a {
+    color: #222222;
+    font-weight: bold;
+}
+
+.well-social-post .form-control {
+    width: 100%;
+    min-height: 100px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.well-social-post .list-inline {
+    padding: 10px;
+}
+
+.well-social-post .list-inline li + li {
+    margin-left: 10px;
+}
+
+.well-social-post .post-actions {
+    margin: 0;
+    background-color: #f6f7f8;
+    border-top-color: #e9eaed;
+}                        

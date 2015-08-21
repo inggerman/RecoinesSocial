@@ -12,6 +12,15 @@ module.exports = {
   	comentario:{
   		type:'text'
   	},
+    nombre:{
+      type:'string'
+    },
+    apellido:{
+      type:'string'
+    },
+    username:{
+      type:'string'
+    },
   	idpost:{
   		model:'Posts'
   	},

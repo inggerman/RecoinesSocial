@@ -13,54 +13,86 @@ module.exports = {
 
 
 		if(req.user&&req.user[0].username==username){
+
+
+			Roompost.findOne({nombre:username}).exec(function(err,room){
+					if(err){return res.negotiate(err)}
+
+						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
+					console.log(room);
+
+					res.view('post',{
+						username:username,
+						room:room
+					})
+				});
 			
-			res.view('post',{
-				username:username
-			})
+			
 		}else
 		if(req.user&&req.user[0].username!=username){
-			res.view('postf',{
-				username:username
-			})
+			Roompost.findOne({nombre:username}).exec(function(err,room){
+					if(err){return res.negotiate(err)}
+
+						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
+					console.log(room);
+
+					res.view('post',{
+						username:username,
+						room:room
+					})
+				});
 		}	
 		
 	},
+	getpost:function(req,res){
+		var username=req.param('username');
+		console.log(username);
+		var resul=[];
+		var acu=0;
+		Users.findOne({username:username}).populate('idamigo').exec(function(err,user){
+			console.log(user.idamigo);
+			_.each(user.idamigo,function(amigo){
+					
+					console.log(user.ncontrol+"----------"+amigo.id2);
+					Posts.find({iduser:amigo.id2}).populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,pub){
+						resul.push({publi:pub});
+						
+						if(acu==user.idamigo.length-1){
+							console.log(resul);
+							return res.send({data:resul});
+						}
+						acu++;
+						
+					});
 
-	findPost: function(req,res){
+
+			});
+
+			
+			
+			//
+
+		});
 		
-		var username=req.param('username')
-				
-				Users.count().where({username:username}).exec(function(err,num){
-						console.log("este usuario esta "+num+" veces");
+		
 
-					if(num>0){	
+	},
 
-						Posts.find({username:username}).populate('iduser').populate('iduser2').exec(function(err,post){
-							
-							if(err) return res.negotiate(err);
+	getpostme:function(req,res){
+		var username=req.param('username');
+		var ncontrol=req.param('ncontrol');
 
-							if(!post){
-								return res.notFound();
-							}
-							console.log('------------------______________________-----------------------')
-							console.log(post);
-							Posts.subscribe (req.socket, post);
-				        	Posts.watch (req.socket);
+		Posts.find({username:username}).populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,user){
+			if(err){return res.negotiate(err)}	
 
-							return res.send(post);
+			return res.send({user:user});	
+			
+			//
 
+		});
+		
+		
 
-						});
-					}else{
-
-						 return res.send({
-						 	num:1,
-						 	username:username
-						 });
-					}
-				});
-				
-			console.log('no hay user logeado');
 	},
 
 	deletePost:function(req,res){
@@ -123,6 +155,65 @@ module.exports = {
 			console.log('no fue por un socket lastima');
 		}
 	
-}
+},
+subfriend:function(req,res){
+
+
+		var username=req.param('username');
+		console.log("hola "+username);
+
+		Users.findOne({username:username}).populate('idamigo').exec(function(err,user){
+
+
+			console.log("este es-----------------------");
+			console.log(user.idamigo)
+
+			Roompost.findOne({nombre:user.username}).exec(function(err,rp){
+				console.log(rp.nombre+"registrados");
+				Roompost.subscribe(req.socket,rp);
+				_.each(user.idamigo,function(amigouser){
+				console.log("estees"+amigouser.username);	
+				Roompost.findOne({nombre:amigouser.username}).exec(function(err,roompost){
+					console.log(amigouser.username+"---"+roompost.nombre);
+					console.log("registrados");
+					Roompost.subscribe(req.socket,roompost);
+					//console.log(Roompost.subscribers(roompost).length);
+
+				});
+			});
+			
+
+			});
+			
+			
+		});
+
+
+	},
+	crearpost:function(req,res){
+
+		var post=req.param('post');
+		var username=req.param('username');
+		var iduser=req.param('iduser');
+		var idroom=req.param('idroom');
+
+		console.log(post+username+iduser+idroom);
+		Posts.create({post:post,username:username,iduser:iduser,idroom:idroom}).exec(function(err,pubcre){
+			console.log(pubcre.id);
+			Posts.findOne(pubcre.id).populate('idroom').populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,pub){
+				// console.log(pub);
+				// pub.idroom.add(idroom);
+				// pub.save(function(err,d){
+				// 	console.log(err+"----"+d);
+				// });
+				console.log(pubcre);
+			Roompost.publishAdd(idroom,'idpost',pub);
+			});
+			
+
+		});
+
+		
+	}
 };
 

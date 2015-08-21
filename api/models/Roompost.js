@@ -14,7 +14,7 @@ module.exports = {
   	},
 
   	idpost:{
-  		collection:'Publicaciones',
+  		collection:'Posts',
   		via:'idroom'
   	},
   	publishAdd: function(id, alias, rec, req, options) {

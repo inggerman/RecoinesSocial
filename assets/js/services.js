@@ -10,9 +10,11 @@ angular.module('myApp.services', [])
 
 	function(){
 		this.user=window.user;
+		this.room=window.room;
 
 		return{
-			user:this.user
+			user:this.user,
+			room:this.room
 		};
 	}
 	]);

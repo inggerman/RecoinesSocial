@@ -1,0 +1,79 @@
+.divgde{
+  
+  background-color: #2980b9;
+  margin-top:10px;
+}
+.edo{
+   margin: 50 auto;
+  position:relative !important;
+}
+.sub{
+  position:relative !important;
+    top: 8px;
+}
+.btn3d, .btn3d:focus {
+    position:relative;
+    top: -6px;
+    border:0;
+    -moz-outline-style:none;
+         outline:medium none;
+     transition: all 0.04s linear;
+     margin-top:10px;
+     margin-bottom:10px;
+     margin-left:2px;
+     margin-right:2px;
+}
+.btn3d:active, .btn3d.active {
+    top:2px;
+}
+
+.btn3d.btn-success:active, .btn3d.btn-success.active {
+    box-shadow:0 0 0 1px #30cd00 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color: #78d739;
+}
+.publicar{
+  position: right !important;
+}
+
+.imgus{
+  width: 50px  !important;
+  height: 50px;
+}
+.usuario{
+  font-family: serif;
+  color: black;
+}
+.zoom{
+   /* Aumentamos la anchura y altura durante  segundos */
+transition: width 0.3s, height 0.3s, transform 0.3s;
+-moz-transition: width 0.3s, height 0.3s, -moz-transform 0.3s;
+-webkit-transition: width 0.3s, height 0.3s, -webkit-transform 0.3s;
+-o-transition: width 0.3s, height 0.3s,-o-transform 0.3s;
+}
+.zoom:hover{
+/* tranformamos el elemento al pasar el mouse por encima */
+transform : scale(1.1);
+-moz-transform : scale(1.1);      /* Firefox */
+-webkit-transform : scale(1.1);   /* Chrome - Safari */
+-o-transform : scale(1.1);        /* Opera */
+}
+.letpost{
+  font-family: serif;
+  color: red;
+}
+.btn-glyphicon { 
+  padding:8px;
+  background:#ffffff; 
+  margin-right:4px; 
+}
+.icon-btn {
+  position: right;
+ padding: 1px 15px 3px 2px; 
+ border-radius:50px;
+}
+.rubrica{
+  margin: responsive !important;
+  margin-bottom: left;
+  
+
+}

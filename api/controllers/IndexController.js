@@ -21,13 +21,24 @@ module.exports = {
 			var username=req.user[0].username;
 			console.log(username);
 			Users.findOne({username:username}).populate('idGroupMember').exec(function(err,group){
-				if(err) return res.negotiate(err);
+				if(err) return res.negotiate(err);Roompost.findOne({nombre:username}).exec(function(err,room){
+					if(err){return res.negotiate(err)}
 
-				res.view('inicio',{
-				title:'hola',
-				user:JSON.stringify(req.user[0]),
-				group:group
+						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
+					console.log(room);
+
+					return res.view('inicio',{
+						username:username,
+						room:room,
+						user:JSON.stringify(req.user[0])
+					})
 				});
+
+
+					
+				
+
+				
 		console.log('************************************');
 		console.log(req.user[0]);
 		console.log(group);

@@ -22,10 +22,16 @@ module.exports = {
 	 iduser:{
   		model:'Users'
   	},
-  iduser2:{
+    iduser2:{
       model:'Users'
     },
-  rubricapost:{
+    idroom:{
+      collection:'Roompost',
+      via:'idpost'
+
+    },
+
+    rubricapost:{
   		model:'Rubricaposts'
   	},
   	idcomentario:{
