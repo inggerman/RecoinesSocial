@@ -20,7 +20,7 @@ module.exports = {
 		}else{
 			var username=req.user[0].username;
 			console.log(username);
-			Users.findOne({username:username}).populate('idGroupMember').exec(function(err,group){
+			Users.findOne({username:username}).populate('idGroupMember').populate('idcarrera').exec(function(err,fulluser){
 				if(err) return res.negotiate(err);Roompost.findOne({nombre:username}).exec(function(err,room){
 					if(err){return res.negotiate(err)}
 
@@ -30,7 +30,8 @@ module.exports = {
 					return res.view('inicio',{
 						username:username,
 						room:room,
-						user:JSON.stringify(req.user[0])
+						user:JSON.stringify(req.user[0]),
+						fulluser:fulluser
 					})
 				});
 
@@ -41,7 +42,7 @@ module.exports = {
 				
 		console.log('************************************');
 		console.log(req.user[0]);
-		console.log(group);
+		console.log(fulluser);
 		console.log('************************************');
 
 			});

@@ -148,11 +148,12 @@
 
 .cover-container {
     height:350px;
-    margin-top:-25px;
+    width: 96%;
+    margin-top:0px;
     background-image:url(http://www.portadastimeline.com/wp-content/uploads/2013/03/galaxias-lejanas-portada-para-facebook.jpg);
     background-size:cover;
     position:relative;
-    margin-bottom:25px;
+    /*margin:0px auto;*/
     background-position:center    
 }
 

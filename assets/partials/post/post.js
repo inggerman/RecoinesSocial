@@ -3,12 +3,18 @@
 angular.module('myApp.post', [])
 .controller('PostCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
 
-$scope.name=Authentication.user ? Authentication.user.nombre : 'hola mundo';
+$scope.nombre=Authentication.user ? Authentication.user.nombre : 'hola mundo';
+$scope.apellido_p=Authentication.user ? Authentication.user.apellido_p : 'hola mundo';
+$scope.apellido_m=Authentication.user ? Authentication.user.apellido_m : 'hola mundo';
 $scope.username=Authentication.user ? Authentication.user.username : 'hola mundo';
 $scope.ncontrol=Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
 $scope.roomnombre=Authentication.room ? Authentication.room.nombre : 'hola mundo';
 $scope.roomid=Authentication.room ? Authentication.room.id : 'hola mundo';
-
+$scope.fullname=$scope.nombre+" "+$scope.apellido_p+" "+$scope.apellido_m;
+$scope.carrera=Authentication.fulluser ? Authentication.fulluser.idcarrera.nombre_carrera : 'hola mundo';
+$scope.semestre=Authentication.user ? Authentication.user.semestre : 'hola mundo';
+$scope.rutaAvatar="images/fot/al/"+$scope.ncontrol.substring(0,4)+"/"+$scope.ncontrol+".jpg";
+console.log($scope.rutaAvatar);
 $scope.posts=[];
 
  //var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
@@ -44,7 +50,7 @@ $scope.posts=[];
 
   //llenar los Post cuando se inicie la Pagina
 
-  io.socket.get('/getpost',{username:$scope.username},function(data){
+  io.socket.get('/getpost',{username:$scope.username,ncontrol:$scope.ncontrol},function(data){
       for(var i=0;i<data.data.length;i++){
         for(var j=0;j<data.data[i].publi.length;j++){
            //console.log(data.data[i].publi[j].username);
@@ -61,9 +67,21 @@ $scope.posts=[];
       //console.log(data.data[0].publi[0]);
     });
 // $scope.postmio=[];
+// 
 io.socket.get('/getpostme',{username:$scope.username},function(data){
       
-          //console.log(data);
+          console.log(data);
+          $scope.posts=data.user;
+          $scope.$apply();
+          
+       
+      //console.log($scope.postmio);
+    });
+
+io.socket.get('/getpostme',{username:$scope.username},function(data){
+      
+          console.log(data);
+          
           $scope.postmio=data.user;
           $scope.$apply();
           
@@ -71,8 +89,17 @@ io.socket.get('/getpostme',{username:$scope.username},function(data){
       //console.log($scope.postmio);
     });
 
-
+    $scope.comentar={ver:false}
+     $scope.vercomentarios=function($index){
+      if($scope.comentar.ver==false){
+          $scope.comentar={ver:true}
+      }else
+      if($scope.comentar.ver==true){
+        $scope.comentar={ver:false}
+      }
       
+
+     }; 
 
     $scope.eliminarpost=function(idpost){
            BootstrapDialog.confirm('¿Estas Seguro que deseas eliminar esta publicacion?', function(result){

@@ -17,32 +17,33 @@ module.exports = {
 
 			Roompost.findOne({nombre:username}).exec(function(err,room){
 					if(err){return res.negotiate(err)}
-
-						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
-					console.log(room);
-
-					res.view('post',{
-						username:username,
-						room:room
-					})
-				});
-			
-			
-		}else
-		if(req.user&&req.user[0].username!=username){
-			Roompost.findOne({nombre:username}).exec(function(err,room){
+				Users.findOne(req.user[0].ncontrol).populate('idcarrera').populate('iddatospersonales').exec(function(err,fulluser){
 					if(err){return res.negotiate(err)}
-
 						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
 					console.log(room);
 
-					res.view('post',{
+					return res.view('post',{
+						mio:"si",
+						user:req.user[0],
 						username:username,
-						room:room
-					})
+						room:room,
+						fulluser:fulluser
+					});
+
+				});		
+
+					
 				});
-		}	
-		
+			
+			
+		}else{
+
+			return res.view('post',{
+						mio:"no",
+						user:req.user[0],
+						username:username
+					});
+		}
 	},
 	getpost:function(req,res){
 		var username=req.param('username');
@@ -81,9 +82,12 @@ module.exports = {
 	getpostme:function(req,res){
 		var username=req.param('username');
 		var ncontrol=req.param('ncontrol');
+		console.log("este es el user "+username);
 
 		Posts.find({username:username}).populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,user){
 			if(err){return res.negotiate(err)}	
+				console.log(user);
+				console.log(user.length);
 
 			return res.send({user:user});	
 			

@@ -1,10 +1,10 @@
 <div class="container-fluid" ng-controller="PostCtrl">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" >
 
 
-            <div class="container-fluid">
+            
                <div class="cover-container">
                   <div class="social-cover"></div>
                   <div class="social-desc">
@@ -16,11 +16,11 @@
                      </div>
                   </div>
                   <div class="social-avatar" >
-                     <img class="img-avatar" src="http://bootdey.com/img/Content/user-453533-fdadfd.png" height="100" width="100">
-                     <h4 class="fg-white text-center">German Hernandez Lopez</h4>
-                     <h5 class="fg-white text-center" style="opacity:0.8;">Ing. Tics</h5>
-                     <h5 class="fg-white text-center" style="opacity:0.8;">10 Semestre</h5>
-                     <h5 class="fg-white text-center" style="opacity:0.8;">Huamantla,Tlax</h5>
+                     <img class="img-avatar" ng-src="{{rutaAvatar}}" height="100" width="100">
+                     <h4 class="fg-white text-center">{{fullname}}</h4>
+                     <h5 class="fg-white text-center" style="opacity:0.8;">{{carrera}}</h5>
+                     <h5 class="fg-white text-center" style="opacity:0.8;">{{semestre}} Semestre</h5>
+                     <h5 class="fg-white text-center" style="opacity:0.8;"><%=fulluser.iddatospersonales.lugar_residencia%></h5>
                      <hr class="border-black75" style="border-width:2px;" >
                      <div class="text-center">
                         <!-- <button role="button" class="btn btn-inverse btn-outlined btn-retainBg btn-brightblue" type="button">
@@ -29,7 +29,7 @@
                      </div>
                   </div>
                </div>
-            </div>   
+             
         </div> 
     </div>
 	<div class="row">
@@ -58,6 +58,7 @@
         <div ng-if="post.iduser2!=null">
             <div class="panel panel-white post panel-shadow" >
                 <div class="post-heading">
+                    <%if(mio=='si'){%>
                     <div class="dropdown pull-right">
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -65,8 +66,9 @@
                               <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
                             </ul>
                         </div>
+                     <%}%>   
                     <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                        <img ng-src="images/fot/al/{{post.iduser2.ncontrol.substring(0,4)}}/{{post.iduser2.ncontrol}}.jpg" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
 
@@ -103,15 +105,17 @@
                     </div>
                     <ul class="comments-list" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
                         <li class="comment">
+                        <%if(mio=='si'){%>
                         <div class="dropdown pull-right">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Editar</a></li>
-                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
-                            </ul>
+                                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Editar</a></li>
+                                  <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                                </ul>
                         </div>
+                         <%}%>  
                                 <a class="pull-left" href="#">
-                                        <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                                        <img class="avatar" ng-src="images/fot/al/{{comentario.iduser.substring(0,4)}}/{{comentario.iduser}}.jpg" alt="avatar">
                                     </a>
                                     <div class="comment-body">
                                         <div class="comment-heading">
@@ -129,15 +133,17 @@
         <div ng-if="post.iduser2==null">
             <div class="panel panel-white post panel-shadow" >
                 <div class="post-heading">
-                <div class="dropdown pull-right">
+                <%if(mio=='si'){%>
+                    <div class="dropdown pull-right">
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="#">Editar</a></li>
                               <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
                             </ul>
                         </div>
+                     <%}%>  
                     <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                        <img ng-src="images/fot/al/{{post.iduser.ncontrol.substring(0,4)}}/{{post.iduser.ncontrol}}.jpg" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
@@ -174,15 +180,17 @@
                     <ul class="comments-list" >
                         <li class="comment" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
                             
-                            <div class="dropdown pull-right">
+                            <%if(mio=='si'){%>
+                    <div class="dropdown pull-right">
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="#">Editar</a></li>
                               <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
                             </ul>
                         </div>
+                     <%}%>  
                                     <a class="pull-left" href="#">
-                                        <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                                        <img class="avatar" ng-src="images/fot/al/{{comentario.iduser.substring(0,4)}}/{{comentario.iduser}}.jpg" alt="avatar">
                                     </a>
                                     <div class="comment-body">
                                         <div class="comment-heading">
@@ -202,7 +210,12 @@
     </div>
 
 </div>
+
+<%if(mio=="si"){%>
 		
 <script type="text/javascript">
       window.room=<%-JSON.stringify(room || 'null')%>;
+      window.fulluser=<%-JSON.stringify(fulluser || 'null')%>;
 </script>
+
+<%}%>

@@ -47,10 +47,10 @@ angular.module('myApp.inicio', [])
 		 		fs.getMonth(),fs.getDate(),+fs.getHours(),fs.getMinutes()).toISOString();
 		 	//Itera los datos recibidos del modelo 
 			for(var i=0;i<data.datos.length;i++){
-				console.log($scope.datatime+"--"+data.datos[i].recordatorio+".-----"+data.datos[i].titulo);
+				//console.log($scope.datatime+"--"+data.datos[i].recordatorio+".-----"+data.datos[i].titulo);
 
 				if($scope.datatime==data.datos[i].recordatorio){
-					console.log("ahuevo se pudo"+" "+$scope.datatime+"---"+data.datos[i].recordatorio);
+					//console.log("ahuevo se pudo"+" "+$scope.datatime+"---"+data.datos[i].recordatorio);
 					$scope.tit=data.datos[i].titulo;
 					$scope.date=data.datos[i].recordatorio;
 

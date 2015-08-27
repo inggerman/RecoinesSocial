@@ -44,6 +44,9 @@ autoPK: false,
   		required:false,
   		unique:true
   	},
+    semestre:{
+      type:'string'
+    },
   	
     posts:{
       collection:'Posts',
@@ -57,8 +60,8 @@ autoPK: false,
       collection:'Agenda',
       via:'ncontrol'
     },
-  	pd:{
-  		model:'PersonaldataUsers'
+  	iddatospersonales:{
+  		model:'DatosPersonales'
   	},
   	ncontrolAlumno:{
   		model:'Alumnos'
@@ -73,6 +76,9 @@ autoPK: false,
     idamigo:{
       collection:'Amigos',
       via:'iduser'
+    },
+    idcarrera:{
+      model:'Carreras'
     }
     // ,
     // idGroupCreador:{
