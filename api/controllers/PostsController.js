@@ -20,7 +20,7 @@ module.exports = {
 				Users.findOne(req.user[0].ncontrol).populate('idcarrera').populate('iddatospersonales').exec(function(err,fulluser){
 					if(err){return res.negotiate(err)}
 						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
-					console.log(room);
+					//console.log(room);
 
 					return res.view('post',{
 						mio:"si",
@@ -37,17 +37,33 @@ module.exports = {
 			
 			
 		}else{
+			console.log("el user name cuando no eres tu perfil es "+username);
 
-			return res.view('post',{
+			Roompost.findOne({nombre:username}).exec(function(err,room){
+					if(err){return res.negotiate(err)}
+				Users.findOne({username:username}).populate('idcarrera').populate('iddatospersonales').exec(function(err,fulluser){
+					if(err){return res.negotiate(err)}
+						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
+					console.log("omhajjaajajjajajajjjja");
+					console.log(fulluser);
+
+					return res.view('post',{
 						mio:"no",
 						user:req.user[0],
-						username:username
+						username:username,
+						room:room,
+						fulluser:fulluser
 					});
+
+				});		
+
+					
+				});
 		}
 	},
 	getpost:function(req,res){
 		var username=req.param('username');
-		console.log(username);
+		//console.log(username);
 		var resul=[];
 		var acu=0;
 		Users.findOne({username:username}).populate('idamigo').exec(function(err,user){
@@ -59,7 +75,7 @@ module.exports = {
 						resul.push({publi:pub});
 						
 						if(acu==user.idamigo.length-1){
-							console.log(resul);
+							//console.log(resul);
 							return res.send({data:resul});
 						}
 						acu++;
@@ -82,18 +98,43 @@ module.exports = {
 	getpostme:function(req,res){
 		var username=req.param('username');
 		var ncontrol=req.param('ncontrol');
-		console.log("este es el user "+username);
+		var mio =req.param('mio');
 
-		Posts.find({username:username}).populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,user){
-			if(err){return res.negotiate(err)}	
-				console.log(user);
+		if(mio=='yes'){
+
+			console.log("este es el user "+username+" "+ncontrol);
+
+			Posts.find({or:[{iduser2:ncontrol},{username:username}]}).populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,user){
+				if(err){return res.negotiate(err)}	
+				//console.log(user);
 				console.log(user.length);
 
 			return res.send({user:user});	
 			
-			//
+			
 
 		});
+		
+		}else{
+
+
+			console.log("este es el user "+username+" "+ncontrol);
+
+		Posts.find({username:username}).populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,user){
+			if(err){return res.negotiate(err)}	
+				//console.log(user);
+				console.log(user.length);
+
+			return res.send({user:user});	
+			
+			
+
+		});
+		
+
+		}
+
+
 		
 		
 
@@ -102,6 +143,7 @@ module.exports = {
 	deletePost:function(req,res){
 
 		var id=req.param('id');
+		var idroom=req.param('idroom');
 		console.log(id);
 		
 
@@ -113,7 +155,8 @@ module.exports = {
 
 					if(err) return res.negotiate(err);
 					console.log("se elimino"+post.id);
-					Posts.publishDestroy(post.id);
+					Roompost.publishRemove(idroom,'idpost',post.id);
+					return res.send({idpost:post});
 				});
 			});
 			
@@ -204,6 +247,36 @@ subfriend:function(req,res){
 		console.log(post+username+iduser+idroom);
 		Posts.create({post:post,username:username,iduser:iduser,idroom:idroom}).exec(function(err,pubcre){
 			console.log(pubcre.id);
+			Posts.findOne({id:pubcre.id}).populate('idroom').populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,pub){
+				// console.log(pub);
+				// pub.idroom.add(idroom);
+				// pub.save(function(err,d){
+				// 	console.log(err+"----"+d);
+				// });
+				console.log(pubcre);
+			Roompost.publishAdd(idroom,'idpost',pub);
+			Posts.subscribe(req.socket,pub);
+			
+			
+			});
+			
+
+		});
+
+		
+	},
+	crearpostamigo:function(req,res){
+
+		var post=req.param('post');
+		var username=req.param('username');
+		var iduser=req.param('iduser');
+		var iduser2=req.param('iduser2');
+		var idroom=req.param('idroom');
+		var mio=req.param('mio');
+
+		console.log("el valor del mio es"+ mio);
+		Posts.create({post:post,username:username,iduser:iduser,iduser2:iduser2,idroom:idroom,mio:mio}).exec(function(err,pubcre){
+			console.log(pubcre.id);
 			Posts.findOne(pubcre.id).populate('idroom').populate('idcomentario').populate('iduser').populate('iduser2').exec(function(err,pub){
 				// console.log(pub);
 				// pub.idroom.add(idroom);
@@ -218,6 +291,16 @@ subfriend:function(req,res){
 		});
 
 		
+	},
+	getpostone:function(req,res){
+		var id=req.param('id');
+
+		console.log('este el el id del port'+id);
+		Posts.findOne(id).exec(function(err,post){
+			if(err){return res.negotiate(err);}
+			return res.send({post:post});
+		});
+
 	}
 };
 

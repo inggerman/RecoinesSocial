@@ -10,27 +10,21 @@ module.exports = {
   
   autoPK: false,
   attributes: {
-/*
-  	id_carrera:{
+
+  	clave_carrera:{
   		type: 'string',
   		primaryKey:true,
   		
   		unique:true
-  	},*/
+  	},
   	nombre_carrera:{
   		type:'string',
   		required:true,
   		unique:true
   	},
-    clave_carrera:{
-      type:'string',
-      primaryKey:true,
-      
-      unique:true
-    },
     clave_Materia:{
       collection:'Materias',
-      via:'idCarrera'
+      via:'clave_carrera'
     },
   	ncontrol_Alumno:{
       collection:'Alumnos',

@@ -107,6 +107,10 @@ module.exports.routes = {
     controller:'PostsController',
     action:'crearpost'
   },
+  'GET /crearpostamigo':{
+    controller:'PostsController',
+    action:'crearpostamigo'
+  },
   'GET /getpost':{
     controller:'PostsController',
     action:'getpost'
@@ -114,6 +118,10 @@ module.exports.routes = {
   'GET /getpostme':{
     controller:'PostsController',
     action:'getpostme'
+  },
+  'GET /getpostone':{
+    controller:'PostsController',
+    action:'getpostone'
   },
 
   'GET /agenda':{
@@ -139,6 +147,31 @@ module.exports.routes = {
   'DELETE /deleteagenda':{
     controller:'AgendaController',
     action:'deleteagenda'
+  },
+  'POST /notificar':{
+    controller:'NotificacionesController',
+    action:'notificar'
+  },
+  'GET /subfriendcomentarios':{
+    controller:'ComentariosPostsController',
+    action:'subfriendcomentarios'
+  },
+  'PUT /crearcomentario':{
+    controller:'ComentariosPostsController',
+    action:'crearcomentario'
+  },
+
+  'DELETE /eliminarcoment/:id':{
+    controller:'ComentariosPostsController',
+    action: 'eliminarcoment'
+  },
+  'POST /getcal':{
+    controller:'CalificacionesController',
+    action:'getcal'
+  },
+  'GET /calificaciones':{
+    controller:'CalificacionesController',
+    action:'calificaciones'
   }
   /***************************************************************************
   *                                                                          *

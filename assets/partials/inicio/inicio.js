@@ -35,6 +35,11 @@ angular.module('myApp.inicio', [])
 			console.log(data);
 		});
 
+ 	io.socket.get('/subfriendcomentarios',{username:$scope.username,ncontrol:$scope.ncontrol},function(data){
+			console.log($scope.username);
+			console.log(data);
+		});
+
  	console.log($scope.username);
  	// Esta funcion compara cada minuto con la fecha del servidor
 	// los horarios de los registros agendados para mandar un mensaje de que
@@ -70,7 +75,7 @@ angular.module('myApp.inicio', [])
 			
 		});
 		
-		$timeout(tick,6000);
+		$timeout(tick,50000);
 	}
 
 	tick();

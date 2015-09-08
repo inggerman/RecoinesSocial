@@ -11,6 +11,36 @@
 
 module.exports.bootstrap = function(cb) {
 
+	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370710'}).exec(console.log);
+	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370711'}).exec(console.log);
+	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370712'}).exec(console.log);
+	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370713'}).exec(console.log);
+	Calificaciones.create({materia:'base de datos',clave_materia:'m6',op:'00',ncontrol:'10370710'}).exec(console.log);
+	Calificaciones.create({materia:'base de datos',clave_materia:'m6',op:'00',ncontrol:'10370711'}).exec(console.log);
+	Calificaciones.create({materia:'base de datos',clave_materia:'m6',op:'00',ncontrol:'10370712'}).exec(console.log);
+	Calificaciones.create({materia:'base de datos',clave_materia:'m6',op:'00',ncontrol:'10370713'}).exec(console.log);
+	Calificaciones.create({materia:'Redes',clave_materia:'m8',op:'00',ncontrol:'10370710'}).exec(console.log);
+	Calificaciones.create({materia:'Redes',clave_materia:'m8',op:'00',ncontrol:'10370711'}).exec(console.log);
+	Calificaciones.create({materia:'Redes',clave_materia:'m8',op:'00',ncontrol:'10370712'}).exec(console.log);
+	Calificaciones.create({materia:'Redes',clave_materia:'m8',op:'00',ncontrol:'10370713'}).exec(console.log);
+
+
+
+	Carreras.create({clave_carrera:'ct',nombre_carrera:'Ing.Tecnologias de la Informacion Y Comunicaciones'}).exec(console.log);
+	Carreras.create({clave_carrera:'cge',nombre_carrera:'Ing.Gestion Empresarial'}).exec(console.log);
+	Carreras.create({clave_carrera:'cc',nombre_carrera:'Ing.Civil'}).exec(console.log);
+	Carreras.create({clave_carrera:'cm',nombre_carrera:'Ing.Mecatronica'}).exec(console.log);
+	Carreras.create({clave_carrera:'ci',nombre_carrera:'Ing.Industrial'}).exec(console.log);
+	Carreras.create({clave_carrera:'ce',nombre_carrera:'Ing.Electromecanica'}).exec(console.log);
+
+	Materias.create({clave_materia:'m1',nombre_materia:'Matematicas',id_carrera:'ct'}).exec(console.log);
+	Materias.create({clave_materia:'m2',nombre_materia:'Programacion',id_carrera:'ct'}).exec(console.log);
+	Materias.create({clave_materia:'m3',nombre_materia:'contabilidad',id_carrera:'cge'}).exec(console.log);
+	Materias.create({clave_materia:'m4',nombre_materia:'etica',id_carrera:'cge'}).exec(console.log);
+	Materias.create({clave_materia:'m5',nombre_materia:'mercadotecnia',id_carrera:'cge'}).exec(console.log);
+	Materias.create({clave_materia:'m6',nombre_materia:'base de datos',id_carrera:'ct'}).exec(console.log);
+	Materias.create({clave_materia:'m7',nombre_materia:'Matematicas',id_carrera:'cge'}).exec(console.log);
+	Materias.create({clave_materia:'m8',nombre_materia:'Redes',id_carrera:'ct'}).exec(console.log);
 
 // Publicaciones.create({publicacion:'Hola Mundo1',username:'ghl',iduser:'1'}).exec(console.log);
 // Publicaciones.create({publicacion:'Hola Mundo2',username:'ghl',iduser:'1'}).exec(console.log);
@@ -48,10 +78,10 @@ module.exports.bootstrap = function(cb) {
 // Usuarios.create({name:'Pedro',apellidoPaterno:'Briones',apellidoMaterno:'Lopez',username:'lbp'}).exec(console.log);
 // Usuarios.create({name:'Anacleto',apellidoPaterno:'smith',apellidoMaterno:'Mendez',username:'asl'}).exec(console.log);
 // Usuarios.create({name:'Aurelio',apellidoPaterno:'casillas',apellidoMaterno:'Lopez',username:'acl'}).exec(console.log);
-Users.create({ncontrol:'10370710',username:'gerhl92',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com',idcarrera:'ITICS',semestre:'10',iddatospersonales:'10370710'}).exec(console.log);
-Users.create({ncontrol:'10370711',username:'hlg',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com',idcarrera:'ITICS',semestre:'10',iddatospersonales:'10370711'}).exec(console.log);
-Users.create({ncontrol:'10370712',username:'marlux',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com',idcarrera:'ITICS',semestre:'5',iddatospersonales:'10370712'}).exec(console.log);
-Users.create({ncontrol:'10370713',username:'pascuis',password:'perro',nombre:'Pascual',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato14@cc.com',idcarrera:'ITICS',semestre:'5',iddatospersonales:'10370713'}).exec(console.log);
+Users.create({ncontrol:'10370710',username:'gerhl92',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com',idcarrera:'ct',semestre:'10',iddatospersonales:'10370710'}).exec(console.log);
+Users.create({ncontrol:'10370711',username:'hlg',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com',idcarrera:'ct',semestre:'10',iddatospersonales:'10370711'}).exec(console.log);
+Users.create({ncontrol:'10370712',username:'marlux',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com',idcarrera:'ct',semestre:'5',iddatospersonales:'10370712'}).exec(console.log);
+Users.create({ncontrol:'10370713',username:'pascuis',password:'perro',nombre:'Pascual',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato14@cc.com',idcarrera:'ct',semestre:'5',iddatospersonales:'10370713'}).exec(console.log);
 
 
 Amigos.create({id2:'10370710',name:'German',apellidoPaterno:'Hernandez',apellidoMaterno:'Lopez',username:'gerhl92',iduser:10370711}).exec(console.log);
@@ -95,14 +125,14 @@ Posts.create({post:'holaperrosdelmal7',username:'marlux',iduser:'10370712'}).exe
 Posts.create({post:'holaperrosdelmal8',username:'marlux',iduser:'10370712'}).exec(console.log);
 Posts.create({post:'holaperrosdelmal78',username:'gerhl92',iduser:'10370710'}).exec(console.log);
 
-Carreras.create({nombre_carrera:'Ing.Tecnologias de la Información y Comunicaciones ',clave_carrera:'ITICS'}).exec(console.log);
-Carreras.create({nombre_carrera:'Lic Informatica',clave_carrera:'LINF'}).exec(console.log);
-Carreras.create({nombre_carrera:'Ing. Mecatronica ',clave_carrera:'INGMEC'}).exec(console.log);
-Carreras.create({nombre_carrera:'Ing. Industrial ',clave_carrera:'LIND'}).exec(console.log);
-Carreras.create({nombre_carrera:'Ing.Gestion Empresarial ',clave_carrera:'INGE'}).exec(console.log);
+// Carreras.create({nombre_carrera:'Ing.Tecnologias de la Información y Comunicaciones ',clave_carrera:'ITICS'}).exec(console.log);
+// Carreras.create({nombre_carrera:'Lic Informatica',clave_carrera:'LINF'}).exec(console.log);
+// Carreras.create({nombre_carrera:'Ing. Mecatronica ',clave_carrera:'INGMEC'}).exec(console.log);
+// Carreras.create({nombre_carrera:'Ing. Industrial ',clave_carrera:'LIND'}).exec(console.log);
+// Carreras.create({nombre_carrera:'Ing.Gestion Empresarial ',clave_carrera:'INGE'}).exec(console.log);
 
 DatosPersonales.create({ncontrol:'10370710',edad:'',lugar_residencia:'Huamantla,Tlax'}).exec(console.log);
-DatosPersonales.create({ncontrol:'10370711',edad:'',lugar_residencia:'Huamantla,Tlax'}).exec(console.log);
+DatosPersonales.create({ncontrol:'10370711',edad:'',lugar_residencia:'Tlaxcala,Tlaxcala'}).exec(console.log);
 DatosPersonales.create({ncontrol:'10370712',edad:'',lugar_residencia:'Apizaco,Tlax'}).exec(console.log);
 DatosPersonales.create({ncontrol:'10370713',edad:'',lugar_residencia:'Apizaco,Tlax'}).exec(console.log);
 

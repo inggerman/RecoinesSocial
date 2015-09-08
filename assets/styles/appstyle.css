@@ -209,4 +209,23 @@ border-left-color: #2dcb73;
 margin-right: 7px;
 }
 
+.altonav{
+	height: 60px !important;
+}
+
+.avatarnav{
+	height: 25px;
+	width: 25px;
+	margin-right: 10px;
+}
+.bcblancon{
+	background-color: white !important;
+	color: black !important;
+	font-size: 1.2em !important;
+}
+
+.bcrojo{
+	background-color: red !important;
+}
+
 

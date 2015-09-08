@@ -9,6 +9,23 @@ module.exports = {
 
   attributes: {
 
+  	notificacion:{
+  		type:'string'
+  	},
+  	username:{
+  		type:'string'
+  	},
+  	ncontrol:{
+  		type:'string'
+  	},
+  	tipo:{
+  		type:'string'
+  	},
+  	leido:{
+  		type:'boolean'
+  	}
+
+
   }
 };
 

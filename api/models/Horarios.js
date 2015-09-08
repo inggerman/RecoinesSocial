@@ -9,24 +9,32 @@ module.exports = {
 
   attributes: {
 
-  	lunes:{
-  		type:'time'
-  	},
-  	martes:{
-  		type:'time'
-  	},
-  	miercoles:{
-  		type:'time'
-  	},
-  	jueves:{
-  		type:'time'
-  	},
-  	viernes:{
-  		type:'time'
-  	},
-  	sabado:{
-  		type:'time'
-  	}
+    
+
+    clave_materia:{
+      type:'string'
+    },
+    nombre_materia:{
+      type:'string'
+    },
+    lunes:{
+      type:'time'
+    },
+    martes:{
+      type:'time'
+    },
+    miercoles:{
+      type:'time'
+    },
+    jueves:{
+      type:'time'
+    },
+    viernes:{
+      type:'time'
+    },
+    sabado:{
+      type:'time'
+    }
 
   }
 };

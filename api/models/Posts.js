@@ -13,6 +13,9 @@ module.exports = {
   		type:'text',
   		required:true
   	},
+    mio:{
+      type:'string'
+    },
   	urlImage:{
   		type:'string'
   	},

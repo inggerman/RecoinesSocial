@@ -19,8 +19,8 @@ module.exports = {
 		});
 		}else{
 			var username=req.user[0].username;
-			console.log(username);
-			Users.findOne({username:username}).populate('idGroupMember').populate('idcarrera').exec(function(err,fulluser){
+			console.log("el user name que lleva el inicio cuando esta logeado es "+username);
+			Users.findOne({username:username}).populate('idGroupMember').populate('idcarrera').populate('iddatospersonales').exec(function(err,fulluser){
 				if(err) return res.negotiate(err);Roompost.findOne({nombre:username}).exec(function(err,room){
 					if(err){return res.negotiate(err)}
 

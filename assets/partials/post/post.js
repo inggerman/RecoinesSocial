@@ -2,21 +2,24 @@
 
 angular.module('myApp.post', [])
 .controller('PostCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
-
-$scope.nombre=Authentication.user ? Authentication.user.nombre : 'hola mundo';
-$scope.apellido_p=Authentication.user ? Authentication.user.apellido_p : 'hola mundo';
-$scope.apellido_m=Authentication.user ? Authentication.user.apellido_m : 'hola mundo';
-$scope.username=Authentication.user ? Authentication.user.username : 'hola mundo';
-$scope.ncontrol=Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
+$scope.ncontrol2=Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
+$scope.nombre=Authentication.fulluser ? Authentication.fulluser.nombre : 'hola mundo';
+$scope.apellido_p=Authentication.fulluser ? Authentication.fulluser.apellido_p : 'hola mundo';
+$scope.apellido_m=Authentication.fulluser ? Authentication.fulluser.apellido_m : 'hola mundo';
+$scope.username=Authentication.fulluser ? Authentication.fulluser.username : 'hola mundo';
+$scope.ncontrol=Authentication.fulluser ? Authentication.fulluser.ncontrol : 'hola mundo';
 $scope.roomnombre=Authentication.room ? Authentication.room.nombre : 'hola mundo';
 $scope.roomid=Authentication.room ? Authentication.room.id : 'hola mundo';
 $scope.fullname=$scope.nombre+" "+$scope.apellido_p+" "+$scope.apellido_m;
 $scope.carrera=Authentication.fulluser ? Authentication.fulluser.idcarrera.nombre_carrera : 'hola mundo';
-$scope.semestre=Authentication.user ? Authentication.user.semestre : 'hola mundo';
-$scope.rutaAvatar="images/fot/al/"+$scope.ncontrol.substring(0,4)+"/"+$scope.ncontrol+".jpg";
+$scope.semestre=Authentication.fulluser ? Authentication.fulluser.semestre : 'hola mundo';
+$scope.rutaAvatar="images/fot/+"$scope.ncontrol+".jpg";
 console.log($scope.rutaAvatar);
 $scope.posts=[];
 
+
+console.log($scope.username);
+console.log($scope.nombre);
  //var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
   console.log("este es el nombre de room "+$scope.roomnombre)
 
@@ -24,28 +27,68 @@ $scope.posts=[];
   BootstrapDialog.DEFAULT_TEXTS['OK'] = 'Sí';
   BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'No';
 
+  $scope.indexp="";
+  $scope.indexp2="";
+  $scope.indexpost="";
+  $scope.indexc1="";
+  $scope.indexc2="";
+  $scope.indexppostcom1="";
+  $scope.indexppostcom2="";
+
+
+  
+
+
   io.socket.on('roompost',function(message){
     console.log(message);
     console.log(message.added);
+    console.log(message.verb);
     switch(message.verb){
+
+
 
       case 'addedTo':
         console.log(message.added.username+""+$scope.username)
+
+        
         if(message.added.username==$scope.username){
 
+            //$scope.notificar($scope.tipo);
             $scope.postmio.push(message.added);
             $scope.$apply();
 
           }
-        $scope.posts.push(message.added);
-        $scope.$apply();
+        
+            
+            $scope.posts.push(message.added);
+            $scope.$apply();
+         
       
+        break;
+        case 'removedFrom':
+
+        // console.log("el id del post eliminado es" + {id:message.removedId});
+        // console.log("el id del post eliminado es" + $.param({id:message.removedId}));
+        // console.log({id:message.removedId});
+
+          
+              console.log($scope.indexp+""+$scope.indexp2);
+              $scope.posts.splice($scope.indexp2,1);
+              $scope.postmio.splice($scope.indexp,1);
+              $scope.$apply();
+              console.log($scope.posts);
+               console.log($scope.postmio);
+              
+              
+          
+
+        
         break;
 
     }
     
   });
-  
+
 
 
   //llenar los Post cuando se inicie la Pagina
@@ -68,7 +111,7 @@ $scope.posts=[];
     });
 // $scope.postmio=[];
 // 
-io.socket.get('/getpostme',{username:$scope.username},function(data){
+io.socket.get('/getpostme',{username:$scope.username,ncontrol:$scope.ncontrol},function(data){
       
           console.log(data);
           $scope.posts=data.user;
@@ -78,7 +121,7 @@ io.socket.get('/getpostme',{username:$scope.username},function(data){
       //console.log($scope.postmio);
     });
 
-io.socket.get('/getpostme',{username:$scope.username},function(data){
+io.socket.get('/getpostme',{username:$scope.username,ncontrol:$scope.ncontrol,mio:'yes'},function(data){
       
           console.log(data);
           
@@ -89,26 +132,50 @@ io.socket.get('/getpostme',{username:$scope.username},function(data){
       //console.log($scope.postmio);
     });
 
-    $scope.comentar={ver:false}
-     $scope.vercomentarios=function($index){
-      if($scope.comentar.ver==false){
-          $scope.comentar={ver:true}
-      }else
-      if($scope.comentar.ver==true){
-        $scope.comentar={ver:false}
-      }
+
+
+
+
+
+
+
       
+    $scope.ver=false;
+     $scope.vercomentarios=function($scope){
+      
+        
+        if(!$scope.ver){
+            $scope.ver=true;
+        }else{
+          $scope.ver=false;
+        }
 
      }; 
 
-    $scope.eliminarpost=function(idpost){
+    $scope.eliminarpost=function(idpost,index){
+      //alert();
+      
+              $scope.indexp=$scope.postmio.indexOf(index);
+              $scope.indexp2=$scope.posts.indexOf(index);
+
+
+        
+              
+       
+      
+      console.log($scope.indexp+""+$scope.indexp2);
+        console.log(idpost);
            BootstrapDialog.confirm('¿Estas Seguro que deseas eliminar esta publicacion?', function(result){
             if(result) {
-                io.socket.delete('/deletepost/'+idpost,function(resdata){
-                  console.log(resdata)
+                io.socket.delete('/deletepost/'+idpost,{idroom:$scope.roomid},function(resdata){
+
+                  console.log(resdata.idpost);
+                  $scope.dpost=resdata.idpost;
+                  console.log($scope.dpost);
+                  
                 });
             }else {
-                //console.log("No se ha Eliminado Nada");
+                console.log("No se ha Eliminado Nada");
             }
         });
         
@@ -141,6 +208,158 @@ io.socket.get('/getpostme',{username:$scope.username},function(data){
       });
         $scope.datos.post="";
       };
+
+    $scope.datos2={};
+    $scope.datos2.username=$scope.username;
+    $scope.datos2.iduser=$scope.ncontrol;
+    $scope.datos2.iduser2=$scope.ncontrol2;
+    $scope.datos2.idroom=$scope.roomid;
+    $scope.datos2.mio="no"; 
+      $scope.postearamigo=function(){
+        console.log("---------------------------------");
+        console.log($scope.datos2);
+        io.socket.get('/crearpostamigo',$scope.datos2,function(data){
+        
+        console.log(data);
+
+      });
+        $scope.datos2.post="";
+      };
+
+//////////////////Aqui empieza lo de Comentarios//////////////////////////////
+///
+///
+///
+///
+///
+io.socket.on('posts',function(message){
+    console.log(message);
+    console.log(message.added);
+    console.log(message.verb);
+    console.log($scope.posts);
+
+    switch(message.verb){
+
+
+
+      case 'addedTo':
+        
+        alert("entro"+ $scope.indexp);
+
+        $scope.postmio[$scope.indexp].idcomentario.push(message.added);
+        $scope.$apply();
+        console.log($scope.posts);
+
+         
+      
+        break;
+        case 'removedFrom':
+
+              
+           console.log($scope.indexc1);
+           console.log($scope.indexc2);
+           console.log($scope.indexppostcom1);
+           console.log($scope.indexppostcom2);
+            if($scope.indexc1>=0 || $scope.indexc1!=""){
+              alert("1");
+              $scope.postmio[$scope.indexc1].idcomentario.splice($scope.indexppostcom1,1);
+            }
+
+            if($scope.indexc2>=0 || $scope.indexc2!=""){
+              alert("2");
+              $scope.posts[$scope.indexc2].idcomentario.splice($scope.indexppostcom2,1);
+            }
+              
+              
+              $scope.$apply();
+              console.log($scope.posts.idcomentario);
+               console.log($scope.postmio.idcomentario);
+
+        
+        break;
+
+    }
+    
+  });
+
+$scope.ncontrol1= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
+   $scope.username1= Authentication.user ? Authentication.user.username : 'hola mundo'; 
+   $scope.nombre1= Authentication.user ? Authentication.user.nombre : 'hola mundo';
+   $scope.apellido1= Authentication.user ? Authentication.user.apellido_p : 'hola mundo'; 
+
+      $scope.datoscoment={};
+   $scope.comentar=function(idpost,indexc){
+    console.log(idpost);
+    console.log($scope.postmio.indexOf(indexc));
+    $scope.indexp=$scope.postmio.indexOf(indexc);
+
+       $scope.datoscoment.nombre=$scope.nombre1;
+      $scope.datoscoment.apellido=$scope.apellido1;
+      $scope.datoscoment.username=$scope.username1;
+      $scope.datoscoment.idpost=idpost;
+      $scope.datoscoment.iduser=$scope.ncontrol1;
+        console.log($scope.datoscoment);
+        io.socket.put('/crearcomentario',$scope.datoscoment,function(data){
+        
+        console.log(data);
+
+      });
+        $scope.datoscoment.comentario="";
+      };
+
+
+  $scope.eliminarcoment=function(idpost,indexc,indexp){
+
+     
+     console.log($scope.indexppostcom1=$scope.postmio.indexOf(indexp)); 
+     console.log($scope.indexppostcom2=$scope.posts.indexOf(indexp)); 
+     $scope.indexppostcom1=$scope.postmio.indexOf(indexp);
+     $scope.indexppostcom2=$scope.posts.indexOf(indexp);
+              
+              
+       console.log($scope.indexppostcom2);
+      if($scope.indexppostcom1!=-1){
+          $scope.indexc1=$scope.postmio[$scope.indexppostcom1].idcomentario.indexOf(indexc);
+      }
+
+      if($scope.indexppostcom2!=-1){
+         $scope.indexc2=$scope.posts[$scope.indexppostcom2].idcomentario.indexOf(indexc);
+      }
+      
+     
+
+      console.log($scope.indexc1);
+      console.log($scope.indexc2);
+
+
+
+        
+              
+       
+      
+      console.log($scope.indexc1+""+$scope.indexc2);
+        console.log(idpost);
+           BootstrapDialog.confirm('¿Estas Seguro que deseas eliminar esta publicacion?', function(result){
+            if(result) {
+                io.socket.delete('/eliminarcoment/'+idpost,{idpost:idpost},function(resdata){
+
+                  console.log(resdata.idpost);
+                  $scope.dpost=resdata.idpost;
+                  console.log($scope.dpost);
+                  
+                });
+            }else {
+                console.log("No se ha Eliminado Nada");
+            }
+        });
+        
+         
+        
+
+        
+      
+      }
+
 
 
 

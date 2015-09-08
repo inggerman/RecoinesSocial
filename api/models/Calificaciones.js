@@ -8,13 +8,31 @@
 module.exports = {
 
   attributes: {
+
+  	materia:{
+  		type:'string'
+  	},
+
+  	clave_materia:{
+  		type:'string'
+  	},
   	calificacion:{
-  		type:'string',
-  		require:true
+  		type:'float'
 
   	},
-  	id_Alumno:{
-  		model:'Alumnos'
+  	Pa1:{type:'float'},
+  	Pa2:{type:'float'},
+  	Pa3:{type:'float'},
+  	Pa4:{type:'float'},
+  	Pa5:{type:'float'},
+  	Pa6:{type:'float'},
+  	Pa7:{type:'float'},
+  	Pa8:{type:'float'},
+  	Pa9:{type:'float'},
+  	Pa10:{type:'float'},
+  	op:{type:'string'},
+  	ncontrol:{
+  		model:'Users'
   	}
   }
 };

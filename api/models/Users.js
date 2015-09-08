@@ -79,6 +79,10 @@ autoPK: false,
     },
     idcarrera:{
       model:'Carreras'
+    },
+    calificacion:{
+      collection:'Calificaciones',
+      via:'ncontrol'
     }
     // ,
     // idGroupCreador:{

@@ -1,0 +1,64 @@
+<div class="container-fluid" ng-controller="CalCtrl">
+	<div class="row">
+		
+		<div class="col-md-12">
+			<!-- <ul>
+				<li ng-repeat="cal in calificaciones">
+					{{cal.materia}}|{{cal.clave_materia}}|{{cal.calificacion}}
+				</li>
+			</ul> -->
+			<div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Calificaciones de {{fulluser}}</h3>
+                <br>
+                <h3 class="panel-title">Num. Control : {{ncontrol}}</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtrar</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        
+                        <th><input type="text" class="form-control" placeholder=" Clv. Materia" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Nombre Materia" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Cal." disabled></th>
+                        <th><input type="text" class="form-control" placeholder="op" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa1" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa2" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa3" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa4" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa5" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa6" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa7" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa8" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa9" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Pa10" disabled></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cal in calificaciones">
+                        <td>{{cal.clave_materia}}</td>
+                        <td>{{cal.materia}}</td>
+                        <td>{{cal.calificacion}}</td>
+                        <td>{{cal.op}}</td>
+                        <td>{{cal.Pa1}}</td>
+                        <td>{{cal.Pa2}}</td>
+                        <td>{{cal.Pa3}}</td>
+                        <td>{{cal.Pa4}}</td>
+                        <td>{{cal.Pa5}}</td>
+                        <td>{{cal.Pa6}}</td>
+                        <td>{{cal.Pa7}}</td>
+                        <td>{{cal.Pa8}}</td>
+                        <td>{{cal.Pa9}}</td>
+                        <td>{{cal.Pa10}}</td>
+
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+		</div>
+	</div>
+</div>

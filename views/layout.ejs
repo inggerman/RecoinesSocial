@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <base href="/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Recoines Social</title>
+  <title>Recoines Social - </title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,11 +25,13 @@
 <link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog-theme-plain.css">
 <link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog-custom-width.css">
 <link rel="stylesheet" href="/bower_components/ngDialog/csss/ngDialog-theme-default.min.css">
+<!-- <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap4.min.css">
+<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap4-theme.min.css"> -->
 
 </head>
 <body >
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top altonav">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -69,10 +71,10 @@
       <ul class="nav navbar-nav navbar-right">
         
         <%if(!req.user){%>
-          <li><a href="login">Iniciar sessión</a></li>
-          <li><a href="singup">Registrarse</a></li>
+          <li><a href="login">Ayuda</a></li>
+          <li><a href="singup">acerca de Recoines</a></li>
         <%}else{%>
-          <li><a href="/post/<%=req.user[0].username.replace(' ', '')%>">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
+          <li ><a href="/post/<%=req.user[0].username.replace(' ', '')%>"><img src="/images/fot/<%=req.user[0].ncontrol%>.jpg" class="avatarnav img-circle">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
           <li><a href="/">Inicio</a></li>
           
           
@@ -88,6 +90,12 @@
               <li><a href="logout">Cerrar Sesión</a></li>
             </ul>
           </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left" ng-controller="notificacionesCtrl">
+          <li><a href="#"> <span class="badge bcblancon"><i class="fa fa-user"></i> <sup class="badge bcrojo">1</sup></span></a></li>
+          <li><a href="#"> <span class="badge bcblancon"><i class="fa fa-comment"></i> <sup class="badge bcrojo">1</sup></span></a></li>
+          <li><a href="#"> <span class="badge bcblancon"><i class="fa fa-bell"></i> <sup class="badge bcrojo">{{numnoti}}</sup></span></a></li>
+          
         </ul>
         <%}%>
 
@@ -192,12 +200,16 @@
   <script src="/bower_components/moment/locale/es.js"></script>
   <script src="/bower_components/ngDialog/js/ngDialog.min.js"></script>
   <script src="/bower_components/angular-audio/app/angular.audio.js"></script>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/js/bootstrap4.min.js">
   <!-- // <script src="/bower_components/angular-route/angular-route.js"></script> -->
     <script src="app.js"></script>
    <script src="/partials/inicio/inicio.js"></script>
    <script src="/partials/post/post.js"></script>
    <script src="/partials/socket/socket.js"></script>
    <script src="/partials/agenda/agenda.js"></script>
+   <script src="/partials/notificaciones/notificaciones.js"></script>
+   <script src="/partials/calificaciones/calificaciones.js"></script>
+    <script src="/partials/comentarios/comentarios.js"></script>
    <script src="/partials/reloj/reloj.js"></script>
    <script src="/partials/public.js"></script>
    <script src="/js/services.js"></script>
@@ -208,6 +220,7 @@
   <script src="/js/dependencies/jquery.js"></script>
   <script src="/js/dependencies/bootstrap.min.js"></script>
   <script src="/js/dependencies/bootstrap-dialog.min.js"></script>
+  <script src="/js/poli.js"></script>
   <script src="/js/scriptsApp.js"></script>
 
   

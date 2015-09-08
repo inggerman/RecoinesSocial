@@ -49,12 +49,7 @@ autoPK: false,
   	},
   	ncontrolDocente:{
   		model:'Docentes'
-  	},
-    id_Materia:{
-      collection:'Calificaciones',
-      via:'id_Alumno'
-    }
-    
+  	}
 	
   },
   beforeCreate:function(values,next){

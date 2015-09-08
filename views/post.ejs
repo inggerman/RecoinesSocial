@@ -5,7 +5,7 @@
 
 
             
-               <div class="cover-container">
+               <div class="cover-container" style="background-image: url(http://www.portadastimeline.com/wp-content/uploads/2013/03/galaxias-lejanas-portada-para-facebook.jpg);">
                   <div class="social-cover"></div>
                   <div class="social-desc">
                      <div class="">
@@ -36,6 +36,7 @@
     	<div class="col-md-3">
         </div>
         <div class="col-md-9">
+        <%if(mio=="si"){%>
         <div class="post">
             <div class="row">
                 <div class="col-md-12">
@@ -54,7 +55,29 @@
         
             </div>
         </div>
-        <div ng-repeat="post in postmio |orderBy:'-createdAt'">
+        <%}else{%>
+        <div class="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget-area no-padding blank">
+                        <div class="status-upload">
+                            <form>
+                                <textarea placeholder="Iluminanos con tu conocimiento?" ng-model="datos2.post" required>{{nombre}}</textarea>
+                                <ul>
+                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                </ul>
+                                <button type="button" class="btn btn-success green" ng-click="postearamigo()"><i class="fa fa-share"></i> Publicar</button>
+                            </form>
+                        </div><!-- Status Upload  -->
+                    </div><!-- Widget Area -->
+                </div>
+        
+            </div>
+        </div>
+
+        <%}%>
+        <div ng-repeat="post in postmio |orderBy:'-createdAt'"  >
+        <input type="text" id="indexpost" value="{{postmio.indexOf(post)}}{{'-----'+$index}}" name="indexpost">
         <div ng-if="post.iduser2!=null">
             <div class="panel panel-white post panel-shadow" >
                 <div class="post-heading">
@@ -63,18 +86,18 @@
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="#">Editar</a></li>
-                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                              <li><a ng-click="eliminarpost(post.id,post)">Eliminar</a></li>
                             </ul>
                         </div>
                      <%}%>   
                     <div class="pull-left image">
-                        <img ng-src="images/fot/al/{{post.iduser2.ncontrol.substring(0,4)}}/{{post.iduser2.ncontrol}}.jpg" class="img-circle avatar" alt="user profile image">
+                        <img ng-src="images/fot/{{post.iduser2.ncontrol}}.jpg" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
 
                         <div class="title h5">
-                            <a href="#"><b>{{post.iduser2.nombre +" "+post.iduser2.apellido_p}} </b></a>
-                            Posteo a <a href="#"><b>{{post.iduser.nombre +" "+post.iduser.apellido_p}} </b></a>
+                            <a href="/post/{{post.iduser2.username}}"><b>{{post.iduser2.nombre +" "+post.iduser2.apellido_p}} </b></a>
+                            Posteo a <a href="/post/{{post.iduser.username}}"><b>{{post.iduser.nombre +" "+post.iduser.apellido_p}} </b></a>
                         </div>
                         <h6 class="<text-mu></text-mu>ted time"><span am-time-ago="post.createdAt"></span></h6>
                     </div>
@@ -91,31 +114,34 @@
                         <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-thumbs-up icon"></i>2
                         </a>
+                        <a href="" class="btn btn-success stat-item" ng-click="vercomentarios(this)">
+                            <i class="fa fa-comment icon badge"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
+                        </a>
                         <!-- <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-share icon"></i>12
                         </a> -->
                     </div>
                 </div>
-                <div class="post-footer">
+                <div class="post-footer" id="verco" ng-show="ver">
                     <div class="input-group"> 
-                        <input class="form-control" placeholder="Agregar Comentario" type="text">
+                        <input class="form-control" placeholder="Agregar Comentario" type="text" ng-model="datoscoment.comentario">
                         <span class="input-group-addon">
-                            <a href="#"><i class="fa fa-edit"></i></a>  
+                            <a ng-click="comentar(post.id,post)"><i class="fa fa-edit"></i></a>  
                         </span>
                     </div>
-                    <ul class="comments-list" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
+                    <ul class="comments-list" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'" >
                         <li class="comment">
                         <%if(mio=='si'){%>
                         <div class="dropdown pull-right">
                                 <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                   <li><a href="#">Editar</a></li>
-                                  <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                                  <li><a ng-click="eliminarcoment(comentario.id,comentario,post)">Eliminar</a></li>
                                 </ul>
                         </div>
                          <%}%>  
                                 <a class="pull-left" href="#">
-                                        <img class="avatar" ng-src="images/fot/al/{{comentario.iduser.substring(0,4)}}/{{comentario.iduser}}.jpg" alt="avatar">
+                                        <img class="avatar" ng-src="images/fot/{{comentario.iduser}}.jpg" alt="avatar">
                                     </a>
                                     <div class="comment-body">
                                         <div class="comment-heading">
@@ -138,16 +164,16 @@
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="#">Editar</a></li>
-                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                              <li><a ng-click="eliminarpost(post.id,post)">Eliminar</a></li>
                             </ul>
                         </div>
                      <%}%>  
                     <div class="pull-left image">
-                        <img ng-src="images/fot/al/{{post.iduser.ncontrol.substring(0,4)}}/{{post.iduser.ncontrol}}.jpg" class="img-circle avatar" alt="user profile image">
+                        <img ng-src="images/fot/{{post.iduser.ncontrol}}.jpg" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
-                            <a href="#"><b>{{post.iduser.nombre +" "+post.iduser.apellido_p}} </b></a>
+                            <a href="/post/{{post.iduser.username}}"><b>{{post.iduser.nombre +" "+post.iduser.apellido_p}} </b></a>
                             Creo un post
                         </div>
                         <h6 class="<text-mu></text-mu>ted time"><span am-time-ago="post.createdAt"></span></h6>
@@ -165,16 +191,19 @@
                         <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-thumbs-up icon"></i>2
                         </a>
+                        <a href="" class="btn btn-success stat-item" ng-click="vercomentarios(this)">
+                            <i class="fa fa-comment icon badge"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
+                        </a>
                         <!-- <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-share icon"></i>12
                         </a> -->
                     </div>
                 </div>
-                <div class="post-footer">
+                <div class="post-footer" id="verco" ng-show="ver">
                     <div class="input-group"> 
-                        <input class="form-control" placeholder="Agregar Comentario" type="text">
+                        <input class="form-control" placeholder="Agregar Comentario" type="text" ng-model="datoscoment.comentario">
                         <span class="input-group-addon">
-                            <a href="#"><i class="fa fa-edit"></i></a>  
+                            <a ng-click="comentar(post.id,post)"><i class="fa fa-edit"></i></a>  
                         </span>
                     </div>
                     <ul class="comments-list" >
@@ -185,12 +214,12 @@
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="#">Editar</a></li>
-                              <li><a ng-click="eliminarpost(post.id)">Eliminar</a></li>
+                              <li><a ng-click="eliminarcoment(comentario.id,comentario,post)">Eliminar</a></li>
                             </ul>
                         </div>
                      <%}%>  
                                     <a class="pull-left" href="#">
-                                        <img class="avatar" ng-src="images/fot/al/{{comentario.iduser.substring(0,4)}}/{{comentario.iduser}}.jpg" alt="avatar">
+                                        <img class="avatar" ng-src="images/fot/{{comentario.iduser}}.jpg" alt="avatar">
                                     </a>
                                     <div class="comment-body">
                                         <div class="comment-heading">
@@ -218,4 +247,9 @@
       window.fulluser=<%-JSON.stringify(fulluser || 'null')%>;
 </script>
 
+<%}else{%>
+    <script type="text/javascript">
+      window.room=<%-JSON.stringify(room || 'null')%>;
+      window.fulluser=<%-JSON.stringify(fulluser || 'null')%>;
+</script>
 <%}%>

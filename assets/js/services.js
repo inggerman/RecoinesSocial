@@ -12,11 +12,13 @@ angular.module('myApp.services', [])
 		this.user=window.user;
 		this.room=window.room;
 		this.fulluser=window.fulluser;
+		this.fulluser1=window.fulluser1;
 
 		return{
 			user:this.user,
 			room:this.room,
 			fulluser:this.fulluser
+			//fulluser1=this.fulluser1;
 		};
 	}
 	]);
