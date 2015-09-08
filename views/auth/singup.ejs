@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -39,5 +39,101 @@
 		</div>
 		<div class="col-md-2"></div>
 	</div>
-</div>
+</div> -->
 
+	
+	
+		<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> <%=req.flash('msj')%>
+</div>
+	
+
+	<div class="container" ng-controller="suCtrl">
+    <div class="row" >
+        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+            <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Registarse!</legend>
+            <form action="/singup" method="post" class="form" role="form">
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    <input class="form-control" name="ncontrol" placeholder="Numero de control" type="text"
+                        required autofocus />
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <input class="form-control" name="username" placeholder="Tu username" type="text" required />
+                </div>
+            </div>
+            <input class="form-control" name="nombre" placeholder="Tu nombre" type="text" />
+            <input class="form-control" name="apellido_p" placeholder="Apellido Paterno" type="text" />
+            <input class="form-control" name="apellido_m" placeholder="Apellido Materno" type="text" />
+            <input class="form-control" name="password" placeholder="Contraseña" type="password" />
+
+            <input class="form-control" name="correo_inst" placeholder="Correo Institucional" type="email" />
+            <input class="form-control" name="correo_pers" placeholder="Correo Personal" type="email" />
+            
+            <select class="form-control" name="tipo_user" id="tipo">
+			  <option >--Selecionar tipo de usuario--</option>
+			  <option value="estudiante">Estudiante</option>
+			  <option value="docente">Docente</option>
+			  
+			</select>
+			
+			<select class="form-control" name="semestre" id="semestre">
+			  <option >--Selecionar Semestre--</option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			  <option value="5">5</option>
+			  <option value="6">6</option>
+			  <option value="7">7</option>
+			  <option value="8">8</option>
+			  <option value="9">9</option>
+			  <option value="10">10</option>
+			  <option value="11">11</option>
+			  <option value="12">12</option>
+			  				  
+			</select>
+
+			<select class="form-control" name="idcarrera" id="carrera">
+			  <option >--Selecionar Carrera--</option>
+			  <option ng-repeat="carrera in carreras" value="{{carrera.clave_carrera}}">{{carrera.nombre_carrera}}</option>
+			  
+			  				  
+			</select>
+
+           <!--  <label for="">
+                Birth Date</label> -->
+            <!-- <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <select class="form-control">
+                        <option value="Month">Month</option>
+                    </select>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <select class="form-control">
+                        <option value="Day">Day</option>
+                    </select>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <select class="form-control">
+                        <option value="Year">Year</option>
+                    </select>
+                </div>
+            </div> -->
+           <!--  <label class="radio-inline">
+                <input type="radio" name="sex" id="inlineCheckbox1" value="male" />
+                
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sex" id="inlineCheckbox2" value="female" />
+                Female
+            </label> -->
+            <br />
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>

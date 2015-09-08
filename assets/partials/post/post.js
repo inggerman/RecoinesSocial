@@ -13,7 +13,7 @@ $scope.roomid=Authentication.room ? Authentication.room.id : 'hola mundo';
 $scope.fullname=$scope.nombre+" "+$scope.apellido_p+" "+$scope.apellido_m;
 $scope.carrera=Authentication.fulluser ? Authentication.fulluser.idcarrera.nombre_carrera : 'hola mundo';
 $scope.semestre=Authentication.fulluser ? Authentication.fulluser.semestre : 'hola mundo';
-$scope.rutaAvatar="images/fot/+"$scope.ncontrol+".jpg";
+$scope.rutaAvatar="images/fot/"+$scope.ncontrol+".jpg";
 console.log($scope.rutaAvatar);
 $scope.posts=[];
 

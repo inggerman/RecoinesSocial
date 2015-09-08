@@ -172,6 +172,10 @@ module.exports.routes = {
   'GET /calificaciones':{
     controller:'CalificacionesController',
     action:'calificaciones'
+  },
+  'POST /getcarreras':{
+      controller:'CarrerasController',
+      action:'getcarreras'
   }
   /***************************************************************************
   *                                                                          *

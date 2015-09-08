@@ -1,17 +1,25 @@
 'use strict';
 
-angular.module('myApp.post', ['ngRoute'])
+angular.module('myApp.su', [])
+.controller('suCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
 
-.config(['$routeProvider', function($routeProvider) {
+console.log("ooo");
+$scope.carreras={};
 
-  $routeProvider.when('/post', {
-    templateUrl: '/partials/post/post.html',
-    controller: 'PostCtrl'
-  });
-}])
+	$http({
+            method  : 'POST',
+            url     : '/getcarreras'
+           })
+            .success(function(data) {
 
-.controller('PostCtrl', ['$scope','$http','Authentication',function($scope,$http,Authentication) {
+              /*console.log(Date.parse(data.agenda.recordatorio));
+              data.agenda.recordatorio=Date.parse(data.agenda.recordatorio);*/
+              console.log(data);
+              $scope.carreras=data.carreras;
+              
+              
+          });
 
-
+	
 
 }]);

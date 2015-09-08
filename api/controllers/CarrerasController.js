@@ -6,6 +6,14 @@
  */
 
 module.exports = {
+
+	getcarreras:function(req,res){
+
+		Carreras.find().exec(function(err,carreras){
+
+			return res.send({carreras:carreras});
+		});
+	}
 	
 };
 

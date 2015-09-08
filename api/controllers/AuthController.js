@@ -9,10 +9,11 @@ module.exports = {
         passport.authenticate('local', function(err, user, info) {
           console.log(user);
             if( (err)||(!user) ) {
-                return res.send({
-                    message: 'Fallo la identificacion del user'
-                });
-                res.send(err);
+                req.flash('no','Fallo la Autentificación del Usuario password o n.control incorrectors');
+
+                req.flash('fail','Fallo la Autentificación del usuario, contraseña o numero de control incorrectos');
+                return res.redirect('/login');
+                //res.send(err);
             }
             req.logIn(user, function(err) {
                 if(err) res.send(err);
@@ -35,26 +36,97 @@ module.exports = {
         var apellidom=req.param('apellido_m');
         var correoi=req.param('correo_inst');
         var correop=req.param('correo_pers');
+        var username=req.param('username');
+        var tipouser=req.param('tipo_user');
+        var semestre=req.param('semestre');
+        var idcarrera=req.param('idcarrera');
 
-        Users.create({ncontrol:ncontrol,password:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop}).exec(function(err,user){
+        console.log(ncontrol+" "+nombre+" "+password+" "+apellidop+" "+apellidom+" "+correoi+" "+correop+" "+username+" "+tipouser+" "+semestre);
 
-            if(err){
-                return res.redirect('/singup');
-            } 
+        // if(tipouser=='estudiante'){
 
-            req.logIn(user,function(err){
-            if(err) return negotiate(err);
-             req.flash('msj','Bienvedino A recoines');
-            return res.redirect('/');
-        });
-            
-        });
+        //     Alumnos.count({ncontrol:ncontrol}).exec(function(err,num){
+        //     if(err){return res.negotitate(err)}
 
-        }else{
-           return res.view(); 
-        }
+        //      if(num>0){
+
+        //               Users.create({username:username,ncontrol:ncontrol,password:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop,tipo_user:tipouser,semestre:semestre}).exec(function(err,user){
+
+        //                     if(err){
+        //                         return res.redirect('/singup');
+        //                     } 
+
+        //                     req.logIn(user,function(err){
+        //                     if(err) return negotiate(err);
+        //                      req.flash('msj','Bienvedino A recoines');
+        //                     return res.redirect('/');
+        //                 });
+                            
+        //                 });
+        //      }else{
+
+        //         req.flash('msj','No hay un Alumno registrado con este numero de control verifica tus datos');
+        //             return res.redirect('/singup');
+        //      }   
+
+        // });
+
+
+        // }else{
+
+        //      Docentes.count({ncontrol:ncontrol}).exec(function(err,num){
+        //     if(err){return res.negotitate(err)}
+
+        //          if(num>0){
+
+        //               Users.create({username:username,ncontrol:ncontrol,password:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop,tipo_user:tipouser}).exec(function(err,user){
+
+        //                     if(err){
+        //                         return res.redirect('/singup');
+        //                     } 
+
+        //                     req.logIn(user,function(err){
+        //                         if(err) return negotiate(err);
+        //                          req.flash('msj','Bienvedino A recoines');
+        //                         return res.redirect('/');
+        //                 });
+                            
+        //                 });
+        //          }else{
+        //             req.flash('msj','No hay un Docente registrado con este numero de control verifica tus datos');
+        //             return res.redirect('/singup');
+
+        //          }   
+
+        //     });
+
+        // }
+
 
         
+
+      
+    }
+       
+        Users.create({username:username,ncontrol:ncontrol,password:password,nombre:nombre,apellido_p:apellidop,apellido_m:apellidom,correo_inst:correoi,correo_pers:correop,tipo_user:tipouser,semestre:semestre,idcarrera:idcarrera}).exec(function(err,user){
+            if(err){
+                return res.redirect('/singup');
+             } 
+
+             Roompost.create({nombre:username}).exec(function(){
+
+                    req.logIn(user,function(err){
+                        if(err) return negotiate(err);
+                        req.flash('msj','Bienvedino A recoines');
+                         return res.redirect('/');
+                    });
+
+             });
+
+           
+                            
+                            
+        });
         
     },
 

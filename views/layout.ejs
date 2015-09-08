@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <base href="/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Recoines Social - </title>
+  <title>Recoines Social</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -71,8 +71,8 @@
       <ul class="nav navbar-nav navbar-right">
         
         <%if(!req.user){%>
-          <li><a href="login">Ayuda</a></li>
-          <li><a href="singup">acerca de Recoines</a></li>
+          <li><a href="login">Iniciar sesión</a></li>
+          <li><a href="singup">Registrarse</a></li>
         <%}else{%>
           <li ><a href="/post/<%=req.user[0].username.replace(' ', '')%>"><img src="/images/fot/<%=req.user[0].ncontrol%>.jpg" class="avatarnav img-circle">Bienvenido <%=req.user[0].nombre +" "+ req.user[0].apellido_p%></a></li>
           <li><a href="/">Inicio</a></li>
@@ -113,6 +113,8 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -210,6 +212,7 @@
    <script src="/partials/notificaciones/notificaciones.js"></script>
    <script src="/partials/calificaciones/calificaciones.js"></script>
     <script src="/partials/comentarios/comentarios.js"></script>
+    <script src="/partials/auth/singup.js"></script>
    <script src="/partials/reloj/reloj.js"></script>
    <script src="/partials/public.js"></script>
    <script src="/js/services.js"></script>
@@ -220,7 +223,7 @@
   <script src="/js/dependencies/jquery.js"></script>
   <script src="/js/dependencies/bootstrap.min.js"></script>
   <script src="/js/dependencies/bootstrap-dialog.min.js"></script>
-  <script src="/js/poli.js"></script>
+ 
   <script src="/js/scriptsApp.js"></script>
 
   

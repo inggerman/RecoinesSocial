@@ -6,6 +6,7 @@ angular.module('myApp', [
   'ngDialog',
   'ngAudio',
   'myApp.inicio',
+  'myApp.su',
   'myApp.notificaciones',
   'myApp.calificaciones',
   'myApp.comentarios',

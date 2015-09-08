@@ -47,6 +47,9 @@ autoPK: false,
     semestre:{
       type:'string'
     },
+    tipo_user:{
+      type:'string'
+    },
   	
     posts:{
       collection:'Posts',
@@ -97,7 +100,7 @@ autoPK: false,
   	hashPass(values,next);
   },
   beforeUpdate: function(values, next) {
-		if(values.password) hashPassword(values, next);
+		if(values.password) hashPass(values, next);
 		else next();
 	}
 };

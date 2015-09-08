@@ -3,12 +3,26 @@
 // });  
 // 
 // poligonbackground
-$('#pol').particleground({
-    dotColor: '#16a085',
-    lineColor: '#1abc9c'
-});
+// $(document).ready(function() {
+//   $('#poli').particleground({
+//     dotColor: '#5cbdaa',
+//     lineColor: '#5cbdaa'
+//   });
+// });
+     $('#semestre').hide();
+     $('#carrera').hide();
+    $('select#tipo').on('change',function(){
+        var valor = $(this).val();
+        
 
-
+        if(valor=='estudiante'){
+            $('#semestre').show();
+             $('#carrera').show();
+        }else{
+             $('#semestre').hide();
+              $('#carrera').hide();
+        }
+    });
 $(function(){
     var postActions   = $( '#list_PostActions' );
     var currentAction = $( '#list_PostActions li.active' );

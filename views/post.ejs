@@ -20,7 +20,8 @@
                      <h4 class="fg-white text-center">{{fullname}}</h4>
                      <h5 class="fg-white text-center" style="opacity:0.8;">{{carrera}}</h5>
                      <h5 class="fg-white text-center" style="opacity:0.8;">{{semestre}} Semestre</h5>
-                     <h5 class="fg-white text-center" style="opacity:0.8;"><%=fulluser.iddatospersonales.lugar_residencia%></h5>
+                     <%if(fulluser.iddatospersonales!=undefined){%>
+                     <h5 class="fg-white text-center" style="opacity:0.8;"><%=fulluser.iddatospersonales.lugar_residencia%></h5><%}%>
                      <hr class="border-black75" style="border-width:2px;" >
                      <div class="text-center">
                         <!-- <button role="button" class="btn btn-inverse btn-outlined btn-retainBg btn-brightblue" type="button">
@@ -43,11 +44,11 @@
                     <div class="widget-area no-padding blank">
                         <div class="status-upload">
                             <form>
-                                <textarea placeholder="Iluminanos con tu conocimiento?" ng-model="datos.post" required>{{nombre}}</textarea>
+                                <textarea placeholder="Iluminanos con tu conocimiento?" ng-model="datos.post" required></textarea>
                                 <ul>
                                     <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
                                 </ul>
-                                <button type="button" class="btn btn-success green" ng-click="postear()"><i class="fa fa-share"></i> Publicar</button>
+                                <button type="suubmit" class="btn btn-success green" ng-click="postear()"><i class="fa fa-share"></i> Publicar</button>
                             </form>
                         </div><!-- Status Upload  -->
                     </div><!-- Widget Area -->
