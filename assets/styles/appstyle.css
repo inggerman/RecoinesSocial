@@ -12,9 +12,7 @@
 	font-family: Lato;
 }
 
-body{
-	
-}
+
 .glyphicon { margin-right:10px; }
 .panel-body { padding:0px; }
 .panel-body table tr td { padding-left: 15px }
@@ -85,7 +83,7 @@ height: 67px;
 
 
 
-/**/
+/*esta es la parte del cuadro de postear*/
 
 .widget-area.blank {
 background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -209,10 +207,10 @@ border-left-color: #2dcb73;
 margin-right: 7px;
 }
 
-.altonav{
+/*.altonav{
 	height: 60px !important;
 }
-
+*/
 .avatarnav{
 	height: 25px;
 	width: 25px;
@@ -230,3 +228,30 @@ margin-right: 7px;
 
 /*index*/
 
+.btncom{
+	font-size: .8em !important;
+}
+.btn-portada{
+	display: inline;
+	list-style:none;
+
+}
+
+.btn-portada li a{
+	color:white  !important;
+	
+}
+
+.btn-portada li a:hover{
+	color: #2c3e50 !important;
+	
+}
+
+.frase-portada{
+	background-color: rgba(44, 62, 80,.3);
+}
+
+.lista-panel-amigos{
+	list-style:none;
+	display: inline;
+}

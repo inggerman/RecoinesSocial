@@ -86,6 +86,9 @@ autoPK: false,
     calificacion:{
       collection:'Calificaciones',
       via:'ncontrol'
+    },
+    frase:{
+      model:'Frases'
     }
     // ,
     // idGroupCreador:{

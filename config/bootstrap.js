@@ -11,6 +11,9 @@
 
 module.exports.bootstrap = function(cb) {
 
+	Frases.create({frase:'Un ordenador es para mí la herramienta más sorprendente que hayamos ideado. Es el equivalente a una bicicleta para nuestras mentes.',autor:'Steve Jobs',ncontrol:'10370710'}).exec(console.log);
+	Frases.create({frase:'Una Torta de Jamon',autor:'Chavo del 8',ncontrol:'10370711'}).exec(console.log);
+
 	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370710'}).exec(console.log);
 	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370711'}).exec(console.log);
 	Calificaciones.create({materia:'Programacion',clave_materia:'m1',op:'00',ncontrol:'10370712'}).exec(console.log);
@@ -78,8 +81,8 @@ module.exports.bootstrap = function(cb) {
 // Usuarios.create({name:'Pedro',apellidoPaterno:'Briones',apellidoMaterno:'Lopez',username:'lbp'}).exec(console.log);
 // Usuarios.create({name:'Anacleto',apellidoPaterno:'smith',apellidoMaterno:'Mendez',username:'asl'}).exec(console.log);
 // Usuarios.create({name:'Aurelio',apellidoPaterno:'casillas',apellidoMaterno:'Lopez',username:'acl'}).exec(console.log);
-Users.create({ncontrol:'10370710',username:'gerhl92',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com',idcarrera:'ct',semestre:'10',iddatospersonales:'10370710'}).exec(console.log);
-Users.create({ncontrol:'10370711',username:'hlg',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com',idcarrera:'ct',semestre:'10',iddatospersonales:'10370711'}).exec(console.log);
+Users.create({ncontrol:'10370710',username:'gerhl92',password:'perro',nombre:'Germán',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato1@cc.com',idcarrera:'ct',semestre:'10',iddatospersonales:'10370710',frase:'1'}).exec(console.log);
+Users.create({ncontrol:'10370711',username:'hlg',password:'perro',nombre:'fgfdg',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato2@cc.com',idcarrera:'ct',semestre:'10',iddatospersonales:'10370711',frase:'2'}).exec(console.log);
 Users.create({ncontrol:'10370712',username:'marlux',password:'perro',nombre:'Maria Luisa',apellido_p:'Xochihua',apellido_m:'lpz',correo_inst:'pato3@cc.com',idcarrera:'ct',semestre:'5',iddatospersonales:'10370712'}).exec(console.log);
 Users.create({ncontrol:'10370713',username:'pascuis',password:'perro',nombre:'Pascual',apellido_p:'Hernandez',apellido_m:'lpz',correo_inst:'pato14@cc.com',idcarrera:'ct',semestre:'5',iddatospersonales:'10370713'}).exec(console.log);
 

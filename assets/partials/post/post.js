@@ -13,13 +13,18 @@ $scope.roomid=Authentication.room ? Authentication.room.id : 'hola mundo';
 $scope.fullname=$scope.nombre+" "+$scope.apellido_p+" "+$scope.apellido_m;
 $scope.carrera=Authentication.fulluser ? Authentication.fulluser.idcarrera.nombre_carrera : 'hola mundo';
 $scope.semestre=Authentication.fulluser ? Authentication.fulluser.semestre : 'hola mundo';
+$scope.frase=Authentication.fulluser ? Authentication.fulluser.frase.frase : 'hola mundo';
+$scope.autor=Authentication.fulluser ? Authentication.fulluser.frase.autor : 'hola mundo';
 $scope.rutaAvatar="images/fot/"+$scope.ncontrol+".jpg";
+$scope.amigos=Authentication.fulluser ? Authentication.fulluser.idamigo: 'hola mundo';
 console.log($scope.rutaAvatar);
 $scope.posts=[];
-
+$scope.indexpostlike="";
 
 console.log($scope.username);
 console.log($scope.nombre);
+console.log($scope.frase);
+
  //var ncontrol= Authentication.user ? Authentication.user.ncontrol : 'hola mundo';
   console.log("este es el nombre de room "+$scope.roomnombre)
 
@@ -359,6 +364,28 @@ $scope.ncontrol1= Authentication.user ? Authentication.user.ncontrol : 'hola mun
         
       
       }
+
+
+    //   $scope.megusta=function(idpost,countlike,index){
+    //     $scope.indexpostlike=index;
+    //     var inclike=parseInt(countlike)+1;
+    //     console.log(inclike);
+    //     $http({
+    //         method  : 'POST',
+    //         url     : '/megusta',
+    //         data    : {megusta:inclike}
+    //        })
+    //         .success(function(data) {
+
+    //           /*console.log(Date.parse(data.agenda.recordatorio));
+    //           data.agenda.recordatorio=Date.parse(data.agenda.recordatorio);*/
+    //           console.log(data.megusta);
+    //           $scope.post=data.megusta;
+              
+              
+
+    //   }
+    // }
 
 
 

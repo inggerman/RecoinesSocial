@@ -6,13 +6,15 @@
 
             
                <div class="cover-container" style="background-image: url(http://www.portadastimeline.com/wp-content/uploads/2013/03/galaxias-lejanas-portada-para-facebook.jpg);">
-                  <div class="social-cover"></div>
-                  <div class="social-desc">
+                  <!-- <div class="social-cover">wqeqw</div> -->
+                  <div class="social-desc  frase-portada">
                      <div class="">
-                        <p><h3 class="fg-white">Un ordenador es para mí la herramienta más sorprendente que hayamos ideado. Es el equivalente a una bicicleta para nuestras mentes.</h3></p>
-                        <h5 class="fg-white">- Steve Jobs</h5>
-                        <div style="margin-top:50px;">
-                        </div>
+                        <p contentEditable="true" ><h3 class="fg-white" contentEditable="true">{{frase}}</h3></p>
+                        <h5 class="fg-white">- {{autor}}</h5>
+                        <ul class="btn-portada">
+                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-pencil-square-o"></i></a></li>
+                                </ul>
+                        
                      </div>
                   </div>
                   <div class="social-avatar" >
@@ -35,6 +37,41 @@
     </div>
 	<div class="row">
     	<div class="col-md-3">
+        <br>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Información Personal</h3>
+              </div>
+              <div class="panel-body">
+                Panel content
+              </div>
+            </div>
+            
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Amigos</h3>
+              </div>
+              <div class="panel-body">
+                <ul class="lista-panel-amigos">
+                    <li ng-repeat="amigo in amigos |limitTo:10" >
+                        <img src="/images/fot/{{amigo.username}}}.jpg" class="avatarnav img-circle"><a href="/post/{{amigo.username}}">{{amigo.name+" "+amigo.apellidoPaterno}}</a>
+                    </li>
+                    <li><a href="">Ver todas las amistades</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Acerca de mi</h3>
+              </div>
+              <div class="panel-body">
+                <p></p>
+              </div>
+            </div>
+
+            
+
         </div>
         <div class="col-md-9">
         <%if(mio=="si"){%>
@@ -106,17 +143,14 @@
                 <div class="post-description"> 
                     <p>{{post.post}}</p>
                     <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>Excelente 2
+                        <a href="" class="stat-item" ng-click="megusta(post.id,post.megusta)">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario!=''">  {{post.megusta}}</strong></sup></i>Me gusta
                         </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>Bueno   2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="" class="btn btn-success stat-item" ng-click="vercomentarios(this)">
-                            <i class="fa fa-comment icon badge"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
+                        <a href="#" class="stat-item">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>No me gusta</a>
+                        
+                        <a href="" class="stat-item" ng-click="vercomentarios(this)">
+                            <i class="fa fa-comment icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
                         </a>
                         <!-- <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-share icon"></i>12
@@ -124,13 +158,8 @@
                     </div>
                 </div>
                 <div class="post-footer" id="verco" ng-show="ver">
-                    <div class="input-group"> 
-                        <input class="form-control" placeholder="Agregar Comentario" type="text" ng-model="datoscoment.comentario">
-                        <span class="input-group-addon">
-                            <a ng-click="comentar(post.id,post)"><i class="fa fa-edit"></i></a>  
-                        </span>
-                    </div>
-                    <ul class="comments-list" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'" >
+                    
+                    <ul class="comments-list" ng-repeat="comentario in post.idcomentario" >
                         <li class="comment">
                         <%if(mio=='si'){%>
                         <div class="dropdown pull-right">
@@ -151,8 +180,22 @@
                                         </div>
                                         <p>{{comentario.comentario}}</p>
                                     </div>
+                                    <div class="stats">
+                                        <a href="#" class="stat-item btncom">
+                                            <i class="fa fa-thumbs-up icon  "><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>Me gusta
+                                        </a>
+                                        <a href="#" class="stat-item btncom">
+                                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>No me gusta</a>
+                                        
+                                    </div> 
                         </li>
                     </ul>
+                    <div class="input-group"> 
+                        <input class="form-control" placeholder="Agregar Comentario" type="text" ng-model="datoscoment.comentario">
+                        <span class="input-group-addon">
+                            <a ng-click="comentar(post.id,post)"><i class="fa fa-edit"></i></a>  
+                        </span>
+                    </div>
                 </div>
             </div>
         </div> 
@@ -183,17 +226,13 @@
                 <div class="post-description"> 
                     <p>{{post.post}}</p>
                     <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
+                        <a href="#" class="stat-item">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>Me gusta
                         </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="" class="btn btn-success stat-item" ng-click="vercomentarios(this)">
-                            <i class="fa fa-comment icon badge"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
+                        <a href="#" class=" stat-item">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>No me gusta</a>
+                        <a href="" class="stat-item" ng-click="vercomentarios(this)">
+                            <i class="fa fa-comment icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
                         </a>
                         <!-- <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-share icon"></i>12
@@ -201,14 +240,9 @@
                     </div>
                 </div>
                 <div class="post-footer" id="verco" ng-show="ver">
-                    <div class="input-group"> 
-                        <input class="form-control" placeholder="Agregar Comentario" type="text" ng-model="datoscoment.comentario">
-                        <span class="input-group-addon">
-                            <a ng-click="comentar(post.id,post)"><i class="fa fa-edit"></i></a>  
-                        </span>
-                    </div>
+                    
                     <ul class="comments-list" >
-                        <li class="comment" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
+                        <li class="comment" ng-repeat="comentario in post.idcomentario">
                             
                             <%if(mio=='si'){%>
                     <div class="dropdown pull-right">
@@ -228,10 +262,25 @@
                                             <h5 class="time"><h6 class="time"><span am-time-ago="comentario.createdAt"></span></h6></h5>
                                         </div>
                                         <p>{{comentario.comentario}}</p>
+
                                     </div>
+                                   <div class="stats">
+                                        <a href="#" class="stat-item">
+                                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>Me gusta
+                                        </a>
+                                        <a href="#" class="stat-item">
+                                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>No me gusta</a>
+                                        
+                                    </div> 
                              
                         </li>
                     </ul>
+                    <div class="input-group"> 
+                        <input class="form-control" placeholder="Agregar Comentario" type="text" ng-model="datoscoment.comentario">
+                        <span class="input-group-addon">
+                            <a ng-click="comentar(post.id,post)"><i class="fa fa-edit"></i></a>  
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>  

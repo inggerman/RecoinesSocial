@@ -241,17 +241,13 @@
                 <div class="post-description"> 
                     <p>{{post.post}}</p>
                     <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>Excelente 2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>Bueno   2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="" class="btn btn-success stat-item" ng-click="vercomentarios(this)">
-                            <i class="fa fa-comment icon badge"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
+                        <a href="#" class=" stat-item">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>Me gusta</a>
+                        <a href="#" class=" stat-item">
+                            <i class="fa fa-thumbs-down icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>No me gusta</a>
+                        
+                        <a href="" class=" stat-item" ng-click="vercomentarios(this)">
+                            <i class="fa fa-comment icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
                         </a>
                         <!-- <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-share icon"></i>12
@@ -283,6 +279,12 @@
                                             <h5 class="time"><h6 class="time"><span am-time-ago="comentario.createdAt"></span></h6></h5>
                                         </div>
                                         <p>{{comentario.comentario}}</p>
+                                        <div class="stats">
+                                          <a href="#" class="btn btn-default stat-item btncom">
+                                              <i class="fa fa-thumbs-up icon"></i>Me gusta</a>
+                                          <a href="#" class="btn btn-default stat-item btncom">
+                                              <i class="fa fa-thumbs-up icon"></i>No me gusta</a>
+                                      </div>
                                     </div>
                         </li>
                     </ul>
@@ -314,17 +316,12 @@
                 <div class="post-description"> 
                     <p>{{post.post}}</p>
                     <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="" class="btn btn-success stat-item" ng-click="vercomentarios(this)">
-                            <i class="fa fa-comment icon badge"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
+                        <a href="#" class="stat-item">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>Me gusta</a>
+                        <a href="#" class=" stat-item">
+                            <i class="fa fa-thumbs-up icon"><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>No me gusta</a>
+                        <a href="" class=" stat-item" ng-click="vercomentarios(this)">
+                            <i class="fa fa-comment icon "><sup style="font-size:13px;"><strong ng-if="post.idcomentario.length!=0">  {{post.idcomentario.length}}</strong></sup></i>comentar
                         </a>
                         <!-- <a href="#" class="btn btn-default stat-item">
                             <i class="fa fa-share icon"></i>12
@@ -332,14 +329,9 @@
                     </div>
                 </div>
                 <div class="post-footer" id="verco" ng-show="ver">
-                    <div class="input-group"> 
-                        <input class="form-control" placeholder="Agregar Comentario" type="text">
-                        <span class="input-group-addon">
-                            <a href="#"><i class="fa fa-edit"></i></a>  
-                        </span>
-                    </div>
+                    
                     <ul class="comments-list" >
-                        <li class="comment" ng-repeat="comentario in post.idcomentario |orderBy:'-createdAt'">
+                        <li class="comment" ng-repeat="comentario in post.idcomentario">
                             <div class="dropdown pull-right">
                             <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -357,10 +349,24 @@
                                             <h5 class="time"><h6 class="time"><span am-time-ago="comentario.createdAt"></span></h6></h5>
                                         </div>
                                         <p>{{comentario.comentario}}</p>
+                                        <div class="stats">
+                                          <a href="#" class="btn btn-default stat-item btncom">
+                                              <i class="fa fa-thumbs-up icon"></i>Me gusta</a>
+                                          <a href="#" class="btn btn-default stat-item btncom">
+                                              <i class="fa fa-thumbs-up icon"></i>No me gusta</a>
+                                          
+                                      </div>
+
                                     </div>
                              
                         </li>
                     </ul>
+                    <div class="input-group"> 
+                        <input class="form-control" placeholder="Agregar Comentario" type="text">
+                        <span class="input-group-addon">
+                            <a href="#"><i class="fa fa-edit"></i></a>  
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>  

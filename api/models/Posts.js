@@ -22,6 +22,12 @@ module.exports = {
     username:{
       type:'string'
     },
+    megusta:{
+      type:'string'
+    },
+    nomegusta:{
+      type:'string'
+    },
 	 iduser:{
   		model:'Users'
   	},

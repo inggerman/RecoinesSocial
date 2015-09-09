@@ -17,7 +17,7 @@ module.exports = {
 
 			Roompost.findOne({nombre:username}).exec(function(err,room){
 					if(err){return res.negotiate(err)}
-				Users.findOne(req.user[0].ncontrol).populate('idcarrera').populate('iddatospersonales').exec(function(err,fulluser){
+				Users.findOne(req.user[0].ncontrol).populate('idcarrera').populate('iddatospersonales').populate('frase').populate('idamigo').exec(function(err,fulluser){
 					if(err){return res.negotiate(err)}
 						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
 					//console.log(room);
@@ -41,7 +41,7 @@ module.exports = {
 
 			Roompost.findOne({nombre:username}).exec(function(err,room){
 					if(err){return res.negotiate(err)}
-				Users.findOne({username:username}).populate('idcarrera').populate('iddatospersonales').exec(function(err,fulluser){
+				Users.findOne({username:username}).populate('idcarrera').populate('iddatospersonales').populate('frase').populate('idamigo').exec(function(err,fulluser){
 					if(err){return res.negotiate(err)}
 						console.log("--as-ds-adasd-as-d-asd-asd-a-d"+username);
 					console.log("omhajjaajajjajajajjjja");
